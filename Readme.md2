@@ -1,0 +1,49 @@
+# Quantum Edge Markets Client Portal API
+
+Node.js and Express backend using PostgreSQL.
+
+## Database
+
+Run schema.sql in your PostgreSQL/Supabase SQL editor.
+
+## Install
+
+npm install
+
+## Start
+
+npm start
+
+## Required environment variables
+
+DATABASE_URL=your-postgresql-connection-string
+
+JWT_SECRET=your-long-random-secret
+
+FRONTEND_URL=https://your-github-pages-site
+
+NODE_ENV=production
+
+PORT=3000
+
+## API endpoints
+
+GET /api/health
+
+POST /api/auth/signup
+
+POST /api/auth/login
+
+GET /api/me
+
+PUT /api/me
+
+POST /api/withdrawals
+
+GET /api/withdrawals
+
+## Security
+
+Never put DATABASE_URL or JWT_SECRET inside the frontend HTML.
+
+Financial account values should only be changed through authorized server-side administration.
