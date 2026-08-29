@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>Quantum Edge Markets | Client Portal</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -37,7 +34,6 @@ button{
 .hidden{
     display:none!important;
 }
-
 
 /* AUTH */
 
@@ -159,6 +155,11 @@ input:focus,select:focus{
     width:100%;
 }
 
+.auth-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
 .message{
     min-height:20px;
     font-size:12px;
@@ -182,7 +183,6 @@ input:focus,select:focus{
     color:#9eb0c2;
     line-height:1.5;
 }
-
 
 /* SIDEBAR */
 
@@ -269,7 +269,6 @@ input:focus,select:focus{
     color:#ff9aa5!important;
 }
 
-
 /* MAIN */
 
 .main{
@@ -313,7 +312,6 @@ input:focus,select:focus{
     font-size:12px;
 }
 
-
 /* PAGES */
 
 .page{
@@ -323,7 +321,6 @@ input:focus,select:focus{
 .page.active{
     display:block;
 }
-
 
 /* DASHBOARD */
 
@@ -466,7 +463,6 @@ input:focus,select:focus{
     height:100%;
 }
 
-
 /* GRID */
 
 .grid{
@@ -491,7 +487,6 @@ input:focus,select:focus{
 .info strong{
     font-size:14px;
 }
-
 
 /* TABLE */
 
@@ -520,7 +515,6 @@ td{
     color:#c5d0db;
 }
 
-
 /* WITHDRAW */
 
 .withdraw{
@@ -529,7 +523,6 @@ td{
     border-radius:12px;
     margin-top:18px;
 }
-
 
 /* RESPONSIVE */
 
@@ -578,11 +571,9 @@ td{
 }
 
 </style>
-
 </head>
 
 <body>
-
 
 <!-- AUTH -->
 
@@ -608,21 +599,16 @@ Secure Client Portal
 id="loginTab"
 class="active"
 onclick="showAuth('login')">
-
 Sign In
-
 </button>
 
 <button
 id="signupTab"
 onclick="showAuth('signup')">
-
 Sign Up
-
 </button>
 
 </div>
-
 
 <!-- LOGIN -->
 
@@ -652,12 +638,13 @@ id="loginMessage"
 class="message">
 </div>
 
-<button class="auth-btn">
+<button
+id="loginButton"
+class="auth-btn">
 Sign In
 </button>
 
 </form>
-
 
 <!-- SIGN UP -->
 
@@ -721,7 +708,6 @@ from the connected database.
 </div>
 
 </div>
-
 </div>
 
 
@@ -818,7 +804,6 @@ onclick="logout()">
 </button>
 
 </div>
-
 </aside>
 
 
@@ -953,7 +938,6 @@ Recorded figure
 </div>
 
 </div>
-
 
 <div class="panel progress">
 
@@ -1167,9 +1151,7 @@ Active
 </div>
 
 </div>
-
 </div>
-
 </section>
 
 
@@ -1252,7 +1234,6 @@ class="notice hidden">
 </div>
 
 </div>
-
 </section>
 
 
@@ -1303,9 +1284,7 @@ Payment Method
 <button
 class="btn"
 onclick="requestWithdrawal()">
-
 Submit Withdrawal Request
-
 </button>
 
 <div
@@ -1314,7 +1293,6 @@ class="notice hidden">
 </div>
 
 </div>
-
 </div>
 
 
@@ -1436,9 +1414,7 @@ Support Team
 <button
 class="btn"
 onclick="openWhatsApp()">
-
 Open WhatsApp
-
 </button>
 
 </div>
@@ -1458,17 +1434,13 @@ Fxglobal54@gmail.com
 <button
 class="btn"
 onclick="openEmail()">
-
 Email Support
-
 </button>
 
 </div>
 
 </div>
-
 </div>
-
 </section>
 
 
@@ -1515,7 +1487,6 @@ Account ID
 </div>
 
 </div>
-
 </div>
 
 
@@ -1558,7 +1529,6 @@ Change Password
 </button>
 
 </form>
-
 </div>
 
 </section>
@@ -1597,7 +1567,7 @@ createClient(
 
 
 /* =========================================
-   CURRENT PROFILE
+   STATE
 ========================================= */
 
 let currentProfile = null;
@@ -1682,11 +1652,11 @@ function generateAccountId(){
 
     if(
         window.crypto &&
-        typeof crypto.randomUUID === "function"
+        typeof window.crypto.randomUUID === "function"
     ){
 
         return "QEM-" +
-        crypto.randomUUID()
+        window.crypto.randomUUID()
         .split("-")[0]
         .toUpperCase();
 
@@ -1739,32 +1709,30 @@ function showAuth(type){
 
 
 /* =========================================
-   CREATE PROFILE
+   CREATE OR LOAD PROFILE
 ========================================= */
 
-async function createProfileForUser(user){
+async function createOrLoadProfile(user){
 
     if(!user){
+
         return {
             profile:null,
-            error:new Error("No authenticated user.")
+            error:new Error(
+                "No authenticated user."
+            )
         };
+
     }
 
 
-    const name =
-        user.user_metadata?.full_name ||
-        "Client";
-
-
     /*
-       First check whether a profile already exists.
-       This prevents duplicate profile creation.
+       Check for the user's existing profile first.
     */
 
     const {
-        data:existing,
-        error:existingError
+        data:existingProfile,
+        error:selectError
     } =
     await supabase
     .from("profiles")
@@ -1773,20 +1741,25 @@ async function createProfileForUser(user){
     .maybeSingle();
 
 
-    if(existingError){
+    if(selectError){
 
         return {
             profile:null,
-            error:existingError
+            error:selectError
         };
 
     }
 
 
-    if(existing){
+    /*
+       Existing profile found.
+       Return it exactly as stored.
+    */
+
+    if(existingProfile){
 
         return {
-            profile:existing,
+            profile:existingProfile,
             error:null
         };
 
@@ -1794,11 +1767,17 @@ async function createProfileForUser(user){
 
 
     /*
-       Profile does not exist.
-       Create only the user's own profile.
+       No profile exists.
+       Create a new profile with zero financial
+       values until authorized records are added.
     */
 
-    const profileData = {
+    const name =
+        user.user_metadata?.full_name ||
+        "Client";
+
+
+    const newProfileData = {
 
         id:user.id,
 
@@ -1827,54 +1806,60 @@ async function createProfileForUser(user){
 
     const {
         data:newProfile,
-        error:createError
+        error:insertError
     } =
     await supabase
     .from("profiles")
-    .insert(profileData)
+    .insert(newProfileData)
     .select("*")
     .single();
 
 
-    if(createError){
-
-        /*
-           Another browser/session may have created
-           the profile at the same time.
-           Check once more before reporting failure.
-        */
-
-        const {
-            data:retryProfile
-        } =
-        await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id",user.id)
-        .maybeSingle();
-
-
-        if(retryProfile){
-
-            return {
-                profile:retryProfile,
-                error:null
-            };
-
-        }
-
+    if(!insertError && newProfile){
 
         return {
-            profile:null,
-            error:createError
+            profile:newProfile,
+            error:null
+        };
+
+    }
+
+
+    /*
+       If insertion failed, check once more.
+       This handles a profile that may have been
+       created between the first SELECT and INSERT.
+    */
+
+    const {
+        data:retryProfile,
+        error:retryError
+    } =
+    await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
+
+
+    if(retryProfile){
+
+        return {
+            profile:retryProfile,
+            error:null
         };
 
     }
 
 
     return {
-        profile:newProfile,
-        error:null
+        profile:null,
+        error:
+            insertError ||
+            retryError ||
+            new Error(
+                "Unable to create or load profile."
+            )
     };
 
 }
@@ -1891,6 +1876,7 @@ async function signup(event){
 
     const button =
         document.getElementById("signupButton");
+
 
     button.disabled = true;
 
@@ -1928,6 +1914,22 @@ async function signup(event){
     );
 
 
+    if(!name){
+
+        showMessage(
+            "signupMessage",
+            "Please enter your full name."
+        );
+
+        button.disabled = false;
+        button.textContent =
+            "Create Account";
+
+        return;
+
+    }
+
+
     if(password.length < 6){
 
         showMessage(
@@ -1940,6 +1942,7 @@ async function signup(event){
             "Create Account";
 
         return;
+
     }
 
 
@@ -1955,127 +1958,147 @@ async function signup(event){
             "Create Account";
 
         return;
+
     }
 
 
-    /*
-       Create Supabase authentication account.
-    */
+    try{
 
-    const {
-        data,
-        error
-    } =
-    await supabase.auth.signUp({
+        const {
+            data,
+            error
+        } =
+        await supabase.auth.signUp({
 
-        email:email,
+            email:email,
 
-        password:password,
+            password:password,
 
-        options:{
-            data:{
-                full_name:name
+            options:{
+                data:{
+                    full_name:name
+                }
             }
+
+        });
+
+
+        if(error){
+
+            console.error(
+                "Signup error:",
+                error
+            );
+
+            showMessage(
+                "signupMessage",
+                error.message
+            );
+
+            return;
+
         }
 
-    });
+
+        if(!data || !data.user){
+
+            showMessage(
+                "signupMessage",
+                "The account could not be created."
+            );
+
+            return;
+
+        }
 
 
-    if(error){
+        /*
+           If email confirmation is enabled,
+           there will normally be no session.
+        */
+
+        if(!data.session){
+
+            showMessage(
+                "signupMessage",
+                "Account created successfully. Please confirm your email, then sign in.",
+                "success"
+            );
+
+
+            document
+            .getElementById("signupPassword")
+            .value = "";
+
+            document
+            .getElementById("signupConfirm")
+            .value = "";
+
+
+            return;
+
+        }
+
+
+        /*
+           Session exists.
+           Create or load the profile.
+        */
+
+        const result =
+            await createOrLoadProfile(
+                data.user
+            );
+
+
+        if(result.error){
+
+            console.error(
+                "Profile error:",
+                result.error
+            );
+
+            showMessage(
+                "signupMessage",
+                "Account created, but the profile could not be loaded. " +
+                result.error.message
+            );
+
+            return;
+
+        }
+
+
+        openPortal({
+
+            ...result.profile,
+
+            email:data.user.email
+
+        });
+
+
+    }catch(error){
 
         console.error(
-            "Signup error:",
+            "Unexpected signup error:",
             error
         );
 
         showMessage(
             "signupMessage",
-            error.message
+            error.message ||
+            "An unexpected error occurred."
         );
 
+    }finally{
+
         button.disabled = false;
+
         button.textContent =
             "Create Account";
 
-        return;
     }
-
-
-    /*
-       Email confirmation may be enabled.
-       In that case Supabase returns a user but
-       no active session.
-    */
-
-    if(!data.session){
-
-        showMessage(
-            "signupMessage",
-            "Account created successfully. Please confirm your email, then sign in.",
-            "success"
-        );
-
-        document
-        .getElementById("signupPassword")
-        .value = "";
-
-        document
-        .getElementById("signupConfirm")
-        .value = "";
-
-
-        button.disabled = false;
-        button.textContent =
-            "Create Account";
-
-
-        return;
-    }
-
-
-    /*
-       A session exists, so create/load the profile.
-    */
-
-    const result =
-        await createProfileForUser(
-            data.user
-        );
-
-
-    if(result.error){
-
-        console.error(
-            "Profile error:",
-            result.error
-        );
-
-        showMessage(
-            "signupMessage",
-            "Account created, but the client profile could not be loaded. " +
-            result.error.message
-        );
-
-        button.disabled = false;
-        button.textContent =
-            "Create Account";
-
-        return;
-    }
-
-
-    openPortal({
-
-        ...result.profile,
-
-        email:data.user.email
-
-    });
-
-
-    button.disabled = false;
-    button.textContent =
-        "Create Account";
 
 }
 
@@ -2087,6 +2110,16 @@ async function signup(event){
 async function login(event){
 
     event.preventDefault();
+
+
+    const button =
+        document.getElementById("loginButton");
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "Signing In...";
 
 
     const email =
@@ -2108,38 +2141,64 @@ async function login(event){
     );
 
 
-    const {
-        data,
-        error
-    } =
-    await supabase.auth.signInWithPassword({
+    try{
 
-        email:email,
+        const {
+            data,
+            error
+        } =
+        await supabase.auth.signInWithPassword({
 
-        password:password
+            email:email,
 
-    });
+            password:password
+
+        });
 
 
-    if(error){
+        if(error){
+
+            console.error(
+                "Login error:",
+                error
+            );
+
+            showMessage(
+                "loginMessage",
+                error.message
+            );
+
+            return;
+
+        }
+
+
+        if(data && data.user){
+
+            await loadPortal();
+
+        }
+
+
+    }catch(error){
 
         console.error(
-            "Login error:",
+            "Unexpected login error:",
             error
         );
 
         showMessage(
             "loginMessage",
-            error.message
+            error.message ||
+            "An unexpected error occurred."
         );
 
-        return;
-    }
+    }finally{
 
+        button.disabled = false;
 
-    if(data.session && data.user){
-
-        await loadPortal();
+        button.textContent =
+            "Sign In";
 
     }
 
@@ -2147,77 +2206,97 @@ async function login(event){
 
 
 /* =========================================
-   LOAD CURRENT USER
+   LOAD PORTAL
 ========================================= */
 
 async function loadPortal(){
 
-    const {
-        data:userData,
-        error:userError
-    } =
-    await supabase.auth.getUser();
+    try{
+
+        const {
+            data:userData,
+            error:userError
+        } =
+        await supabase.auth.getUser();
 
 
-    if(userError){
+        if(userError){
+
+            console.error(
+                "User error:",
+                userError
+            );
+
+            showAuthScreen();
+
+            return;
+
+        }
+
+
+        if(
+            !userData ||
+            !userData.user
+        ){
+
+            showAuthScreen();
+
+            return;
+
+        }
+
+
+        const user =
+            userData.user;
+
+
+        const result =
+            await createOrLoadProfile(user);
+
+
+        if(result.error){
+
+            console.error(
+                "Profile loading error:",
+                result.error
+            );
+
+            showAuthScreen();
+
+            alert(
+                "Your account is authenticated, but your profile could not be loaded.\n\n" +
+                result.error.message
+            );
+
+            return;
+
+        }
+
+
+        openPortal({
+
+            ...result.profile,
+
+            email:user.email
+
+        });
+
+
+    }catch(error){
 
         console.error(
-            "User error:",
-            userError
-        );
-
-        showAuthScreen();
-
-        return;
-    }
-
-
-    if(!userData || !userData.user){
-
-        showAuthScreen();
-
-        return;
-    }
-
-
-    const user =
-        userData.user;
-
-
-    /*
-       Get existing profile or create one
-       if this is the user's first login.
-    */
-
-    const result =
-        await createProfileForUser(user);
-
-
-    if(result.error){
-
-        console.error(
-            "Profile loading error:",
-            result.error
+            "Portal loading error:",
+            error
         );
 
         showAuthScreen();
 
         alert(
-            "Your account is authenticated, but the client profile could not be loaded.\n\n" +
-            result.error.message
+            "Unable to load the client portal.\n\n" +
+            (error.message || error)
         );
 
-        return;
     }
-
-
-    openPortal({
-
-        ...result.profile,
-
-        email:user.email
-
-    });
 
 }
 
@@ -2233,6 +2312,7 @@ function openPortal(profile){
         showAuthScreen();
 
         return;
+
     }
 
 
@@ -2257,7 +2337,8 @@ function updateUI(profile){
 
 
     const name =
-        profile.full_name || "Client";
+        profile.full_name ||
+        "Client";
 
 
     document
@@ -2367,7 +2448,8 @@ function updateUI(profile){
 
 
     const status =
-        profile.status || "Active";
+        profile.status ||
+        "Active";
 
 
     document
@@ -2412,19 +2494,13 @@ supabase.auth.onAuthStateChange(
         );
 
 
-        if(event === "SIGNED_IN" && session){
-
-            /*
-               Do not perform the database work
-               directly inside the auth callback.
-            */
+        if(
+            event === "SIGNED_IN" &&
+            session
+        ){
 
             setTimeout(
-                () => {
-
-                    loadPortal();
-
-                },
+                () => loadPortal(),
                 0
             );
 
@@ -2436,6 +2512,8 @@ supabase.auth.onAuthStateChange(
             currentProfile = null;
 
             showAuthScreen();
+
+            showAuth("login");
 
         }
 
@@ -2460,6 +2538,7 @@ async function logout(){
         alert(error.message);
 
         return;
+
     }
 
 
@@ -2506,6 +2585,7 @@ async function changePassword(event){
         );
 
         return;
+
     }
 
 
@@ -2517,6 +2597,7 @@ async function changePassword(event){
         );
 
         return;
+
     }
 
 
@@ -2538,6 +2619,7 @@ async function changePassword(event){
         );
 
         return;
+
     }
 
 
@@ -2710,12 +2792,17 @@ async function requestWithdrawal(){
     await supabase.auth.getUser();
 
 
-    if(userError || !userData.user){
+    if(
+        userError ||
+        !userData ||
+        !userData.user
+    ){
 
         message.textContent =
             "Please sign in again.";
 
         return;
+
     }
 
 
@@ -2725,6 +2812,7 @@ async function requestWithdrawal(){
             "Enter a valid amount.";
 
         return;
+
     }
 
 
@@ -2747,6 +2835,7 @@ async function requestWithdrawal(){
         console.error(profileError);
 
         return;
+
     }
 
 
@@ -2759,6 +2848,7 @@ async function requestWithdrawal(){
             "Amount exceeds the recorded account balance.";
 
         return;
+
     }
 
 
@@ -2792,6 +2882,7 @@ async function requestWithdrawal(){
             error.message;
 
         return;
+
     }
 
 
@@ -2831,12 +2922,17 @@ async function renderWithdrawals(){
     await supabase.auth.getUser();
 
 
-    if(userError || !userData.user){
+    if(
+        userError ||
+        !userData ||
+        !userData.user
+    ){
 
         box.textContent =
             "No withdrawal requests.";
 
         return;
+
     }
 
 
@@ -2869,15 +2965,20 @@ async function renderWithdrawals(){
         console.error(error);
 
         return;
+
     }
 
 
-    if(!records || records.length === 0){
+    if(
+        !records ||
+        records.length === 0
+    ){
 
         box.textContent =
             "No withdrawal requests yet.";
 
         return;
+
     }
 
 
@@ -3099,6 +3200,7 @@ async function startApp(){
             showAuthScreen();
 
             return;
+
         }
 
 
@@ -3138,5 +3240,4 @@ startApp();
 </script>
 
 </body>
-
 </html>
