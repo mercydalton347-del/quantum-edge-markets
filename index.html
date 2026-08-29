@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quantum Edge Markets | Client Portal</title>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<style>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Quantum Edge Markets | Client Portal</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
 
 *{
     box-sizing:border-box;
@@ -35,8 +26,6 @@ button{
     display:none!important;
 }
 
-/* AUTH */
-
 #authScreen{
     position:fixed;
     inset:0;
@@ -46,12 +35,7 @@ button{
     align-items:center;
     padding:20px;
     background:
-    radial-gradient(
-        circle at top,
-        #16415d,
-        #0b1d30 40%,
-        #07111f 80%
-    );
+    radial-gradient(circle at top,#16415d,#0b1d30 40%,#07111f 80%);
 }
 
 .auth-box{
@@ -155,11 +139,6 @@ input:focus,select:focus{
     width:100%;
 }
 
-.auth-btn:disabled{
-    opacity:.6;
-    cursor:not-allowed;
-}
-
 .message{
     min-height:20px;
     font-size:12px;
@@ -183,8 +162,6 @@ input:focus,select:focus{
     color:#9eb0c2;
     line-height:1.5;
 }
-
-/* SIDEBAR */
 
 .sidebar{
     position:fixed;
@@ -269,8 +246,6 @@ input:focus,select:focus{
     color:#ff9aa5!important;
 }
 
-/* MAIN */
-
 .main{
     margin-left:250px;
     padding:28px;
@@ -312,8 +287,6 @@ input:focus,select:focus{
     font-size:12px;
 }
 
-/* PAGES */
-
 .page{
     display:none;
 }
@@ -322,15 +295,8 @@ input:focus,select:focus{
     display:block;
 }
 
-/* DASHBOARD */
-
 .hero{
-    background:
-    linear-gradient(
-        135deg,
-        #103252,
-        #0c1c2e
-    );
+    background:linear-gradient(135deg,#103252,#0c1c2e);
     border:1px solid #1d4866;
     padding:25px;
     border-radius:18px;
@@ -463,8 +429,6 @@ input:focus,select:focus{
     height:100%;
 }
 
-/* GRID */
-
 .grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -487,8 +451,6 @@ input:focus,select:focus{
 .info strong{
     font-size:14px;
 }
-
-/* TABLE */
 
 .table-wrap{
     overflow-x:auto;
@@ -515,16 +477,12 @@ td{
     color:#c5d0db;
 }
 
-/* WITHDRAW */
-
 .withdraw{
     background:#102034;
     padding:25px;
     border-radius:12px;
     margin-top:18px;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:900px){
 
@@ -570,108 +528,54 @@ td{
     }
 }
 
-</style>
-</head>
-
-<body>
-
-<!-- AUTH -->
-
-<div id="authScreen">
-
-<div class="auth-box">
-
-<div class="auth-logo">
-QE
-</div>
-
-<h1>
-Quantum Edge Markets
-</h1>
-
-<div class="auth-sub">
-Secure Client Portal
-</div>
-
-<div class="tabs">
-
-<button
-id="loginTab"
+</style></head><body><div id="authScreen"><div class="auth-box"><div class="auth-logo">QE</div><h1>Quantum Edge Markets</h1><div class="auth-sub">Secure Client Portal</div><div class="tabs"><button id="loginTab"
 class="active"
 onclick="showAuth('login')">
 Sign In
 </button>
 
-<button
-id="signupTab"
+<button id="signupTab"
 onclick="showAuth('signup')">
 Sign Up
 </button>
 
-</div>
-
-<!-- LOGIN -->
-
-<form
-id="loginForm"
+</div><form id="loginForm"
 class="auth-form active"
-onsubmit="login(event)">
+onsubmit="login(event)"><label>Email Address</label>
 
-<label>Email Address</label>
-
-<input
-id="loginEmail"
+<input id="loginEmail"
 type="email"
 placeholder="Enter email"
 required>
 
 <label>Password</label>
 
-<input
-id="loginPassword"
+<input id="loginPassword"
 type="password"
 placeholder="Enter password"
 required>
 
-<div
-id="loginMessage"
-class="message">
-</div>
-
-<button
-id="loginButton"
-class="auth-btn">
+<div id="loginMessage"
+class="message"></div><button class="auth-btn">
 Sign In
-</button>
-
-</form>
-
-<!-- SIGN UP -->
-
-<form
-id="signupForm"
+</button></form><form id="signupForm"
 class="auth-form"
-onsubmit="signup(event)">
+onsubmit="signup(event)"><label>Full Name</label>
 
-<label>Full Name</label>
-
-<input
-id="signupName"
+<input id="signupName"
 placeholder="Full name"
 required>
 
 <label>Email Address</label>
 
-<input
-id="signupEmail"
+<input id="signupEmail"
 type="email"
 placeholder="Email address"
 required>
 
 <label>Password</label>
 
-<input
-id="signupPassword"
+<input id="signupPassword"
 type="password"
 minlength="6"
 placeholder="Minimum 6 characters"
@@ -679,867 +583,230 @@ required>
 
 <label>Confirm Password</label>
 
-<input
-id="signupConfirm"
+<input id="signupConfirm"
 type="password"
 minlength="6"
 placeholder="Confirm password"
 required>
 
-<div
-id="signupMessage"
-class="message">
-</div>
-
-<button
-id="signupButton"
-class="auth-btn">
+<div id="signupMessage"
+class="message"></div><button class="auth-btn"
+id="signupButton">
 Create Account
 </button>
 
-</form>
-
-<div class="auth-note">
-
-Your account is authenticated through
-Supabase. Account records are retrieved
-from the connected database.
-
-</div>
-
-</div>
-</div>
-
-
-<!-- SIDEBAR -->
-
-<aside
-class="sidebar"
-id="sidebar">
-
-<div class="logo">
-
+</form><div class="auth-note">
+Your account is authenticated through Supabase.
+Account records are retrieved from the connected database.
+</div></div></div><aside class="sidebar" id="sidebar"><div class="logo">
 QUANTUM EDGE
+<span>MARKETS • CLIENT PORTAL</span>
+</div><div class="client"><span class="avatar" id="avatar">CL</span>
 
-<span>
-MARKETS • CLIENT PORTAL
-</span>
+<strong id="sideName">Client</strong>
 
-</div>
+<br><small>Personal Client</small>
 
-<div class="client">
-
-<span
-class="avatar"
-id="avatar">
-CL
-</span>
-
-<strong id="sideName">
-Client
-</strong>
-
-<br>
-
-<small>
-Personal Client
-</small>
-
-</div>
-
-<div class="nav">
-
-<div class="nav-title">
-ACCOUNT
-</div>
-
-<button
-class="active"
+</div><div class="nav"><div class="nav-title">ACCOUNT</div><button class="active"
 onclick="openPage('dashboard',this)">
 ◉ Dashboard
 </button>
 
-<button
-onclick="openPage('account',this)">
+<button onclick="openPage('account',this)">
 ◉ My Account
-</button>
-
-<button
-onclick="openPage('registration',this)">
+</button><button onclick="openPage('registration',this)">
 ◉ Registration
-</button>
-
-<div class="nav-title">
-SERVICES
-</div>
-
-<button
-onclick="openPage('withdrawal',this)">
+</button><div class="nav-title">SERVICES</div><button onclick="openPage('withdrawal',this)">
 ◉ Withdrawal
-</button>
-
-<button
-onclick="openPage('markets',this)">
+</button><button onclick="openPage('markets',this)">
 ◉ Markets
-</button>
-
-<div class="nav-title">
-HELP
-</div>
-
-<button
-onclick="openPage('support',this)">
+</button><div class="nav-title">HELP</div><button onclick="openPage('support',this)">
 ◉ Support
-</button>
-
-<button
-onclick="openPage('settings',this)">
+</button><button onclick="openPage('settings',this)">
 ◉ Settings
-</button>
-
-<button
-class="logout"
+</button><button class="logout"
 onclick="logout()">
 ↪ Sign Out
 </button>
 
-</div>
-</aside>
-
-
-<!-- MAIN -->
-
-<main class="main">
-
-<button
-class="mobile"
+</div></aside><main class="main"><button class="mobile"
 onclick="toggleSidebar()">
 ☰ Menu
 </button>
 
-<div class="header">
-
-<div>
-
-<h1 id="title">
-Client Dashboard
-</h1>
-
-<p>
+<div class="header"><div><h1 id="title">Client Dashboard</h1><p>
 Welcome back,
-<span id="welcomeName">
-Client
-</span>
-</p>
-
-</div>
-
-<div
-class="status"
-id="statusBadge">
+<span id="welcomeName">Client</span>
+</p></div><div class="status" id="statusBadge">
 ● Account Active
-</div>
-
-</div>
-
-
-<!-- DASHBOARD -->
-
-<section
-class="page active"
-id="dashboard">
-
-<div class="hero">
-
-<h2>
-Investment Overview
-</h2>
-
-<p>
-Your personal dashboard provides a
-centralized view of your authorized
-account records and market education.
-</p>
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-
-<div class="label">
-Investment
-</div>
-
-<div
-class="value blue"
-id="investmentValue">
+</div></div><section class="page active" id="dashboard"><div class="hero"><h2>Investment Overview</h2><p>
+Your personal dashboard provides a centralized view
+of your authorized account records and market education.
+</p></div><div class="cards"><div class="card"><div class="label">Investment</div><div class="value blue" id="investmentValue">
 K0.00
-</div>
-
-<div class="sub">
-PGK
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="label">
-Balance
-</div>
-
-<div
-class="value green"
-id="balanceValue">
+</div><div class="sub">PGK</div></div><div class="card"><div class="label">Balance</div><div class="value green" id="balanceValue">
 K0.00
-</div>
-
-<div class="sub">
-Recorded balance
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="label">
-Profit
-</div>
-
-<div
-class="value gold"
-id="profitValue">
+</div><div class="sub">Recorded balance</div></div><div class="card"><div class="label">Profit</div><div class="value gold" id="profitValue">
 K0.00
-</div>
-
-<div class="sub">
-Recorded figure
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="label">
-Bonus
-</div>
-
-<div
-class="value gold"
-id="bonusValue">
+</div><div class="sub">Recorded figure</div></div><div class="card"><div class="label">Bonus</div><div class="value gold" id="bonusValue">
 K0.00
-</div>
+</div><div class="sub">Recorded figure</div></div></div><div class="panel progress"><div class="progress-head"><strong>Account Period</strong>
 
-<div class="sub">
-Recorded figure
-</div>
+<span id="periodPercent">0%</span>
 
-</div>
-
-</div>
-
-<div class="panel progress">
-
-<div class="progress-head">
-
-<strong>
-Account Period
-</strong>
-
-<span id="periodPercent">
-0%
-</span>
-
-</div>
-
-<div class="track">
-
-<div
-class="bar"
-id="periodBar">
-</div>
-
-</div>
-
-<div class="notice">
-
-Account figures displayed here are
-retrieved from your authorized account
-record in Supabase.
-
-</div>
-
-</div>
-
-
-<div class="markets">
-
-<div class="market">
-
-<h3>
-Gold — XAU/USD
-</h3>
-
-<p>
-Gold is widely followed in financial
-markets and can be influenced by
-interest rates, currencies, inflation
-expectations and global economic
-conditions.
-</p>
-
-<div class="chart">
-
-<svg
-viewBox="0 0 500 160"
-preserveAspectRatio="none">
-
-<polyline
+</div><div class="track"><div class="bar" id="periodBar"></div></div><div class="notice">
+Account figures displayed here are retrieved from your
+authorized account record in Supabase.
+</div></div><div class="markets"><div class="market"><h3>Gold — XAU/USD</h3><p>
+Gold is widely followed in financial markets and can be
+influenced by interest rates, currencies, inflation
+expectations and global economic conditions.
+</p><div class="chart"><svg viewBox="0 0 500 160" preserveAspectRatio="none"><polyline
 fill="none"
 stroke="#38b5e9"
 stroke-width="3"
 points="
-0,130
-35,118
-70,125
-105,92
-140,105
-175,72
-210,84
-245,50
-280,65
-315,44
-350,70
-385,42
-420,55
-455,27
-500,38"/>
+0,130 35,118 70,125 105,92 140,105
+175,72 210,84 245,50 280,65 315,44
+350,70 385,42 420,55 455,27 500,38"/>
 
-</svg>
-
-</div>
-
-</div>
-
-
-<div class="market">
-
-<h3>
-GBP/USD — Cable
-</h3>
-
-<p>
-GBP/USD measures the British pound
-against the US dollar and is affected
-by economic data, interest-rate
+</svg></div></div><div class="market"><h3>GBP/USD — Cable</h3><p>
+GBP/USD measures the British pound against the US dollar
+and is affected by economic data, interest-rate
 expectations and monetary policy.
-</p>
-
-<div class="chart">
-
-<svg
-viewBox="0 0 500 160"
-preserveAspectRatio="none">
-
-<polyline
+</p><div class="chart"><svg viewBox="0 0 500 160" preserveAspectRatio="none"><polyline
 fill="none"
 stroke="#52d3a0"
 stroke-width="3"
 points="
-0,110
-40,124
-80,98
-120,104
-160,74
-200,91
-240,63
-280,75
-320,50
-360,62
-400,40
-440,55
-500,30"/>
+0,110 40,124 80,98 120,104 160,74
+200,91 240,63 280,75 320,50
+360,62 400,40 440,55 500,30"/>
 
-</svg>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ACCOUNT -->
-
-<section
-class="page"
-id="account">
-
-<div class="panel">
-
-<h2>
-My Account
-</h2>
-
-<p>
-Personal account information.
-</p>
-
-<div class="grid">
-
-<div class="info">
-
+</svg></div></div></div></section><section class="page" id="account"><div class="panel"><h2>My Account</h2><p>Personal account information.</p><div class="grid"><div class="info">
 <small>Full Name</small>
-
-<strong id="accountName">
-Client
-</strong>
-
-</div>
-
-<div class="info">
-
+<strong id="accountName">Client</strong>
+</div><div class="info">
 <small>Email</small>
-
-<strong id="accountEmail">
--
-</strong>
-
-</div>
-
-<div class="info">
-
+<strong id="accountEmail">-</strong>
+</div><div class="info">
 <small>Account ID</small>
-
-<strong id="accountId">
--
-</strong>
-
-</div>
-
-<div class="info">
-
+<strong id="accountId">-</strong>
+</div><div class="info">
 <small>Bank</small>
-
-<strong id="accountBank">
-Not set
-</strong>
-
-</div>
-
-<div class="info">
-
+<strong id="accountBank">Not set</strong>
+</div><div class="info">
 <small>Account Type</small>
-
-<strong>
-Personal Client
-</strong>
-
-</div>
-
-<div class="info">
-
+<strong>Personal Client</strong>
+</div><div class="info">
 <small>Status</small>
+<strong id="accountStatus">Active</strong>
+</div></div></div></section><section class="page" id="registration"><div class="panel"><h2>Client Registration</h2><p>Prepare your registration information.</p><form onsubmit="sendRegistration(event)"><label>Full Name</label>
 
-<strong id="accountStatus">
-Active
-</strong>
+<input id="regName" required><label>Phone</label>
 
-</div>
+<input id="regPhone" placeholder="+675..."><label>Email</label>
 
-</div>
-</div>
-</section>
+<input id="regEmail" type="email" required><label>Investment Amount PGK</label>
 
+<input id="regAmount" type="number" min="0"><label>Bank</label>
 
-<!-- REGISTRATION -->
-
-<section
-class="page"
-id="registration">
-
-<div class="panel">
-
-<h2>
-Client Registration
-</h2>
-
-<p>
-Prepare your registration information.
-</p>
-
-<form
-onsubmit="sendRegistration(event)">
-
-<label>
-Full Name
-</label>
-
-<input
-id="regName"
-required>
-
-<label>
-Phone
-</label>
-
-<input
-id="regPhone"
-placeholder="+675...">
-
-<label>
-Email
-</label>
-
-<input
-id="regEmail"
-type="email"
-required>
-
-<label>
-Investment Amount PGK
-</label>
-
-<input
-id="regAmount"
-type="number"
-min="0">
-
-<label>
-Bank
-</label>
-
-<select id="regBank">
-
-<option>BSP</option>
-
+<select id="regBank"><option>BSP</option>
 <option>Kina Bank</option>
-
-<option>Other</option>
-
-</select>
-
-<button class="btn">
+<option>Other</option></select><button class="btn">
 Prepare WhatsApp Message
-</button>
-
-</form>
-
-<div
-id="registrationResult"
+</button></form><div id="registrationResult"
 class="notice hidden">
-</div>
+</div></div></section><section class="page" id="withdrawal"><div class="panel"><h2>Withdrawal Centre</h2><p>
+Create a withdrawal request against the balance currently
+recorded on your account.
+</p><div class="withdraw"><label>Amount PGK</label>
 
-</div>
-</section>
-
-
-<!-- WITHDRAWAL -->
-
-<section
-class="page"
-id="withdrawal">
-
-<div class="panel">
-
-<h2>
-Withdrawal Centre
-</h2>
-
-<p>
-Create a withdrawal request against
-the balance currently recorded on your
-account.
-</p>
-
-<div class="withdraw">
-
-<label>
-Amount PGK
-</label>
-
-<input
-id="withdrawAmount"
+<input id="withdrawAmount"
 type="number"
 min="1"
 placeholder="Enter amount">
 
-<label>
-Payment Method
-</label>
+<label>Payment Method</label>
 
-<select id="withdrawMethod">
-
-<option>BSP</option>
-
+<select id="withdrawMethod"><option>BSP</option>
 <option>Kina Bank</option>
-
-<option>Other</option>
-
-</select>
-
-<button
-class="btn"
+<option>Other</option></select><button class="btn"
 onclick="requestWithdrawal()">
 Submit Withdrawal Request
 </button>
 
-<div
-id="withdrawMessage"
+<div id="withdrawMessage"
 class="notice hidden">
-</div>
-
-</div>
-</div>
-
-
-<div class="panel">
-
-<h2>
-Withdrawal History
-</h2>
-
-<div id="withdrawalHistory">
+</div></div></div><div class="panel"><h2>Withdrawal History</h2><div id="withdrawalHistory">
 No withdrawal requests yet.
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MARKETS -->
-
-<section
-class="page"
-id="markets">
-
-<div class="panel">
-
-<h2>
-Markets & Trading Education
-</h2>
-
-<p>
-This section provides educational
-information about financial markets.
-Account records are maintained
+</div></div></section><section class="page" id="markets"><div class="panel"><h2>Markets & Trading Education</h2><p>
+This section provides educational information about
+financial markets. Account records are maintained
 separately from educational material.
-</p>
+</p></div><div class="markets"><div class="market"><h3>XAU/USD — Gold</h3><p>
+Gold is one of the major instruments monitored by
+traders globally.
+</p></div><div class="market"><h3>GBP/USD — Cable</h3><p>
+GBP/USD is one of the major foreign-exchange pairs.
+</p></div></div><div class="panel"><h2>ICT — Michael J. Huddleston</h2><p>
+The Inner Circle Trader educational framework is
+associated with concepts including market structure,
+liquidity, price delivery and dealing ranges.
+</p></div></section><section class="page" id="support"><div class="panel"><h2>Client Support</h2><p>
+Contact the support team through WhatsApp or email.
+</p><div class="grid"><div class="info"><small>WhatsApp</small>
 
-</div>
-
-<div class="markets">
-
-<div class="market">
-
-<h3>
-XAU/USD — Gold
-</h3>
-
-<p>
-Gold is one of the major instruments
-monitored by traders globally.
-</p>
-
-</div>
-
-<div class="market">
-
-<h3>
-GBP/USD — Cable
-</h3>
-
-<p>
-GBP/USD is one of the major
-foreign-exchange pairs.
-</p>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-ICT — Michael J. Huddleston
-</h2>
-
-<p>
-The Inner Circle Trader educational
-framework is associated with concepts
-including market structure, liquidity,
-price delivery and dealing ranges.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- SUPPORT -->
-
-<section
-class="page"
-id="support">
-
-<div class="panel">
-
-<h2>
-Client Support
-</h2>
-
-<p>
-Contact the support team through
-WhatsApp or email.
-</p>
-
-<div class="grid">
-
-<div class="info">
-
-<small>
-WhatsApp
-</small>
-
-<strong>
-Support Team
-</strong>
+<strong>Support Team</strong>
 
 <br><br>
 
-<button
-class="btn"
+<button class="btn"
 onclick="openWhatsApp()">
 Open WhatsApp
 </button>
 
-</div>
+</div><div class="info"><small>Email</small>
 
-<div class="info">
-
-<small>
-Email
-</small>
-
-<strong>
-Fxglobal54@gmail.com
-</strong>
+<strong>Fxglobal54@gmail.com</strong>
 
 <br><br>
 
-<button
-class="btn"
+<button class="btn"
 onclick="openEmail()">
 Email Support
 </button>
 
-</div>
+</div></div></div></section><section class="page" id="settings"><div class="panel"><h2>Account Settings</h2><p>Manage your account security.</p><div class="grid"><div class="info"><small>Client</small>
 
-</div>
-</div>
-</section>
+<strong id="settingsName">Client</strong>
 
+</div><div class="info"><small>Account ID</small>
 
-<!-- SETTINGS -->
+<strong id="settingsId">-</strong>
 
-<section
-class="page"
-id="settings">
+</div></div></div><div class="panel"><h2>Change Password</h2><form onsubmit="changePassword(event)"><label>New Password</label>
 
-<div class="panel">
-
-<h2>
-Account Settings
-</h2>
-
-<p>
-Manage your account security.
-</p>
-
-<div class="grid">
-
-<div class="info">
-
-<small>
-Client
-</small>
-
-<strong id="settingsName">
-Client
-</strong>
-
-</div>
-
-<div class="info">
-
-<small>
-Account ID
-</small>
-
-<strong id="settingsId">
--
-</strong>
-
-</div>
-
-</div>
-</div>
-
-
-<div class="panel">
-
-<h2>
-Change Password
-</h2>
-
-<form
-onsubmit="changePassword(event)">
-
-<label>
-New Password
-</label>
-
-<input
-id="newPassword"
+<input id="newPassword"
 type="password"
 minlength="6"
 required>
 
-<label>
-Confirm New Password
-</label>
+<label>Confirm New Password</label>
 
-<input
-id="confirmPassword"
+<input id="confirmPassword"
 type="password"
 minlength="6"
 required>
 
-<div
-id="passwordMessage"
+<div id="passwordMessage"
 class="message">
-</div>
-
-<button class="btn">
+</div><button class="btn">
 Change Password
-</button>
-
-</form>
-</div>
-
-</section>
-
-</main>
-
-
-<script>
+</button></form></div></section></main><script>
 
 /* =========================================
-   SUPABASE
+   SUPABASE CONNECTION
 ========================================= */
 
 const SUPABASE_URL =
@@ -1548,12 +815,9 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_HCw_S3rPTEW4W__rHlHHaA_vSRb3B7X";
 
-const {
-    createClient
-} = window.supabase;
+const { createClient } = window.supabase;
 
-const supabase =
-createClient(
+const supabase = createClient(
     SUPABASE_URL,
     SUPABASE_KEY,
     {
@@ -1564,13 +828,6 @@ createClient(
         }
     }
 );
-
-
-/* =========================================
-   STATE
-========================================= */
-
-let currentProfile = null;
 
 
 /* =========================================
@@ -1597,20 +854,14 @@ function initials(name){
     .split(" ")
     .filter(Boolean)
     .slice(0,2)
-    .map(
-        x => x.charAt(0)
-    )
+    .map(x => x.charAt(0))
     .join("")
     .toUpperCase();
 
 }
 
 
-function showMessage(
-    id,
-    text,
-    type="error"
-){
+function showMessage(id,text,type="error"){
 
     const element =
         document.getElementById(id);
@@ -1622,51 +873,6 @@ function showMessage(
 
     element.textContent =
         text;
-
-}
-
-
-function showAuthScreen(){
-
-    document
-    .getElementById("authScreen")
-    .classList.remove("hidden");
-
-}
-
-
-function hideAuthScreen(){
-
-    document
-    .getElementById("authScreen")
-    .classList.add("hidden");
-
-}
-
-
-/* =========================================
-   ACCOUNT ID
-========================================= */
-
-function generateAccountId(){
-
-    if(
-        window.crypto &&
-        typeof window.crypto.randomUUID === "function"
-    ){
-
-        return "QEM-" +
-        window.crypto.randomUUID()
-        .split("-")[0]
-        .toUpperCase();
-
-    }
-
-    return "QEM-" +
-    Math.random()
-    .toString(36)
-    .substring(2,10)
-    .toUpperCase();
 
 }
 
@@ -1709,163 +915,6 @@ function showAuth(type){
 
 
 /* =========================================
-   CREATE OR LOAD PROFILE
-========================================= */
-
-async function createOrLoadProfile(user){
-
-    if(!user){
-
-        return {
-            profile:null,
-            error:new Error(
-                "No authenticated user."
-            )
-        };
-
-    }
-
-
-    /*
-       Check for the user's existing profile first.
-    */
-
-    const {
-        data:existingProfile,
-        error:selectError
-    } =
-    await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .maybeSingle();
-
-
-    if(selectError){
-
-        return {
-            profile:null,
-            error:selectError
-        };
-
-    }
-
-
-    /*
-       Existing profile found.
-       Return it exactly as stored.
-    */
-
-    if(existingProfile){
-
-        return {
-            profile:existingProfile,
-            error:null
-        };
-
-    }
-
-
-    /*
-       No profile exists.
-       Create a new profile with zero financial
-       values until authorized records are added.
-    */
-
-    const name =
-        user.user_metadata?.full_name ||
-        "Client";
-
-
-    const newProfileData = {
-
-        id:user.id,
-
-        account_id:generateAccountId(),
-
-        full_name:name,
-
-        phone:"",
-
-        bank:"Not set",
-
-        investment:0,
-
-        balance:0,
-
-        profit:0,
-
-        bonus:0,
-
-        period:0,
-
-        status:"Active"
-
-    };
-
-
-    const {
-        data:newProfile,
-        error:insertError
-    } =
-    await supabase
-    .from("profiles")
-    .insert(newProfileData)
-    .select("*")
-    .single();
-
-
-    if(!insertError && newProfile){
-
-        return {
-            profile:newProfile,
-            error:null
-        };
-
-    }
-
-
-    /*
-       If insertion failed, check once more.
-       This handles a profile that may have been
-       created between the first SELECT and INSERT.
-    */
-
-    const {
-        data:retryProfile,
-        error:retryError
-    } =
-    await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .maybeSingle();
-
-
-    if(retryProfile){
-
-        return {
-            profile:retryProfile,
-            error:null
-        };
-
-    }
-
-
-    return {
-        profile:null,
-        error:
-            insertError ||
-            retryError ||
-            new Error(
-                "Unable to create or load profile."
-            )
-    };
-
-}
-
-
-/* =========================================
    SIGN UP
 ========================================= */
 
@@ -1873,16 +922,8 @@ async function signup(event){
 
     event.preventDefault();
 
-
     const button =
         document.getElementById("signupButton");
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "Creating Account...";
-
 
     const name =
         document
@@ -1921,12 +962,7 @@ async function signup(event){
             "Please enter your full name."
         );
 
-        button.disabled = false;
-        button.textContent =
-            "Create Account";
-
         return;
-
     }
 
 
@@ -1937,12 +973,7 @@ async function signup(event){
             "Password must contain at least 6 characters."
         );
 
-        button.disabled = false;
-        button.textContent =
-            "Create Account";
-
         return;
-
     }
 
 
@@ -1953,13 +984,12 @@ async function signup(event){
             "Passwords do not match."
         );
 
-        button.disabled = false;
-        button.textContent =
-            "Create Account";
-
         return;
-
     }
+
+
+    button.disabled = true;
+    button.textContent = "Creating Account...";
 
 
     try{
@@ -1985,46 +1015,37 @@ async function signup(event){
 
         if(error){
 
-            console.error(
-                "Signup error:",
-                error
-            );
-
             showMessage(
                 "signupMessage",
                 error.message
             );
 
             return;
-
-        }
-
-
-        if(!data || !data.user){
-
-            showMessage(
-                "signupMessage",
-                "The account could not be created."
-            );
-
-            return;
-
         }
 
 
         /*
-           If email confirmation is enabled,
-           there will normally be no session.
+         IMPORTANT:
+         If email confirmation is enabled,
+         Supabase returns no session.
+         The user must confirm the email first.
+
+         The profile is NOT inserted here because
+         unauthenticated users cannot pass the
+         profiles INSERT policy.
+
+         When the user signs in later,
+         loadPortal() will safely create the
+         missing profile.
         */
 
         if(!data.session){
 
             showMessage(
                 "signupMessage",
-                "Account created successfully. Please confirm your email, then sign in.",
+                "Account created successfully. Please check your email, confirm your account, then sign in.",
                 "success"
             );
-
 
             document
             .getElementById("signupPassword")
@@ -2034,69 +1055,38 @@ async function signup(event){
             .getElementById("signupConfirm")
             .value = "";
 
-
             return;
-
         }
 
 
         /*
-           Session exists.
-           Create or load the profile.
+         If email confirmation is disabled,
+         a session exists immediately.
+
+         loadPortal() will find or create
+         the user's profile.
         */
 
-        const result =
-            await createOrLoadProfile(
-                data.user
-            );
+        await loadPortal();
 
-
-        if(result.error){
-
-            console.error(
-                "Profile error:",
-                result.error
-            );
-
-            showMessage(
-                "signupMessage",
-                "Account created, but the profile could not be loaded. " +
-                result.error.message
-            );
-
-            return;
-
-        }
-
-
-        openPortal({
-
-            ...result.profile,
-
-            email:data.user.email
-
-        });
-
-
-    }catch(error){
+    }
+    catch(error){
 
         console.error(
-            "Unexpected signup error:",
+            "Signup error:",
             error
         );
 
         showMessage(
             "signupMessage",
-            error.message ||
-            "An unexpected error occurred."
+            "Unable to create the account. Please try again."
         );
 
-    }finally{
+    }
+    finally{
 
         button.disabled = false;
-
-        button.textContent =
-            "Create Account";
+        button.textContent = "Create Account";
 
     }
 
@@ -2111,17 +1101,6 @@ async function login(event){
 
     event.preventDefault();
 
-
-    const button =
-        document.getElementById("loginButton");
-
-
-    button.disabled = true;
-
-    button.textContent =
-        "Signing In...";
-
-
     const email =
         document
         .getElementById("loginEmail")
@@ -2134,71 +1113,39 @@ async function login(event){
         .getElementById("loginPassword")
         .value;
 
-
     showMessage(
         "loginMessage",
         ""
     );
 
 
-    try{
+    const {
+        data,
+        error
+    } =
+    await supabase.auth.signInWithPassword({
 
-        const {
-            data,
-            error
-        } =
-        await supabase.auth.signInWithPassword({
+        email:email,
 
-            email:email,
+        password:password
 
-            password:password
-
-        });
+    });
 
 
-        if(error){
-
-            console.error(
-                "Login error:",
-                error
-            );
-
-            showMessage(
-                "loginMessage",
-                error.message
-            );
-
-            return;
-
-        }
-
-
-        if(data && data.user){
-
-            await loadPortal();
-
-        }
-
-
-    }catch(error){
-
-        console.error(
-            "Unexpected login error:",
-            error
-        );
+    if(error){
 
         showMessage(
             "loginMessage",
-            error.message ||
-            "An unexpected error occurred."
+            error.message
         );
 
-    }finally{
+        return;
+    }
 
-        button.disabled = false;
 
-        button.textContent =
-            "Sign In";
+    if(data.session){
+
+        await loadPortal();
 
     }
 
@@ -2206,97 +1153,220 @@ async function login(event){
 
 
 /* =========================================
-   LOAD PORTAL
+   LOAD CURRENT USER
 ========================================= */
 
 async function loadPortal(){
 
-    try{
+    const {
+        data,
+        error
+    } =
+    await supabase.auth.getUser();
+
+
+    if(error || !data.user){
+
+        showAuthScreen();
+
+        return;
+    }
+
+
+    const user =
+        data.user;
+
+
+    /*
+     First check whether the profile exists.
+    */
+
+    const {
+        data:profile,
+        error:profileError
+    } =
+    await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
+
+
+    /*
+     IMPORTANT FIX:
+     Check the database error BEFORE checking
+     whether profile is null.
+    */
+
+    if(profileError){
+
+        console.error(
+            "Profile loading error:",
+            profileError
+        );
+
+        alert(
+            "Unable to load your client profile.\n\n" +
+            profileError.message
+        );
+
+        return;
+    }
+
+
+    /*
+     If the user has no profile yet,
+     create it now while authenticated.
+    */
+
+    if(!profile){
+
+        const name =
+            user.user_metadata?.full_name ||
+            "Client";
+
+
+        const accountId =
+            await generateAccountId();
+
 
         const {
-            data:userData,
-            error:userError
+            data:newProfile,
+            error:createError
         } =
-        await supabase.auth.getUser();
+        await supabase
+        .from("profiles")
+        .insert({
+
+            id:user.id,
+
+            account_id:accountId,
+
+            full_name:name,
+
+            phone:"",
+
+            bank:"Not set",
+
+            investment:0,
+
+            balance:0,
+
+            profit:0,
+
+            bonus:0,
+
+            period:0,
+
+            status:"Active"
+
+        })
+        .select()
+        .single();
 
 
-        if(userError){
-
-            console.error(
-                "User error:",
-                userError
-            );
-
-            showAuthScreen();
-
-            return;
-
-        }
-
-
-        if(
-            !userData ||
-            !userData.user
-        ){
-
-            showAuthScreen();
-
-            return;
-
-        }
-
-
-        const user =
-            userData.user;
-
-
-        const result =
-            await createOrLoadProfile(user);
-
-
-        if(result.error){
+        if(createError){
 
             console.error(
-                "Profile loading error:",
-                result.error
+                "Profile creation error:",
+                createError
             );
-
-            showAuthScreen();
 
             alert(
-                "Your account is authenticated, but your profile could not be loaded.\n\n" +
-                result.error.message
+                "Your account is authenticated, but the client profile could not be created.\n\n" +
+                createError.message
             );
 
             return;
-
         }
 
 
         openPortal({
 
-            ...result.profile,
+            ...newProfile,
 
             email:user.email
 
         });
 
+        return;
+    }
 
-    }catch(error){
 
-        console.error(
-            "Portal loading error:",
+    openPortal({
+
+        ...profile,
+
+        email:user.email
+
+    });
+
+}
+
+
+/* =========================================
+   ACCOUNT ID
+========================================= */
+
+async function generateAccountId(){
+
+    /*
+     Use a short random reference.
+     The function retries if the generated
+     account ID already exists.
+    */
+
+    for(let attempt = 0; attempt < 5; attempt++){
+
+        const randomPart =
+            Math.random()
+            .toString(36)
+            .substring(2,8)
+            .toUpperCase();
+
+        const accountId =
+            "QEM-" + randomPart;
+
+
+        const {
+            data,
             error
-        );
+        } =
+        await supabase
+        .from("profiles")
+        .select("id")
+        .eq("account_id",accountId)
+        .maybeSingle();
 
-        showAuthScreen();
 
-        alert(
-            "Unable to load the client portal.\n\n" +
-            (error.message || error)
-        );
+        if(error){
+
+            console.error(
+                "Account ID check error:",
+                error
+            );
+
+            throw error;
+        }
+
+
+        if(!data){
+
+            return accountId;
+
+        }
 
     }
+
+
+    /*
+     Very unlikely fallback.
+    */
+
+    return "QEM-" +
+        Date.now()
+        .toString(36)
+        .toUpperCase();
 
 }
 
@@ -2307,20 +1377,9 @@ async function loadPortal(){
 
 function openPortal(profile){
 
-    if(!profile){
-
-        showAuthScreen();
-
-        return;
-
-    }
-
-
-    currentProfile =
-        profile;
-
-
-    hideAuthScreen();
+    document
+    .getElementById("authScreen")
+    .classList.add("hidden");
 
     updateUI(profile);
 
@@ -2335,10 +1394,8 @@ function updateUI(profile){
 
     if(!profile) return;
 
-
     const name =
-        profile.full_name ||
-        "Client";
+        profile.full_name || "Client";
 
 
     document
@@ -2448,8 +1505,7 @@ function updateUI(profile){
 
 
     const status =
-        profile.status ||
-        "Active";
+        profile.status || "Active";
 
 
     document
@@ -2482,17 +1538,24 @@ function updateUI(profile){
 
 
 /* =========================================
+   AUTH SCREEN
+========================================= */
+
+function showAuthScreen(){
+
+    document
+    .getElementById("authScreen")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================================
    AUTH STATE
 ========================================= */
 
 supabase.auth.onAuthStateChange(
     (event,session) => {
-
-        console.log(
-            "Auth state:",
-            event
-        );
-
 
         if(
             event === "SIGNED_IN" &&
@@ -2509,11 +1572,7 @@ supabase.auth.onAuthStateChange(
 
         if(event === "SIGNED_OUT"){
 
-            currentProfile = null;
-
             showAuthScreen();
-
-            showAuth("login");
 
         }
 
@@ -2538,7 +1597,6 @@ async function logout(){
         alert(error.message);
 
         return;
-
     }
 
 
@@ -2558,7 +1616,6 @@ async function logout(){
 async function changePassword(event){
 
     event.preventDefault();
-
 
     const newPassword =
         document
@@ -2585,7 +1642,6 @@ async function changePassword(event){
         );
 
         return;
-
     }
 
 
@@ -2597,7 +1653,6 @@ async function changePassword(event){
         );
 
         return;
-
     }
 
 
@@ -2619,7 +1674,6 @@ async function changePassword(event){
         );
 
         return;
-
     }
 
 
@@ -2648,7 +1702,6 @@ async function changePassword(event){
 function sendRegistration(event){
 
     event.preventDefault();
-
 
     const name =
         document
@@ -2681,25 +1734,11 @@ function sendRegistration(event){
 
     const text =
         "QUANTUM EDGE MARKETS - CLIENT REGISTRATION\n\n" +
-
-        "Full Name: " +
-        name +
-        "\n" +
-
-        "Phone: " +
-        phone +
-        "\n" +
-
-        "Email: " +
-        email +
-        "\n" +
-
-        "Investment: K" +
-        (amount || "0") +
-        " PGK\n" +
-
-        "Bank: " +
-        bank;
+        "Full Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + email + "\n" +
+        "Investment: K" + (amount || "0") + " PGK\n" +
+        "Bank: " + bank;
 
 
     const url =
@@ -2719,10 +1758,7 @@ function sendRegistration(event){
         );
 
 
-    result.classList.remove(
-        "hidden"
-    );
-
+    result.classList.remove("hidden");
 
     result.textContent =
         "WhatsApp registration message prepared.";
@@ -2777,10 +1813,7 @@ async function requestWithdrawal(){
         .getElementById("withdrawMessage");
 
 
-    message.classList.remove(
-        "hidden"
-    );
-
+    message.classList.remove("hidden");
 
     message.textContent = "";
 
@@ -2792,17 +1825,12 @@ async function requestWithdrawal(){
     await supabase.auth.getUser();
 
 
-    if(
-        userError ||
-        !userData ||
-        !userData.user
-    ){
+    if(userError || !userData.user){
 
         message.textContent =
             "Please sign in again.";
 
         return;
-
     }
 
 
@@ -2812,7 +1840,6 @@ async function requestWithdrawal(){
             "Enter a valid amount.";
 
         return;
-
     }
 
 
@@ -2835,7 +1862,6 @@ async function requestWithdrawal(){
         console.error(profileError);
 
         return;
-
     }
 
 
@@ -2848,7 +1874,6 @@ async function requestWithdrawal(){
             "Amount exceeds the recorded account balance.";
 
         return;
-
     }
 
 
@@ -2859,17 +1884,13 @@ async function requestWithdrawal(){
     .from("withdrawals")
     .insert({
 
-        user_id:
-            userData.user.id,
+        user_id:userData.user.id,
 
-        amount:
-            amount,
+        amount:amount,
 
-        method:
-            method,
+        method:method,
 
-        status:
-            "Pending"
+        status:"Pending"
 
     });
 
@@ -2882,7 +1903,6 @@ async function requestWithdrawal(){
             error.message;
 
         return;
-
     }
 
 
@@ -2922,17 +1942,12 @@ async function renderWithdrawals(){
     await supabase.auth.getUser();
 
 
-    if(
-        userError ||
-        !userData ||
-        !userData.user
-    ){
+    if(userError || !userData.user){
 
         box.textContent =
             "No withdrawal requests.";
 
         return;
-
     }
 
 
@@ -2965,20 +1980,15 @@ async function renderWithdrawals(){
         console.error(error);
 
         return;
-
     }
 
 
-    if(
-        !records ||
-        records.length === 0
-    ){
+    if(!records || records.length === 0){
 
         box.textContent =
             "No withdrawal requests yet.";
 
         return;
-
     }
 
 
@@ -2993,11 +2003,8 @@ async function renderWithdrawals(){
     <tr>
 
     <th>Date</th>
-
     <th>Amount</th>
-
     <th>Method</th>
-
     <th>Status</th>
 
     </tr>
@@ -3021,21 +2028,13 @@ async function renderWithdrawals(){
 
         <tr>
 
-        <td>
-        ${safe(date)}
-        </td>
+        <td>${safe(date)}</td>
 
-        <td>
-        ${money(item.amount)}
-        </td>
+        <td>${money(item.amount)}</td>
 
-        <td>
-        ${safe(item.method)}
-        </td>
+        <td>${safe(item.method)}</td>
 
-        <td>
-        ${safe(item.status)}
-        </td>
+        <td>${safe(item.status)}</td>
 
         </tr>
 
@@ -3083,26 +2082,19 @@ function safe(value){
 
 const titles = {
 
-    dashboard:
-        "Client Dashboard",
+    dashboard:"Client Dashboard",
 
-    account:
-        "My Account",
+    account:"My Account",
 
-    registration:
-        "Client Registration",
+    registration:"Client Registration",
 
-    withdrawal:
-        "Withdrawal Centre",
+    withdrawal:"Withdrawal Centre",
 
-    markets:
-        "Markets & Trading",
+    markets:"Markets & Trading",
 
-    support:
-        "Client Support",
+    support:"Client Support",
 
-    settings:
-        "Account Settings"
+    settings:"Account Settings"
 
 };
 
@@ -3113,9 +2105,7 @@ function openPage(id,button){
     .querySelectorAll(".page")
     .forEach(
         p =>
-        p.classList.remove(
-            "active"
-        )
+        p.classList.remove("active")
     );
 
 
@@ -3128,17 +2118,13 @@ function openPage(id,button){
     .querySelectorAll(".nav button")
     .forEach(
         b =>
-        b.classList.remove(
-            "active"
-        )
+        b.classList.remove("active")
     );
 
 
     if(button){
 
-        button.classList.add(
-            "active"
-        );
+        button.classList.add("active");
 
     }
 
@@ -3151,15 +2137,10 @@ function openPage(id,button){
 
     document
     .getElementById("sidebar")
-    .classList.remove(
-        "open"
-    );
+    .classList.remove("open");
 
 
-    window.scrollTo(
-        0,
-        0
-    );
+    window.scrollTo(0,0);
 
 }
 
@@ -3168,9 +2149,7 @@ function toggleSidebar(){
 
     document
     .getElementById("sidebar")
-    .classList.toggle(
-        "open"
-    );
+    .classList.toggle("open");
 
 }
 
@@ -3200,7 +2179,6 @@ async function startApp(){
             showAuthScreen();
 
             return;
-
         }
 
 
@@ -3217,10 +2195,11 @@ async function startApp(){
 
         }
 
-    }catch(error){
+    }
+    catch(error){
 
         console.error(
-            "Startup error:",
+            "Application startup error:",
             error
         );
 
@@ -3237,7 +2216,4 @@ async function startApp(){
 
 startApp();
 
-</script>
-
-</body>
-</html>
+</script></body></html>
