@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Quantum Edge Markets | Client Portal</title>
 
@@ -23,7 +23,6 @@
     --text:#f5f8fc;
     --muted:#8fa5bc;
     --accent:#18c8a5;
-    --accent2:#149c86;
     --danger:#ef5b6b;
     --warning:#f4b942;
     --sidebar:260px;
@@ -36,10 +35,7 @@ body{
     min-height:100vh;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
     font:inherit;
 }
 
@@ -78,17 +74,16 @@ button{
 .logo{
     font-size:23px;
     font-weight:800;
-    letter-spacing:.5px;
 }
 
-.logo span{
+.logo span,
+.sidebar-logo span{
     color:var(--accent);
 }
 
 .auth-subtitle{
     color:var(--muted);
-    margin-top:8px;
-    margin-bottom:25px;
+    margin:8px 0 25px;
 }
 
 .auth-tabs{
@@ -212,10 +207,6 @@ textarea{
     font-size:18px;
 }
 
-.sidebar-logo span{
-    color:var(--accent);
-}
-
 .menu{
     display:flex;
     flex-direction:column;
@@ -247,8 +238,6 @@ textarea{
     color:#ff8e9b!important;
 }
 
-/* MAIN */
-
 .main{
     margin-left:var(--sidebar);
     min-height:100vh;
@@ -261,7 +250,7 @@ textarea{
     align-items:center;
     justify-content:space-between;
     padding:0 28px;
-    background:rgba(7,17,31,.92);
+    background:rgba(7,17,31,.95);
     position:sticky;
     top:0;
     z-index:50;
@@ -306,8 +295,7 @@ textarea{
 /* DASHBOARD */
 
 .account-banner{
-    background:
-        linear-gradient(135deg,#102b46,#0b554c);
+    background:linear-gradient(135deg,#102b46,#0b554c);
     border:1px solid #22556a;
     border-radius:18px;
     padding:24px;
@@ -347,7 +335,7 @@ textarea{
     font-weight:800;
 }
 
-.card-value.positive{
+.positive{
     color:#54e0bd;
 }
 
@@ -388,7 +376,6 @@ textarea{
 
 .quick-action:hover{
     border-color:var(--accent);
-    transform:translateY(-1px);
 }
 
 .quick-action strong{
@@ -441,7 +428,7 @@ textarea{
     border:0;
 }
 
-/* SECTIONS */
+/* CARDS */
 
 .section-grid{
     display:grid;
@@ -498,22 +485,12 @@ textarea{
     color:var(--muted);
 }
 
-/* FORMS */
-
 .form-card{
-    max-width:760px;
+    max-width:800px;
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:16px;
     padding:25px;
-}
-
-.form-card h3{
-    margin-bottom:18px;
-}
-
-.file-input{
-    padding:10px;
 }
 
 .notice{
@@ -524,6 +501,10 @@ textarea{
     border-radius:11px;
     margin-bottom:18px;
     line-height:1.5;
+}
+
+.file-input{
+    padding:10px;
 }
 
 .history{
@@ -545,13 +526,38 @@ textarea{
     color:var(--muted);
 }
 
-/* FOOTER */
-
 .footer{
     color:#61758a;
     text-align:center;
     padding:35px 10px;
     font-size:12px;
+}
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.setting-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.setting-card.full{
+    grid-column:1/-1;
+}
+
+.setting-card h3{
+    margin-bottom:8px;
+}
+
+.setting-card p{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:18px;
 }
 
 /* MOBILE */
@@ -580,8 +586,13 @@ textarea{
     }
 
     .chart-grid,
-    .section-grid{
+    .section-grid,
+    .settings-grid{
         grid-template-columns:1fr;
+    }
+
+    .setting-card.full{
+        grid-column:auto;
     }
 }
 
@@ -628,114 +639,81 @@ textarea{
 
 <body>
 
-<!-- AUTHENTICATION -->
+<!-- AUTH -->
 
 <section id="authPage">
 
-    <div class="auth-card">
+<div class="auth-card">
 
-        <div class="logo">
-            QUANTUM <span>EDGE</span> MARKETS
-        </div>
+<div class="logo">
+QUANTUM <span>EDGE</span> MARKETS
+</div>
 
-        <div class="auth-subtitle">
-            Secure client portal
-        </div>
+<div class="auth-subtitle">
+Secure client portal
+</div>
 
-        <div class="auth-tabs">
-            <button id="loginTab" class="active" onclick="showLogin()">
-                Sign In
-            </button>
+<div class="auth-tabs">
 
-            <button id="signupTab" onclick="showSignup()">
-                Sign Up
-            </button>
-        </div>
+<button id="loginTab" class="active" onclick="showLogin()">
+Sign In
+</button>
 
-        <!-- LOGIN -->
+<button id="signupTab" onclick="showSignup()">
+Sign Up
+</button>
 
-        <form id="loginForm">
+</div>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input
-                    type="email"
-                    id="loginEmail"
-                    required
-                    autocomplete="email"
-                >
-            </div>
+<form id="loginForm">
 
-            <div class="form-group">
-                <label>Password</label>
-                <input
-                    type="password"
-                    id="loginPassword"
-                    required
-                    autocomplete="current-password"
-                >
-            </div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="loginEmail" required>
+</div>
 
-            <button class="primary-btn" type="submit">
-                Sign In
-            </button>
+<div class="form-group">
+<label>Password</label>
+<input type="password" id="loginPassword" required>
+</div>
 
-        </form>
+<button class="primary-btn" type="submit">
+Sign In
+</button>
 
-        <!-- SIGNUP -->
+</form>
 
-        <form id="signupForm" class="hidden">
+<form id="signupForm" class="hidden">
 
-            <div class="form-group">
-                <label>Full Name</label>
-                <input
-                    type="text"
-                    id="signupName"
-                    required
-                    autocomplete="name"
-                >
-            </div>
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" id="signupName" required>
+</div>
 
-            <div class="form-group">
-                <label>Phone</label>
-                <input
-                    type="tel"
-                    id="signupPhone"
-                    autocomplete="tel"
-                >
-            </div>
+<div class="form-group">
+<label>Phone</label>
+<input type="tel" id="signupPhone">
+</div>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input
-                    type="email"
-                    id="signupEmail"
-                    required
-                    autocomplete="email"
-                >
-            </div>
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="signupEmail" required>
+</div>
 
-            <div class="form-group">
-                <label>Password</label>
-                <input
-                    type="password"
-                    id="signupPassword"
-                    minlength="6"
-                    required
-                    autocomplete="new-password"
-                >
-            </div>
+<div class="form-group">
+<label>Password</label>
+<input type="password" id="signupPassword" minlength="6" required>
+</div>
 
-            <button class="primary-btn" type="submit">
-                Create Account
-            </button>
+<button class="primary-btn" type="submit">
+Create Account
+</button>
 
-        </form>
+</form>
 
-        <div id="authMessage" class="message"></div>
+<div id="authMessage" class="message"></div>
 
-    </div>
-
+</div>
 </section>
 
 
@@ -743,932 +721,776 @@ textarea{
 
 <section id="app" class="hidden">
 
-    <!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
 
-    <aside class="sidebar" id="sidebar">
+<div class="sidebar-header">
+<div class="sidebar-logo">
+QUANTUM <span>EDGE</span>
+</div>
+</div>
 
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                QUANTUM <span>EDGE</span>
-            </div>
-        </div>
+<nav class="menu">
 
-        <nav class="menu">
+<button class="active" data-page="dashboard">🏠 Dashboard</button>
+<button data-page="deposit">💰 Deposit</button>
+<button data-page="verification">✅ Deposit Verification</button>
+<button data-page="withdraw">💸 Withdraw</button>
+<button data-page="markets">📊 Markets</button>
+<button data-page="education">📚 Forex Education</button>
+<button data-page="profile">👤 My Profile</button>
+<button data-page="settings">⚙️ Settings</button>
+<button data-page="support">📞 Support</button>
+<button data-page="terms">📜 Terms & Policies</button>
+<button class="signout" id="signoutBtn">🚪 Sign Out</button>
 
-            <button class="active" data-page="dashboard">
-                🏠 Dashboard
-            </button>
+</nav>
+</aside>
 
-            <button data-page="deposit">
-                💰 Deposit
-            </button>
 
-            <button data-page="verification">
-                ✅ Deposit Verification
-            </button>
+<main class="main">
 
-            <button data-page="withdraw">
-                💸 Withdraw
-            </button>
+<header class="topbar">
 
-            <button data-page="markets">
-                📊 Markets
-            </button>
+<button class="menu-toggle" id="menuToggle">
+☰
+</button>
 
-            <button data-page="education">
-                📚 Forex Education
-            </button>
+<strong>Client Portal</strong>
 
-            <button data-page="profile">
-                👤 My Profile
-            </button>
+<div class="user-short" id="topUser">
+Loading...
+</div>
 
-            <button data-page="settings">
-                ⚙️ Settings
-            </button>
+</header>
 
-            <button data-page="support">
-                📞 Support
-            </button>
 
-            <button data-page="terms">
-                📜 Terms & Policies
-            </button>
+<div class="content">
 
-            <button class="signout" id="signoutBtn">
-                🚪 Sign Out
-            </button>
 
-        </nav>
+<!-- DASHBOARD -->
 
-    </aside>
+<section class="page active" id="page-dashboard">
 
+<div class="account-banner">
 
-    <!-- MAIN -->
+<h2>
+Welcome, <span id="welcomeName">Investor</span>
+</h2>
 
-    <main class="main">
+<p>
+Your account overview and verified account information.
+</p>
 
-        <header class="topbar">
+</div>
 
-            <button class="menu-toggle" id="menuToggle">
-                ☰
-            </button>
+<div class="cards">
 
-            <div>
-                <strong>Client Portal</strong>
-            </div>
+<div class="card">
+<div class="card-label">Investment</div>
+<div class="card-value" id="investmentValue">PGK 0.00</div>
+</div>
 
-            <div class="user-short" id="topUser">
-                Loading...
-            </div>
+<div class="card">
+<div class="card-label">Balance</div>
+<div class="card-value" id="balanceValue">PGK 0.00</div>
+</div>
 
-        </header>
+<div class="card">
+<div class="card-label">Profit</div>
+<div class="card-value positive" id="profitValue">PGK 0.00</div>
+</div>
 
+<div class="card">
+<div class="card-label">Account Status</div>
+<div class="card-value">
+<span id="statusValue" class="status">Active</span>
+</div>
+</div>
 
-        <div class="content">
+</div>
 
-            <!-- DASHBOARD -->
+<div class="quick-actions">
 
-            <section class="page active" id="page-dashboard">
+<button class="quick-action" onclick="openPage('deposit')">
+<strong>💰 Make a Deposit</strong>
+<small>View available bank details.</small>
+</button>
 
-                <div class="account-banner">
+<button class="quick-action" onclick="openPage('verification')">
+<strong>✅ Verify a Deposit</strong>
+<small>Submit transaction information and proof.</small>
+</button>
 
-                    <h2>
-                        Welcome, <span id="welcomeName">Investor</span>
-                    </h2>
+<button class="quick-action" onclick="openPage('withdraw')">
+<strong>💸 Withdrawal Request</strong>
+<small>Submit a withdrawal request.</small>
+</button>
 
-                    <p>
-                        Your account overview and verified account information.
-                    </p>
+</div>
 
-                </div>
+<h2 class="page-title">
+Market Charts
+</h2>
 
+<p class="page-description">
+XAUUSD and GBPUSD market charts for market observation.
+</p>
 
-                <div class="cards">
-
-                    <div class="card">
-                        <div class="card-label">
-                            Investment
-                        </div>
-                        <div class="card-value" id="investmentValue">
-                            PGK 0.00
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Balance
-                        </div>
-                        <div class="card-value" id="balanceValue">
-                            PGK 0.00
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Profit
-                        </div>
-                        <div class="card-value positive" id="profitValue">
-                            PGK 0.00
-                        </div>
-                    </div>
+<div class="chart-grid">
 
-                    <div class="card">
-                        <div class="card-label">
-                            Account Status
-                        </div>
-                        <div class="card-value">
-                            <span id="statusValue" class="status">
-                                Active
-                            </span>
-                        </div>
-                    </div>
+<div class="chart-card">
 
-                </div>
+<div class="chart-header">
+<h3>XAUUSD</h3>
+<p>Gold / US Dollar</p>
+</div>
 
+<div class="chart-frame">
 
-                <div class="quick-actions">
+<iframe
+src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+loading="lazy"
+title="XAUUSD chart">
+</iframe>
 
-                    <button class="quick-action" onclick="openPage('deposit')">
-                        <strong>💰 Make a Deposit</strong>
-                        <small>
-                            View the available bank details.
-                        </small>
-                    </button>
+</div>
+</div>
 
-                    <button class="quick-action" onclick="openPage('verification')">
-                        <strong>✅ Verify a Deposit</strong>
-                        <small>
-                            Submit your transaction information and proof.
-                        </small>
-                    </button>
 
-                    <button class="quick-action" onclick="openPage('withdraw')">
-                        <strong>💸 Withdrawal Request</strong>
-                        <small>
-                            Submit a withdrawal request.
-                        </small>
-                    </button>
+<div class="chart-card">
 
-                </div>
+<div class="chart-header">
+<h3>GBPUSD</h3>
+<p>British Pound / US Dollar</p>
+</div>
 
+<div class="chart-frame">
 
-                <h2 class="page-title">
-                    Market Charts
-                </h2>
+<iframe
+src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+loading="lazy"
+title="GBPUSD chart">
+</iframe>
 
-                <p class="page-description">
-                    XAUUSD and GBPUSD market charts for educational market observation.
-                </p>
+</div>
+</div>
 
+</div>
 
-                <div class="chart-grid">
+</section>
 
-                    <div class="chart-card">
 
-                        <div class="chart-header">
-                            <h3>XAUUSD</h3>
-                            <p>Gold / US Dollar</p>
-                        </div>
+<!-- DEPOSIT -->
 
-                        <div class="chart-frame">
-                            <iframe
-                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
-                                loading="lazy"
-                                title="XAUUSD chart">
-                            </iframe>
-                        </div>
+<section class="page" id="page-deposit">
 
-                    </div>
+<h1 class="page-title">Deposit</h1>
 
+<p class="page-description">
+Use the supported bank details when making a deposit.
+</p>
 
-                    <div class="chart-card">
+<div class="section-grid">
 
-                        <div class="chart-header">
-                            <h3>GBPUSD</h3>
-                            <p>British Pound / US Dollar</p>
-                        </div>
+<div class="info-card">
 
-                        <div class="chart-frame">
-                            <iframe
-                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_gbpusd&symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
-                                loading="lazy"
-                                title="GBPUSD chart">
-                            </iframe>
-                        </div>
+<h3>BSP</h3>
 
-                    </div>
+<div class="bank-card">
 
-                </div>
+<div class="bank-row">
+<span>Account Name</span>
+<strong>Quantum Edge Markets</strong>
+</div>
 
-            </section>
+<div class="bank-row">
+<span>Account Number</span>
+<strong>7004707480</strong>
+</div>
 
+</div>
+</div>
 
-            <!-- DEPOSIT -->
 
-            <section class="page" id="page-deposit">
+<div class="info-card">
 
-                <h1 class="page-title">
-                    Deposit
-                </h1>
+<h3>Kina Bank</h3>
 
-                <p class="page-description">
-                    Use one of the supported bank accounts to make your deposit.
-                </p>
+<div class="bank-card">
 
+<div class="bank-row">
+<span>Account Name</span>
+<strong>Quantum Edge Markets</strong>
+</div>
 
-                <div class="section-grid">
+<div class="bank-row">
+<span>Account Number</span>
+<strong>29223514</strong>
+</div>
 
-                    <div class="info-card">
+</div>
+</div>
 
-                        <h3>BSP</h3>
+</div>
 
-                        <div class="bank-card">
+<div class="info-card" style="margin-top:18px">
 
-                            <div class="bank-row">
-                                <span>Account Name</span>
-                                <strong>Quantum Edge Markets</strong>
-                            </div>
+<h3>After making your deposit</h3>
 
-                            <div class="bank-row">
-                                <span>Account Number</span>
-                                <strong>7004707480</strong>
-                            </div>
+<p>
+Keep your bank transaction message or reference and use
+<strong>Deposit Verification</strong> to submit the information and screenshot.
+</p>
 
-                        </div>
+</div>
 
-                    </div>
+</section>
 
 
-                    <div class="info-card">
+<!-- VERIFICATION -->
 
-                        <h3>Kina Bank</h3>
+<section class="page" id="page-verification">
 
-                        <div class="bank-card">
+<h1 class="page-title">
+Deposit Verification
+</h1>
 
-                            <div class="bank-row">
-                                <span>Account Name</span>
-                                <strong>Quantum Edge Markets</strong>
-                            </div>
+<p class="page-description">
+Submit your transaction information for review.
+</p>
 
-                            <div class="bank-row">
-                                <span>Account Number</span>
-                                <strong>29223514</strong>
-                            </div>
+<div class="form-card">
 
-                        </div>
+<div class="notice">
+Deposit submissions are reviewed before they are reflected as verified
+account funds. Uploading a screenshot does not by itself confirm receipt
+of funds.
+</div>
 
-                    </div>
+<form id="depositForm">
 
-                </div>
+<div class="form-group">
 
+<label>Bank</label>
 
-                <div class="info-card" style="margin-top:18px;">
+<select id="depositBank" required>
 
-                    <h3>After making your deposit</h3>
+<option value="">Select bank</option>
+<option value="BSP">BSP</option>
+<option value="Kina Bank">Kina Bank</option>
 
-                    <p>
-                        Keep the transaction message or reference supplied by your bank.
-                        Then use <strong>Deposit Verification</strong> in the sidebar
-                        to submit the transaction information and supporting screenshot.
-                    </p>
+</select>
 
-                </div>
+</div>
 
-            </section>
+<div class="form-group">
 
+<label>Deposit Amount (PGK)</label>
 
-            <!-- VERIFICATION -->
+<input
+type="number"
+id="depositAmount"
+min="0.01"
+step="0.01"
+required>
 
-            <section class="page" id="page-verification">
+</div>
 
-                <h1 class="page-title">
-                    Deposit Verification
-                </h1>
+<div class="form-group">
 
-                <p class="page-description">
-                    Submit your bank transaction information for review.
-                </p>
+<label>Bank Transaction Message / Reference</label>
 
+<textarea
+id="transactionMessage"
+required
+placeholder="Paste the transaction message or reference supplied by your bank...">
+</textarea>
 
-                <div class="form-card">
+</div>
 
-                    <div class="notice">
-                        Deposits are reviewed before they are reflected as verified
-                        account funds. Submitting a screenshot does not by itself
-                        constitute confirmation of payment.
-                    </div>
+<div class="form-group">
 
+<label>Transaction Screenshot</label>
 
-                    <form id="depositForm">
+<input
+class="file-input"
+type="file"
+id="depositScreenshot"
+accept="image/png,image/jpeg,image/webp"
+required>
 
-                        <div class="form-group">
+</div>
 
-                            <label>Bank</label>
+<button class="primary-btn" type="submit">
+Submit Deposit for Verification
+</button>
 
-                            <select id="depositBank" required>
+</form>
 
-                                <option value="">
-                                    Select bank
-                                </option>
+<div id="depositMessage" class="message"></div>
 
-                                <option value="BSP">
-                                    BSP
-                                </option>
+</div>
 
-                                <option value="Kina Bank">
-                                    Kina Bank
-                                </option>
+<div class="history">
 
-                            </select>
+<h2 style="margin-bottom:15px">
+Verification History
+</h2>
 
-                        </div>
+<div id="depositHistory">
+Loading...
+</div>
 
+</div>
 
-                        <div class="form-group">
+</section>
 
-                            <label>Deposit Amount (PGK)</label>
 
-                            <input
-                                type="number"
-                                id="depositAmount"
-                                min="0.01"
-                                step="0.01"
-                                required
-                            >
+<!-- WITHDRAW -->
 
-                        </div>
+<section class="page" id="page-withdraw">
 
+<h1 class="page-title">
+Withdrawal
+</h1>
 
-                        <div class="form-group">
+<p class="page-description">
+Submit a withdrawal request using your registered information.
+</p>
 
-                            <label>
-                                Bank transaction message / reference
-                            </label>
+<div class="form-card">
 
-                            <textarea
-                                id="transactionMessage"
-                                placeholder="Paste the message or transaction reference supplied by your bank..."
-                                required
-                            ></textarea>
+<div class="notice">
+Withdrawal requests are subject to account verification and available
+verified funds. The stated processing target is up to 12 hours after
+a request has been accepted for processing.
+</div>
 
-                        </div>
+<form id="withdrawForm">
 
+<div class="form-group">
+<label>Amount</label>
+<input type="number" id="withdrawAmount" min="0.01" step="0.01" required>
+</div>
 
-                        <div class="form-group">
+<div class="form-group">
+<label>Bank</label>
 
-                            <label>
-                                Screenshot of bank transaction
-                            </label>
+<select id="withdrawBank" required>
+<option value="">Select bank</option>
+<option value="BSP">BSP</option>
+<option value="Kina Bank">Kina Bank</option>
+</select>
 
-                            <input
-                                class="file-input"
-                                type="file"
-                                id="depositScreenshot"
-                                accept="image/png,image/jpeg,image/webp"
-                                required
-                            >
+</div>
 
-                        </div>
+<div class="form-group">
+<label>Account Number</label>
+<input type="text" id="withdrawAccount" required>
+</div>
 
+<button class="primary-btn" type="submit">
+Submit Withdrawal Request
+</button>
 
-                        <button
-                            type="submit"
-                            class="primary-btn"
-                        >
-                            Submit Deposit for Verification
-                        </button>
+</form>
 
-                    </form>
+<div id="withdrawMessage" class="message"></div>
 
-                    <div id="depositMessage" class="message"></div>
+</div>
 
-                </div>
+</section>
 
 
-                <div class="history">
+<!-- MARKETS -->
 
-                    <h2 style="margin-bottom:15px;">
-                        Verification History
-                    </h2>
+<section class="page" id="page-markets">
 
-                    <div id="depositHistory">
-                        Loading...
-                    </div>
+<h1 class="page-title">Markets</h1>
 
-                </div>
+<p class="page-description">
+Market observation and educational analysis.
+</p>
 
-            </section>
+<div class="chart-grid">
 
+<div class="chart-card">
 
-            <!-- WITHDRAW -->
+<div class="chart-header">
+<h3>XAUUSD</h3>
+<p>Gold / US Dollar</p>
+</div>
 
-            <section class="page" id="page-withdraw">
+<div class="chart-frame">
 
-                <h1 class="page-title">
-                    Withdrawal
-                </h1>
+<iframe
+src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&theme=dark&style=1&timezone=Etc%2FUTC"
+loading="lazy">
+</iframe>
 
-                <p class="page-description">
-                    Submit a withdrawal request using your registered details.
-                </p>
+</div>
+</div>
 
 
-                <div class="form-card">
+<div class="chart-card">
 
-                    <div class="notice">
-                        Withdrawal requests are subject to account verification,
-                        available verified funds and applicable processing conditions.
-                        The current processing target is up to 12 hours after the
-                        request has been accepted for processing.
-                    </div>
+<div class="chart-header">
+<h3>GBPUSD</h3>
+<p>British Pound / US Dollar</p>
+</div>
 
+<div class="chart-frame">
 
-                    <form id="withdrawForm">
+<iframe
+src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&theme=dark&style=1&timezone=Etc%2FUTC"
+loading="lazy">
+</iframe>
 
-                        <div class="form-group">
+</div>
+</div>
 
-                            <label>Amount (PGK)</label>
+</div>
 
-                            <input
-                                type="number"
-                                id="withdrawAmount"
-                                min="0.01"
-                                step="0.01"
-                                required
-                            >
+</section>
 
-                        </div>
 
+<!-- EDUCATION -->
 
-                        <div class="form-group">
+<section class="page" id="page-education">
 
-                            <label>Bank</label>
+<h1 class="page-title">
+Forex Education
+</h1>
 
-                            <select id="withdrawBank" required>
+<p class="page-description">
+Educational information about foreign exchange markets.
+</p>
 
-                                <option value="">
-                                    Select bank
-                                </option>
+<div class="section-grid">
 
-                                <option value="BSP">
-                                    BSP
-                                </option>
+<div class="info-card">
 
-                                <option value="Kina Bank">
-                                    Kina Bank
-                                </option>
+<h3>Forex Fundamentals</h3>
 
-                            </select>
+<p>
+Fundamental analysis considers economic information that can influence
+currency markets.
+</p>
 
-                        </div>
+<ul>
+<li>Interest rates</li>
+<li>Inflation</li>
+<li>Employment data</li>
+<li>GDP</li>
+<li>Central-bank decisions</li>
+<li>Economic calendars</li>
+<li>Geopolitical developments</li>
+</ul>
 
+</div>
 
-                        <div class="form-group">
 
-                            <label>Account Number</label>
+<div class="info-card">
 
-                            <input
-                                type="text"
-                                id="withdrawAccount"
-                                required
-                            >
+<h3>Technical Analysis</h3>
 
-                        </div>
+<p>
+Technical analysis studies historical price behaviour and market structure.
+</p>
 
+<ul>
+<li>Support and resistance</li>
+<li>Trend analysis</li>
+<li>Candlestick patterns</li>
+<li>Market swings</li>
+<li>Indicators</li>
+<li>Volume</li>
+</ul>
 
-                        <button class="primary-btn" type="submit">
-                            Submit Withdrawal Request
-                        </button>
+</div>
 
-                    </form>
 
-                    <div id="withdrawMessage" class="message"></div>
+<div class="info-card">
 
-                </div>
+<h3>Market Structure</h3>
 
-            </section>
+<p>
+Traders may study higher highs, higher lows, lower highs and lower lows
+to understand directional price structure.
+</p>
 
+</div>
 
-            <!-- MARKETS -->
 
-            <section class="page" id="page-markets">
+<div class="info-card">
 
-                <h1 class="page-title">
-                    Markets
-                </h1>
+<h3>Risk Management</h3>
 
-                <p class="page-description">
-                    Educational market observation.
-                </p>
+<p>
+Position sizing, stop-loss planning and risk-to-reward analysis are
+important components of responsible trading education.
+</p>
 
+</div>
 
-                <div class="chart-grid">
 
-                    <div class="chart-card">
+<div class="info-card">
 
-                        <div class="chart-header">
-                            <h3>XAUUSD</h3>
-                            <p>Gold / US Dollar</p>
-                        </div>
+<h3>ICT Concepts</h3>
 
-                        <div class="chart-frame">
+<p>
+Educational ICT-style concepts include liquidity, market structure,
+fair value gaps, order blocks, dealing ranges and time-based market
+behaviour.
+</p>
 
-                            <iframe
-                                src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
-                                loading="lazy"
-                                title="XAUUSD market chart">
-                            </iframe>
+</div>
 
-                        </div>
 
-                    </div>
+<div class="info-card">
 
+<h3>2022 Framework</h3>
 
-                    <div class="chart-card">
+<p>
+Educational discussions of the ICT 2022 framework commonly examine
+liquidity, displacement, market structure shifts, fair value gaps and
+time-of-day behaviour.
+</p>
 
-                        <div class="chart-header">
-                            <h3>GBPUSD</h3>
-                            <p>British Pound / US Dollar</p>
-                        </div>
+</div>
 
-                        <div class="chart-frame">
+</div>
 
-                            <iframe
-                                src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
-                                loading="lazy"
-                                title="GBPUSD market chart">
-                            </iframe>
+</section>
 
-                        </div>
 
-                    </div>
+<!-- PROFILE -->
 
-                </div>
+<section class="page" id="page-profile">
 
-            </section>
+<h1 class="page-title">
+My Profile
+</h1>
 
+<p class="page-description">
+Your registered account information.
+</p>
 
-            <!-- EDUCATION -->
+<div class="form-card">
 
-            <section class="page" id="page-education">
+<div class="form-group">
+<label>Account ID</label>
+<input id="profileAccountId" readonly>
+</div>
 
-                <h1 class="page-title">
-                    Forex Education
-                </h1>
+<div class="form-group">
+<label>Full Name</label>
+<input id="profileName">
+</div>
 
-                <p class="page-description">
-                    Educational material for understanding foreign exchange markets.
-                </p>
+<div class="form-group">
+<label>Email</label>
+<input id="profileEmail" readonly>
+</div>
 
+<div class="form-group">
+<label>Phone</label>
+<input id="profilePhone">
+</div>
 
-                <div class="section-grid">
+<div class="form-group">
+<label>Bank</label>
+<input id="profileBank">
+</div>
 
-                    <div class="info-card">
+<button class="primary-btn" onclick="saveProfile()">
+Save Profile
+</button>
 
-                        <h3>Forex Fundamentals</h3>
+<div id="profileMessage" class="message"></div>
 
-                        <p>
-                            Fundamental analysis considers economic and financial
-                            information that can influence currency prices.
-                        </p>
+</div>
 
-                        <ul>
-                            <li>Central-bank interest rates</li>
-                            <li>Inflation and employment</li>
-                            <li>GDP and economic growth</li>
-                            <li>Economic calendars and major releases</li>
-                            <li>Geopolitical and macroeconomic developments</li>
-                        </ul>
+</section>
 
-                    </div>
 
+<!-- SETTINGS -->
 
-                    <div class="info-card">
+<section class="page" id="page-settings">
 
-                        <h3>Technical Analysis</h3>
+<h1 class="page-title">
+Settings
+</h1>
 
-                        <p>
-                            Technical analysis studies price behaviour and market
-                            structure using historical price information.
-                        </p>
+<p class="page-description">
+Customize your country, currency and international phone information.
+</p>
 
-                        <ul>
-                            <li>Support and resistance</li>
-                            <li>Trends and ranges</li>
-                            <li>Candlestick structure</li>
-                            <li>Market swings</li>
-                            <li>Indicators and volume tools</li>
-                        </ul>
+<div class="settings-grid">
 
-                    </div>
+<div class="setting-card">
 
+<h3>🌍 Country</h3>
 
-                    <div class="info-card">
+<p>Select your country of residence.</p>
 
-                        <h3>Market Structure</h3>
+<select id="countrySelect"></select>
 
-                        <p>
-                            Traders commonly study higher highs, higher lows,
-                            lower highs and lower lows to understand directional
-                            structure.
-                        </p>
+</div>
 
-                    </div>
 
+<div class="setting-card">
 
-                    <div class="info-card">
+<h3>💱 Currency</h3>
 
-                        <h3>Risk Management</h3>
+<p>Select the currency you want associated with your profile.</p>
 
-                        <p>
-                            Risk management is an essential part of trading education.
-                            Position size, stop-loss placement and risk-to-reward
-                            planning can help control exposure.
-                        </p>
+<select id="currencySelect"></select>
 
-                    </div>
+</div>
 
 
-                    <div class="info-card">
+<div class="setting-card full">
 
-                        <h3>ICT Concepts</h3>
+<h3>📞 Phone Country Code</h3>
 
-                        <p>
-                            ICT-style educational concepts associated with
-                            Michael J. Huddleston include ideas such as liquidity,
-                            market structure, fair value gaps, order blocks,
-                            dealing ranges and time-based market behaviour.
-                        </p>
+<p>
+Select your international calling code. Your existing phone number
+will remain separate.
+</p>
 
-                    </div>
+<select id="phoneCodeSelect"></select>
 
+</div>
 
-                    <div class="info-card">
 
-                        <h3>2022 Framework</h3>
+<div class="setting-card full">
 
-                        <p>
-                            Educational discussions of the ICT 2022 approach commonly
-                            examine liquidity, market structure shifts, displacement,
-                            fair value gaps and time-of-day behaviour. These concepts
-                            should be studied critically rather than treated as a
-                            guarantee of trading results.
-                        </p>
+<button class="primary-btn" onclick="saveSettings()">
+Save Settings
+</button>
 
-                    </div>
+<div id="settingsMessage" class="message"></div>
 
-                </div>
+</div>
 
-            </section>
+</div>
 
+</section>
 
-            <!-- PROFILE -->
 
-            <section class="page" id="page-profile">
+<!-- SUPPORT -->
 
-                <h1 class="page-title">
-                    My Profile
-                </h1>
+<section class="page" id="page-support">
 
-                <p class="page-description">
-                    Your registered account information.
-                </p>
+<h1 class="page-title">Support</h1>
 
+<p class="page-description">
+Contact Quantum Edge Markets support.
+</p>
 
-                <div class="form-card">
+<div class="section-grid">
 
-                    <div class="form-group">
-                        <label>Account ID</label>
-                        <input id="profileAccountId" readonly>
-                    </div>
+<div class="info-card">
 
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input id="profileName">
-                    </div>
+<h3>Email Support</h3>
 
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input id="profileEmail" readonly>
-                    </div>
+<p>
+Fxglobal54@gmail.com
+</p>
 
-                    <div class="form-group">
-                        <label>Phone</label>
-                        <input id="profilePhone">
-                    </div>
+</div>
 
-                    <div class="form-group">
-                        <label>Bank</label>
-                        <input id="profileBank">
-                    </div>
+<div class="info-card">
 
-                    <button
-                        class="primary-btn"
-                        onclick="saveProfile()"
-                    >
-                        Save Profile
-                    </button>
+<h3>Deposit Assistance</h3>
 
-                    <div id="profileMessage" class="message"></div>
+<p>
+For deposit verification, provide your bank transaction reference
+and supporting evidence through the Deposit Verification section.
+</p>
 
-                </div>
+</div>
 
-            </section>
+</div>
 
+</section>
 
-            <!-- SETTINGS -->
 
-            <section class="page" id="page-settings">
+<!-- TERMS -->
 
-                <h1 class="page-title">
-                    Settings
-                </h1>
+<section class="page" id="page-terms">
 
-                <p class="page-description">
-                    Manage your portal preferences.
-                </p>
+<h1 class="page-title">
+Terms & Policies
+</h1>
 
+<p class="page-description">
+General terms governing use of the client portal.
+</p>
 
-                <div class="section-grid">
+<div class="section-grid">
 
-                    <div class="info-card">
+<div class="info-card">
+<h3>1. Account Information</h3>
+<p>
+Users should provide accurate information when creating and maintaining
+their accounts.
+</p>
+</div>
 
-                        <h3>Account Security</h3>
+<div class="info-card">
+<h3>2. Deposit Verification</h3>
+<p>
+Deposit submissions may require transaction information and supporting
+evidence. Submission does not itself confirm receipt of funds.
+</p>
+</div>
 
-                        <p>
-                            Keep your login credentials private and never share
-                            your password with another person.
-                        </p>
+<div class="info-card">
+<h3>3. Account Balances</h3>
+<p>
+Dashboard figures should reflect authorized records maintained by the
+platform.
+</p>
+</div>
 
-                    </div>
+<div class="info-card">
+<h3>4. Processing</h3>
+<p>
+Deposit and withdrawal requests may require verification and review.
+The stated processing target is up to 12 hours after acceptance for
+processing.
+</p>
+</div>
 
+<div class="info-card">
+<h3>5. Trading Risk</h3>
+<p>
+Foreign exchange markets involve financial risk. Educational information
+does not guarantee profits or specific returns.
+</p>
+</div>
 
-                    <div class="info-card">
+<div class="info-card">
+<h3>6. Security</h3>
+<p>
+Users should protect their passwords and notify support about suspected
+unauthorized access.
+</p>
+</div>
 
-                        <h3>Account Information</h3>
+</div>
 
-                        <p>
-                            Financial figures displayed in your dashboard are
-                            intended to reflect records available to your
-                            authenticated account.
-                        </p>
+</section>
 
-                    </div>
 
-                </div>
+<div class="footer">
+Quantum Edge Markets Client Portal
+</div>
 
-            </section>
-
-
-            <!-- SUPPORT -->
-
-            <section class="page" id="page-support">
-
-                <h1 class="page-title">
-                    Support
-                </h1>
-
-                <p class="page-description">
-                    Contact Quantum Edge Markets support.
-                </p>
-
-
-                <div class="section-grid">
-
-                    <div class="info-card">
-
-                        <h3>Email Support</h3>
-
-                        <p>
-                            Fxglobal54@gmail.com
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>Account Assistance</h3>
-
-                        <p>
-                            For deposit verification, include the transaction
-                            reference and supporting evidence through the
-                            Deposit Verification section.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- TERMS -->
-
-            <section class="page" id="page-terms">
-
-                <h1 class="page-title">
-                    Terms & Policies
-                </h1>
-
-                <p class="page-description">
-                    General terms for use of the client portal.
-                </p>
-
-
-                <div class="section-grid">
-
-                    <div class="info-card">
-
-                        <h3>1. Account Information</h3>
-
-                        <p>
-                            Users are responsible for providing accurate information
-                            when creating and maintaining an account.
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>2. Deposit Verification</h3>
-
-                        <p>
-                            Deposit submissions may require transaction information
-                            and supporting evidence. A submitted document does not
-                            by itself confirm that funds have been received.
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>3. Account Balances</h3>
-
-                        <p>
-                            Account figures are based on records maintained by the
-                            platform. Users must not attempt to manipulate account
-                            information through client-side requests.
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>4. Processing</h3>
-
-                        <p>
-                            Deposit and withdrawal requests may require verification
-                            and review. The stated processing target is up to
-                            12 hours after a request has been accepted for processing.
-                            Processing time is not a guarantee of a particular
-                            financial result.
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>5. Trading Risk</h3>
-
-                        <p>
-                            Foreign exchange and other financial markets involve
-                            risk. Educational information on this portal should not
-                            be interpreted as a guarantee of profits or a promise
-                            of a specific financial return.
-                        </p>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>6. Security</h3>
-
-                        <p>
-                            Users must protect their login credentials and notify
-                            support if they suspect unauthorized access.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <div class="footer">
-                Quantum Edge Markets Client Portal
-            </div>
-
-        </div>
-
-    </main>
+</div>
+</main>
 
 </section>
 
@@ -1676,46 +1498,378 @@ textarea{
 <script>
 
 /* =========================================================
-   SUPABASE CONFIGURATION
-   =========================================================
-
-   Replace ONLY the two values below with your own
-   Supabase Project URL and Publishable Key.
-
-   Never put a Supabase secret/service-role key here.
-========================================================= */
+   SUPABASE
+   ========================================================= */
 
 const SUPABASE_URL = "https://qxwyrsezbisbajqnohsw.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
 
-const { createClient } = supabase;
+const {createClient} = supabase;
 
 const db = createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
 );
 
-
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
-
 let currentUser = null;
 let currentProfile = null;
 
 
 /* =========================================================
-   ELEMENT HELPERS
-========================================================= */
+   COUNTRY / CURRENCY / PHONE DATA
+   ========================================================= */
+
+const countries = [
+["Afghanistan","AFN","+93"],
+["Albania","ALL","+355"],
+["Algeria","DZD","+213"],
+["Andorra","EUR","+376"],
+["Angola","AOA","+244"],
+["Antigua and Barbuda","XCD","+1-268"],
+["Argentina","ARS","+54"],
+["Armenia","AMD","+374"],
+["Australia","AUD","+61"],
+["Austria","EUR","+43"],
+["Azerbaijan","AZN","+994"],
+["Bahamas","BSD","+1-242"],
+["Bahrain","BHD","+973"],
+["Bangladesh","BDT","+880"],
+["Barbados","BBD","+1-246"],
+["Belarus","BYN","+375"],
+["Belgium","EUR","+32"],
+["Belize","BZD","+501"],
+["Benin","XOF","+229"],
+["Bhutan","BTN","+975"],
+["Bolivia","BOB","+591"],
+["Bosnia and Herzegovina","BAM","+387"],
+["Botswana","BWP","+267"],
+["Brazil","BRL","+55"],
+["Brunei","BND","+673"],
+["Bulgaria","BGN","+359"],
+["Burkina Faso","XOF","+226"],
+["Burundi","BIF","+257"],
+["Cabo Verde","CVE","+238"],
+["Cambodia","KHR","+855"],
+["Cameroon","XAF","+237"],
+["Canada","CAD","+1"],
+["Central African Republic","XAF","+236"],
+["Chad","XAF","+235"],
+["Chile","CLP","+56"],
+["China","CNY","+86"],
+["Colombia","COP","+57"],
+["Comoros","KMF","+269"],
+["Congo","XAF","+242"],
+["Costa Rica","CRC","+506"],
+["Côte d'Ivoire","XOF","+225"],
+["Croatia","EUR","+385"],
+["Cuba","CUP","+53"],
+["Cyprus","EUR","+357"],
+["Czechia","CZK","+420"],
+["Democratic Republic of the Congo","CDF","+243"],
+["Denmark","DKK","+45"],
+["Djibouti","DJF","+253"],
+["Dominica","XCD","+1-767"],
+["Dominican Republic","DOP","+1-809"],
+["Ecuador","USD","+593"],
+["Egypt","EGP","+20"],
+["El Salvador","USD","+503"],
+["Equatorial Guinea","XAF","+240"],
+["Eritrea","ERN","+291"],
+["Estonia","EUR","+372"],
+["Eswatini","SZL","+268"],
+["Ethiopia","ETB","+251"],
+["Fiji","FJD","+679"],
+["Finland","EUR","+358"],
+["France","EUR","+33"],
+["Gabon","XAF","+241"],
+["Gambia","GMD","+220"],
+["Georgia","GEL","+995"],
+["Germany","EUR","+49"],
+["Ghana","GHS","+233"],
+["Greece","EUR","+30"],
+["Grenada","XCD","+1-473"],
+["Guatemala","GTQ","+502"],
+["Guinea","GNF","+224"],
+["Guinea-Bissau","XOF","+245"],
+["Guyana","GYD","+592"],
+["Haiti","HTG","+509"],
+["Honduras","HNL","+504"],
+["Hungary","HUF","+36"],
+["Iceland","ISK","+354"],
+["India","INR","+91"],
+["Indonesia","IDR","+62"],
+["Iran","IRR","+98"],
+["Iraq","IQD","+964"],
+["Ireland","EUR","+353"],
+["Israel","ILS","+972"],
+["Italy","EUR","+39"],
+["Jamaica","JMD","+1-876"],
+["Japan","JPY","+81"],
+["Jordan","JOD","+962"],
+["Kazakhstan","KZT","+7"],
+["Kenya","KES","+254"],
+["Kiribati","AUD","+686"],
+["Kuwait","KWD","+965"],
+["Kyrgyzstan","KGS","+996"],
+["Laos","LAK","+856"],
+["Latvia","EUR","+371"],
+["Lebanon","LBP","+961"],
+["Lesotho","LSL","+266"],
+["Liberia","LRD","+231"],
+["Libya","LYD","+218"],
+["Liechtenstein","CHF","+423"],
+["Lithuania","EUR","+370"],
+["Luxembourg","EUR","+352"],
+["Madagascar","MGA","+261"],
+["Malawi","MWK","+265"],
+["Malaysia","MYR","+60"],
+["Maldives","MVR","+960"],
+["Mali","XOF","+223"],
+["Malta","EUR","+356"],
+["Marshall Islands","USD","+692"],
+["Mauritania","MRU","+222"],
+["Mauritius","MUR","+230"],
+["Mexico","MXN","+52"],
+["Micronesia","USD","+691"],
+["Moldova","MDL","+373"],
+["Monaco","EUR","+377"],
+["Mongolia","MNT","+976"],
+["Montenegro","EUR","+382"],
+["Morocco","MAD","+212"],
+["Mozambique","MZN","+258"],
+["Myanmar","MMK","+95"],
+["Namibia","NAD","+264"],
+["Nauru","AUD","+674"],
+["Nepal","NPR","+977"],
+["Netherlands","EUR","+31"],
+["New Zealand","NZD","+64"],
+["Nicaragua","NIO","+505"],
+["Niger","XOF","+227"],
+["Nigeria","NGN","+234"],
+["North Korea","KPW","+850"],
+["North Macedonia","MKD","+389"],
+["Norway","NOK","+47"],
+["Oman","OMR","+968"],
+["Pakistan","PKR","+92"],
+["Palau","USD","+680"],
+["Palestine","ILS","+970"],
+["Panama","PAB","+507"],
+["Papua New Guinea","PGK","+675"],
+["Paraguay","PYG","+595"],
+["Peru","PEN","+51"],
+["Philippines","PHP","+63"],
+["Poland","PLN","+48"],
+["Portugal","EUR","+351"],
+["Qatar","QAR","+974"],
+["Romania","RON","+40"],
+["Russia","RUB","+7"],
+["Rwanda","RWF","+250"],
+["Saint Kitts and Nevis","XCD","+1-869"],
+["Saint Lucia","XCD","+1-758"],
+["Saint Vincent and the Grenadines","XCD","+1-784"],
+["Samoa","WST","+685"],
+["San Marino","EUR","+378"],
+["São Tomé and Príncipe","STN","+239"],
+["Saudi Arabia","SAR","+966"],
+["Senegal","XOF","+221"],
+["Serbia","RSD","+381"],
+["Seychelles","SCR","+248"],
+["Sierra Leone","SLE","+232"],
+["Singapore","SGD","+65"],
+["Slovakia","EUR","+421"],
+["Slovenia","EUR","+386"],
+["Solomon Islands","SBD","+677"],
+["Somalia","SOS","+252"],
+["South Africa","ZAR","+27"],
+["South Korea","KRW","+82"],
+["South Sudan","SSP","+211"],
+["Spain","EUR","+34"],
+["Sri Lanka","LKR","+94"],
+["Sudan","SDG","+249"],
+["Suriname","SRD","+597"],
+["Sweden","SEK","+46"],
+["Switzerland","CHF","+41"],
+["Syria","SYP","+963"],
+["Taiwan","TWD","+886"],
+["Tajikistan","TJS","+992"],
+["Tanzania","TZS","+255"],
+["Thailand","THB","+66"],
+["Timor-Leste","USD","+670"],
+["Togo","XOF","+228"],
+["Tonga","TOP","+676"],
+["Trinidad and Tobago","TTD","+1-868"],
+["Tunisia","TND","+216"],
+["Türkiye","TRY","+90"],
+["Turkmenistan","TMT","+993"],
+["Tuvalu","AUD","+688"],
+["Uganda","UGX","+256"],
+["Ukraine","UAH","+380"],
+["United Arab Emirates","AED","+971"],
+["United Kingdom","GBP","+44"],
+["United States","USD","+1"],
+["Uruguay","UYU","+598"],
+["Uzbekistan","UZS","+998"],
+["Vanuatu","VUV","+678"],
+["Vatican City","EUR","+379"],
+["Venezuela","VES","+58"],
+["Vietnam","VND","+84"],
+["Yemen","YER","+967"],
+["Zambia","ZMW","+260"],
+["Zimbabwe","ZWG","+263"],
+
+/* Additional territories */
+
+["Åland Islands","EUR","+358"],
+["American Samoa","USD","+1-684"],
+["Anguilla","XCD","+1-264"],
+["Aruba","AWG","+297"],
+["Bermuda","BMD","+1-441"],
+["Bonaire, Sint Eustatius and Saba","USD","+599"],
+["British Virgin Islands","USD","+1-284"],
+["Cayman Islands","KYD","+1-345"],
+["Christmas Island","AUD","+61"],
+["Cocos Islands","AUD","+61"],
+["Cook Islands","NZD","+682"],
+["Curaçao","ANG","+599"],
+["Falkland Islands","FKP","+500"],
+["Faroe Islands","DKK","+298"],
+["French Guiana","EUR","+594"],
+["French Polynesia","XPF","+689"],
+["French Southern Territories","EUR","+262"],
+["Gibraltar","GIP","+350"],
+["Greenland","DKK","+299"],
+["Guadeloupe","EUR","+590"],
+["Guam","USD","+1-671"],
+["Guernsey","GBP","+44"],
+["Hong Kong","HKD","+852"],
+["Isle of Man","GBP","+44"],
+["Jersey","GBP","+44"],
+["Kosovo","EUR","+383"],
+["Macao","MOP","+853"],
+["Martinique","EUR","+596"],
+["Montserrat","XCD","+1-664"],
+["New Caledonia","XPF","+687"],
+["Niue","NZD","+683"],
+["Norfolk Island","AUD","+672"],
+["Northern Mariana Islands","USD","+1-670"],
+["Puerto Rico","USD","+1-787"],
+["Réunion","EUR","+262"],
+["Saint Barthélemy","EUR","+590"],
+["Saint Helena","SHP","+290"],
+["Saint Martin","EUR","+590"],
+["Sint Maarten","ANG","+1-721"],
+["Tokelau","NZD","+690"],
+["Turks and Caicos Islands","USD","+1-649"],
+["U.S. Virgin Islands","USD","+1-340"],
+["Wallis and Futuna","XPF","+681"]
+];
+
+
+/* =========================================================
+   POPULATE SETTINGS
+   ========================================================= */
+
+function populateSettings(){
+
+    const countrySelect = $("countrySelect");
+    const currencySelect = $("currencySelect");
+    const phoneSelect = $("phoneCodeSelect");
+
+    countrySelect.innerHTML =
+        '<option value="">Select country</option>';
+
+    const currencies = new Set();
+
+    countries.forEach(function(item){
+
+        const country = item[0];
+        const currency = item[1];
+        const code = item[2];
+
+        currencies.add(currency);
+
+        const option = document.createElement("option");
+
+        option.value = country;
+        option.textContent = country;
+
+        countrySelect.appendChild(option);
+    });
+
+
+    currencySelect.innerHTML =
+        '<option value="">Select currency</option>';
+
+    Array.from(currencies)
+        .sort()
+        .forEach(function(currency){
+
+            const option = document.createElement("option");
+
+            option.value = currency;
+            option.textContent = currency;
+
+            currencySelect.appendChild(option);
+        });
+
+
+    phoneSelect.innerHTML =
+        '<option value="">Select phone country code</option>';
+
+    countries.forEach(function(item){
+
+        const country = item[0];
+        const code = item[2];
+
+        const option = document.createElement("option");
+
+        option.value = code;
+        option.textContent = country + " (" + code + ")";
+
+        phoneSelect.appendChild(option);
+    });
+}
+
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
 function $(id){
     return document.getElementById(id);
 }
 
+function money(value){
+
+    return Number(value || 0).toLocaleString(
+        "en-PG",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+}
+
+function showMessage(element,text,type){
+
+    element.textContent = text;
+    element.className = "message " + type;
+}
+
+function escapeHtml(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
 
 /* =========================================================
    AUTH UI
-========================================================= */
+   ========================================================= */
 
 function showLogin(){
 
@@ -1725,9 +1879,9 @@ function showLogin(){
     $("loginForm").classList.remove("hidden");
     $("signupForm").classList.add("hidden");
 
-    clearAuthMessage();
+    $("authMessage").className = "message";
+    $("authMessage").textContent = "";
 }
-
 
 function showSignup(){
 
@@ -1737,38 +1891,24 @@ function showSignup(){
     $("signupForm").classList.remove("hidden");
     $("loginForm").classList.add("hidden");
 
-    clearAuthMessage();
-}
-
-
-function showAuthMessage(message,type){
-
-    const box = $("authMessage");
-
-    box.textContent = message;
-    box.className = "message " + type;
-}
-
-
-function clearAuthMessage(){
-
-    const box = $("authMessage");
-
-    box.textContent = "";
-    box.className = "message";
-
+    $("authMessage").className = "message";
+    $("authMessage").textContent = "";
 }
 
 
 /* =========================================================
    SIGN UP
-========================================================= */
+   ========================================================= */
 
-$("signupForm").addEventListener("submit", async function(e){
+$("signupForm").addEventListener("submit",async function(e){
 
     e.preventDefault();
 
-    showAuthMessage("Creating your account...","success");
+    showMessage(
+        $("authMessage"),
+        "Creating your account...",
+        "success"
+    );
 
     const name = $("signupName").value.trim();
     const phone = $("signupPhone").value.trim();
@@ -1777,16 +1917,11 @@ $("signupForm").addEventListener("submit", async function(e){
 
     try{
 
-        const { data, error } = await db.auth.signUp({
-    email: email,
-    password: password,
-    options: {
-        data: {
-            full_name: name,
-            phone: phone
-        }
-    }
-});
+        const {data,error} =
+            await db.auth.signUp({
+                email:email,
+                password:password
+            });
 
         if(error){
             throw error;
@@ -1800,62 +1935,59 @@ $("signupForm").addEventListener("submit", async function(e){
 
         const accountId =
             "QEM-" +
-            userId
-                .replace(/-/g,"")
-                .substring(0,8)
-                .toUpperCase();
+            userId.replace(/-/g,"")
+            .substring(0,8)
+            .toUpperCase();
 
-        const { error:profileError } = await db
-            .from("profiles")
-            .insert({
-                id:userId,
-                account_id:accountId,
-                full_name:name,
-                phone:phone,
-                bank:"Not set",
-                investment:0,
-                balance:0,
-                profit:0,
-                bonus:0,
-                period:0,
-                status:"Active"
-            });
+        /*
+          The profile is created only when Supabase allows
+          the authenticated insert.
+        */
 
-        if(profileError){
+        if(data.session){
 
-            if(
-                profileError.code === "23505" ||
-                profileError.message.toLowerCase().includes("duplicate")
-            ){
-                showAuthMessage(
-                    "Your account exists. Please sign in.",
-                    "success"
-                );
-                showLogin();
-                return;
+            const {error:profileError} =
+                await db
+                .from("profiles")
+                .insert({
+                    id:userId,
+                    account_id:accountId,
+                    full_name:name,
+                    phone:phone,
+                    bank:"Not set",
+                    investment:0,
+                    balance:0,
+                    profit:0,
+                    bonus:0,
+                    period:0,
+                    status:"Active"
+                });
+
+            if(profileError){
+                throw profileError;
             }
 
-            throw profileError;
         }
 
-        showAuthMessage(
-            "Account created successfully. You can now sign in.",
+        showMessage(
+            $("authMessage"),
+            data.session
+            ? "Account created successfully. You can now sign in."
+            : "Account created. Please confirm your email, then sign in.",
             "success"
         );
 
         $("signupForm").reset();
 
-        setTimeout(showLogin,1000);
-
     }catch(error){
 
         console.error(error);
 
-        showAuthMessage(
+        showMessage(
+            $("authMessage"),
             error.message || "Unable to create account.",
             "error"
         );
-
     }
 
 });
@@ -1863,23 +1995,25 @@ $("signupForm").addEventListener("submit", async function(e){
 
 /* =========================================================
    SIGN IN
-========================================================= */
+   ========================================================= */
 
-$("loginForm").addEventListener("submit", async function(e){
+$("loginForm").addEventListener("submit",async function(e){
 
     e.preventDefault();
 
-    showAuthMessage("Signing in...","success");
-
-    const email = $("loginEmail").value.trim();
-    const password = $("loginPassword").value;
+    showMessage(
+        $("authMessage"),
+        "Signing in...",
+        "success"
+    );
 
     try{
 
-        const { data, error } = await db.auth.signInWithPassword({
-            email:email,
-            password:password
-        });
+        const {data,error} =
+            await db.auth.signInWithPassword({
+                email:$("loginEmail").value.trim(),
+                password:$("loginPassword").value
+            });
 
         if(error){
             throw error;
@@ -1893,19 +2027,19 @@ $("loginForm").addEventListener("submit", async function(e){
 
         console.error(error);
 
-        showAuthMessage(
+        showMessage(
+            $("authMessage"),
             error.message || "Unable to sign in.",
             "error"
         );
-
     }
 
 });
 
 
 /* =========================================================
-   OPEN APPLICATION
-========================================================= */
+   APPLICATION
+   ========================================================= */
 
 async function openApplication(){
 
@@ -1916,13 +2050,12 @@ async function openApplication(){
     await loadDepositHistory();
 
     openPage("dashboard");
-
 }
 
 
 /* =========================================================
    LOAD PROFILE
-========================================================= */
+   ========================================================= */
 
 async function loadProfile(){
 
@@ -1930,7 +2063,8 @@ async function loadProfile(){
         return;
     }
 
-    const { data, error } = await db
+    const {data,error} =
+        await db
         .from("profiles")
         .select("*")
         .eq("id",currentUser.id)
@@ -1949,7 +2083,6 @@ async function loadProfile(){
     currentProfile = data;
 
     renderProfile();
-
 }
 
 
@@ -1974,9 +2107,11 @@ function renderProfile(){
     $("profitValue").textContent =
         "PGK " + money(currentProfile.profit);
 
-    const status = currentProfile.status || "Active";
+    const status =
+        currentProfile.status || "Active";
 
-    const statusElement = $("statusValue");
+    const statusElement =
+        $("statusValue");
 
     statusElement.textContent = status;
 
@@ -1989,7 +2124,6 @@ function renderProfile(){
     if(status.toLowerCase() === "inactive"){
         statusElement.classList.add("inactive");
     }
-
 
     $("profileAccountId").value =
         currentProfile.account_id || "";
@@ -2006,92 +2140,23 @@ function renderProfile(){
     $("profileBank").value =
         currentProfile.bank || "";
 
+
+    /* SETTINGS */
+
+    $("countrySelect").value =
+        currentProfile.country || "";
+
+    $("currencySelect").value =
+        currentProfile.currency || "PGK";
+
+    $("phoneCodeSelect").value =
+        currentProfile.phone_country_code || "";
 }
-
-
-function money(value){
-
-    const number = Number(value || 0);
-
-    return number.toLocaleString(
-        "en-PG",
-        {
-            minimumFractionDigits:2,
-            maximumFractionDigits:2
-        }
-    );
-
-}
-
-
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-
-function openPage(page){
-
-    document.querySelectorAll(".page").forEach(function(item){
-
-        item.classList.remove("active");
-
-    });
-
-
-    const selected = $("page-" + page);
-
-    if(selected){
-        selected.classList.add("active");
-    }
-
-
-    document.querySelectorAll(".menu button[data-page]").forEach(function(btn){
-
-        btn.classList.remove("active");
-
-        if(btn.dataset.page === page){
-            btn.classList.add("active");
-        }
-
-    });
-
-
-    $("sidebar").classList.remove("open");
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-document.querySelectorAll(".menu button[data-page]").forEach(function(button){
-
-    button.addEventListener("click",function(){
-
-        openPage(button.dataset.page);
-
-    });
-
-});
-
-
-/* =========================================================
-   MOBILE SIDEBAR
-========================================================= */
-
-$("menuToggle").addEventListener("click",function(){
-
-    $("sidebar").classList.toggle("open");
-
-});
 
 
 /* =========================================================
    SAVE PROFILE
-   Only safe profile fields are sent.
-   Financial columns are deliberately excluded.
-========================================================= */
+   ========================================================= */
 
 async function saveProfile(){
 
@@ -2099,20 +2164,15 @@ async function saveProfile(){
         return;
     }
 
-    const message = $("profileMessage");
-
     try{
 
-        const name = $("profileName").value.trim();
-        const phone = $("profilePhone").value.trim();
-        const bank = $("profileBank").value.trim();
-
-        const { error } = await db
+        const {error} =
+            await db
             .from("profiles")
             .update({
-                full_name:name,
-                phone:phone,
-                bank:bank
+                full_name:$("profileName").value.trim(),
+                phone:$("profilePhone").value.trim(),
+                bank:$("profileBank").value.trim()
             })
             .eq("id",currentUser.id);
 
@@ -2121,7 +2181,7 @@ async function saveProfile(){
         }
 
         showMessage(
-            message,
+            $("profileMessage"),
             "Profile updated successfully.",
             "success"
         );
@@ -2133,21 +2193,167 @@ async function saveProfile(){
         console.error(error);
 
         showMessage(
-            message,
+            $("profileMessage"),
             error.message || "Unable to update profile.",
             "error"
         );
-
     }
-
 }
 
 
 /* =========================================================
-   DEPOSIT VERIFICATION
-========================================================= */
+   SAVE SETTINGS
+   ========================================================= */
 
-$("depositForm").addEventListener("submit",async function(e){
+async function saveSettings(){
+
+    if(!currentUser){
+        return;
+    }
+
+    const country =
+        $("countrySelect").value;
+
+    const currency =
+        $("currencySelect").value;
+
+    const phoneCode =
+        $("phoneCodeSelect").value;
+
+    if(!country){
+        showMessage(
+            $("settingsMessage"),
+            "Please select your country.",
+            "error"
+        );
+        return;
+    }
+
+    if(!currency){
+        showMessage(
+            $("settingsMessage"),
+            "Please select your currency.",
+            "error"
+        );
+        return;
+    }
+
+    if(!phoneCode){
+        showMessage(
+            $("settingsMessage"),
+            "Please select your phone country code.",
+            "error"
+        );
+        return;
+    }
+
+    try{
+
+        const {error} =
+            await db
+            .from("profiles")
+            .update({
+                country:country,
+                currency:currency,
+                phone_country_code:phoneCode
+            })
+            .eq("id",currentUser.id);
+
+        if(error){
+            throw error;
+        }
+
+        showMessage(
+            $("settingsMessage"),
+            "Settings saved successfully.",
+            "success"
+        );
+
+        await loadProfile();
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            $("settingsMessage"),
+            error.message || "Unable to save settings.",
+            "error"
+        );
+    }
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+function openPage(page){
+
+    document.querySelectorAll(".page")
+    .forEach(function(item){
+        item.classList.remove("active");
+    });
+
+    const selected =
+        $("page-" + page);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+    document.querySelectorAll(
+        ".menu button[data-page]"
+    ).forEach(function(btn){
+
+        btn.classList.remove("active");
+
+        if(btn.dataset.page === page){
+            btn.classList.add("active");
+        }
+    });
+
+    $("sidebar").classList.remove("open");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+document.querySelectorAll(
+    ".menu button[data-page]"
+).forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+            openPage(button.dataset.page);
+        }
+    );
+});
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+   ========================================================= */
+
+$("menuToggle").addEventListener(
+    "click",
+    function(){
+        $("sidebar").classList.toggle("open");
+    }
+);
+
+
+/* =========================================================
+   DEPOSIT VERIFICATION
+   ========================================================= */
+
+$("depositForm").addEventListener(
+"submit",
+async function(e){
 
     e.preventDefault();
 
@@ -2155,18 +2361,24 @@ $("depositForm").addEventListener("submit",async function(e){
         return;
     }
 
-    const message = $("depositMessage");
+    const message =
+        $("depositMessage");
 
     try{
 
-        const bank = $("depositBank").value;
-        const amount = Number($("depositAmount").value);
+        const bank =
+            $("depositBank").value;
+
+        const amount =
+            Number($("depositAmount").value);
+
         const transactionMessage =
-            $("transactionMessage").value.trim();
+            $("transactionMessage")
+            .value.trim();
 
         const file =
-            $("depositScreenshot").files[0];
-
+            $("depositScreenshot")
+            .files[0];
 
         if(!bank){
             throw new Error("Please select your bank.");
@@ -2184,26 +2396,9 @@ $("depositForm").addEventListener("submit",async function(e){
             throw new Error("Please attach your transaction screenshot.");
         }
 
-
-        const allowedTypes = [
-            "image/jpeg",
-            "image/png",
-            "image/webp"
-        ];
-
-        if(!allowedTypes.includes(file.type)){
-            throw new Error(
-                "Please upload a JPG, PNG or WEBP image."
-            );
-        }
-
-
         if(file.size > 5 * 1024 * 1024){
-            throw new Error(
-                "Screenshot must be smaller than 5 MB."
-            );
+            throw new Error("Screenshot must be smaller than 5 MB.");
         }
-
 
         showMessage(
             message,
@@ -2211,9 +2406,11 @@ $("depositForm").addEventListener("submit",async function(e){
             "success"
         );
 
-
         const extension =
-            file.name.split(".").pop().toLowerCase();
+            file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
 
         const fileName =
             currentUser.id +
@@ -2222,42 +2419,37 @@ $("depositForm").addEventListener("submit",async function(e){
             "." +
             extension;
 
-
-        const { error:uploadError } =
+        const {error:uploadError} =
             await db.storage
-                .from("deposit-proofs")
-                .upload(
-                    fileName,
-                    file,
-                    {
-                        contentType:file.type,
-                        upsert:false
-                    }
-                );
-
+            .from("deposit-proofs")
+            .upload(
+                fileName,
+                file,
+                {
+                    contentType:file.type,
+                    upsert:false
+                }
+            );
 
         if(uploadError){
             throw uploadError;
         }
 
-
-        const { error:insertError } =
+        const {error:insertError} =
             await db
-                .from("deposit_requests")
-                .insert({
-                    user_id:currentUser.id,
-                    bank:bank,
-                    amount:amount,
-                    transaction_message:transactionMessage,
-                    screenshot_url:fileName,
-                    status:"Pending"
-                });
-
+            .from("deposit_requests")
+            .insert({
+                user_id:currentUser.id,
+                bank:bank,
+                amount:amount,
+                transaction_message:transactionMessage,
+                screenshot_url:fileName,
+                status:"Pending"
+            });
 
         if(insertError){
             throw insertError;
         }
-
 
         showMessage(
             message,
@@ -2265,11 +2457,9 @@ $("depositForm").addEventListener("submit",async function(e){
             "success"
         );
 
-
         $("depositForm").reset();
 
         await loadDepositHistory();
-
 
     }catch(error){
 
@@ -2280,7 +2470,6 @@ $("depositForm").addEventListener("submit",async function(e){
             error.message || "Unable to submit deposit.",
             "error"
         );
-
     }
 
 });
@@ -2288,7 +2477,7 @@ $("depositForm").addEventListener("submit",async function(e){
 
 /* =========================================================
    DEPOSIT HISTORY
-========================================================= */
+   ========================================================= */
 
 async function loadDepositHistory(){
 
@@ -2296,20 +2485,21 @@ async function loadDepositHistory(){
         return;
     }
 
-    const container = $("depositHistory");
+    const container =
+        $("depositHistory");
 
     if(!container){
         return;
     }
 
-    const { data, error } = await db
+    const {data,error} =
+        await db
         .from("deposit_requests")
         .select(
             "id,bank,amount,transaction_message,status,created_at"
         )
         .eq("user_id",currentUser.id)
         .order("created_at",{ascending:false});
-
 
     if(error){
 
@@ -2321,31 +2511,38 @@ async function loadDepositHistory(){
         return;
     }
 
-
     if(!data || data.length === 0){
 
         container.innerHTML =
             '<div class="muted">No deposit submissions yet.</div>';
 
         return;
-
     }
 
+    container.innerHTML =
+        data.map(function(item){
 
-    container.innerHTML = data.map(function(item){
+            const status =
+                item.status || "Pending";
 
-        const status =
-            item.status || "Pending";
+            const date =
+                new Date(
+                    item.created_at
+                ).toLocaleString();
 
-        const date =
-            new Date(item.created_at).toLocaleString();
+            const statusClass =
+                status.toLowerCase() === "pending"
+                ? "pending"
+                : "";
 
-        return `
+            return `
             <div class="history-item">
 
                 <div>
 
-                    <strong>${escapeHtml(item.bank)}</strong>
+                    <strong>
+                        ${escapeHtml(item.bank)}
+                    </strong>
 
                     <div class="muted">
                         PGK ${money(item.amount)}
@@ -2362,77 +2559,70 @@ async function loadDepositHistory(){
                 </div>
 
                 <div>
-                    <span class="status ${
-                        status.toLowerCase() === "pending"
-                        ? "pending"
-                        : ""
-                    }">
+
+                    <span class="status ${statusClass}">
                         ${escapeHtml(status)}
                     </span>
+
                 </div>
 
             </div>
-        `;
+            `;
 
-    }).join("");
-
+        }).join("");
 }
 
 
 /* =========================================================
-   WITHDRAWAL
-   This form records intent locally in the current UI.
-   A production withdrawal workflow should use a dedicated
-   Supabase table with appropriate server-side authorization.
-========================================================= */
+   WITHDRAWAL UI
+   ========================================================= */
 
-$("withdrawForm").addEventListener("submit",function(e){
+$("withdrawForm").addEventListener(
+"submit",
+function(e){
 
     e.preventDefault();
 
     showMessage(
         $("withdrawMessage"),
-        "Withdrawal request received. Processing is subject to account verification and available verified funds.",
+        "Your withdrawal request has been recorded for review. Processing is subject to account verification and available verified funds.",
         "success"
     );
 
     $("withdrawForm").reset();
-
 });
 
 
 /* =========================================================
-   AUTH SESSION
-========================================================= */
+   SESSION
+   ========================================================= */
 
 async function checkSession(){
 
     try{
 
         const {
-            data:{
-                session
-            }
-        } = await db.auth.getSession();
+            data:{session}
+        } =
+        await db.auth.getSession();
 
         if(session){
 
-            currentUser = session.user;
+            currentUser =
+                session.user;
 
             await openApplication();
-
         }
 
     }catch(error){
 
         console.error(error);
-
     }
-
 }
 
 
-db.auth.onAuthStateChange(async function(event,session){
+db.auth.onAuthStateChange(
+function(event,session){
 
     if(event === "SIGNED_OUT"){
 
@@ -2443,17 +2633,17 @@ db.auth.onAuthStateChange(async function(event,session){
         $("authPage").classList.remove("hidden");
 
         $("loginForm").reset();
-
     }
-
 });
 
 
 /* =========================================================
    SIGN OUT
-========================================================= */
+   ========================================================= */
 
-$("signoutBtn").addEventListener("click",async function(){
+$("signoutBtn").addEventListener(
+"click",
+async function(){
 
     await db.auth.signOut();
 
@@ -2461,33 +2651,10 @@ $("signoutBtn").addEventListener("click",async function(){
 
 
 /* =========================================================
-   HELPERS
-========================================================= */
-
-function showMessage(element,text,type){
-
-    element.textContent = text;
-    element.className = "message " + type;
-
-}
-
-
-function escapeHtml(value){
-
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
    START
-========================================================= */
+   ========================================================= */
 
+populateSettings();
 checkSession();
 
 </script>
