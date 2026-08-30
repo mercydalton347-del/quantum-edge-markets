@@ -15,16 +15,32 @@
     padding:0;
 }
 
+:root{
+    --bg:#07111f;
+    --panel:#0d1b2e;
+    --panel2:#10243b;
+    --border:#1d3855;
+    --text:#f5f8fc;
+    --muted:#8fa5bc;
+    --accent:#18c8a5;
+    --accent2:#149c86;
+    --danger:#ef5b6b;
+    --warning:#f4b942;
+    --sidebar:260px;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
     min-height:100vh;
-    background:#07111f;
-    color:white;
 }
 
 button,
-input{
-    font-family:inherit;
+input,
+select,
+textarea{
+    font:inherit;
 }
 
 button{
@@ -32,131 +48,145 @@ button{
 }
 
 .hidden{
-    display:none !important;
+    display:none!important;
 }
 
 /* AUTH */
 
-#authScreen{
+#authPage{
     min-height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:20px;
-    background:linear-gradient(135deg,#07111f,#102b43);
+    background:
+        radial-gradient(circle at top right,#12395c 0,transparent 35%),
+        radial-gradient(circle at bottom left,#073b3a 0,transparent 30%),
+        var(--bg);
 }
 
-.auth-box{
+.auth-card{
     width:100%;
-    max-width:420px;
-    background:#0c1929;
-    border:1px solid #24445d;
-    border-radius:20px;
-    padding:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    max-width:440px;
+    background:rgba(13,27,46,.96);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
 .logo{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    color:#42b9ed;
-    margin-bottom:8px;
+    font-size:23px;
+    font-weight:800;
+    letter-spacing:.5px;
 }
 
-.subtitle{
-    text-align:center;
-    color:#8196ac;
-    font-size:13px;
-    margin-bottom:22px;
+.logo span{
+    color:var(--accent);
 }
 
-.tabs{
+.auth-subtitle{
+    color:var(--muted);
+    margin-top:8px;
+    margin-bottom:25px;
+}
+
+.auth-tabs{
     display:flex;
-    gap:5px;
-    padding:5px;
-    background:#081421;
-    border-radius:10px;
+    gap:8px;
     margin-bottom:20px;
 }
 
-.tab{
+.auth-tabs button{
     flex:1;
-    padding:12px;
-    border:0;
-    border-radius:8px;
+    border:1px solid var(--border);
     background:transparent;
-    color:#8da1b5;
+    color:var(--muted);
+    padding:12px;
+    border-radius:10px;
+}
+
+.auth-tabs button.active{
+    background:var(--accent);
+    color:#001b17;
+    border-color:var(--accent);
     font-weight:bold;
 }
 
-.tab.active{
-    background:#16405d;
-    color:white;
-}
-
-.form{
-    display:none;
-}
-
-.form.active{
-    display:block;
-}
-
-label{
-    display:block;
-    color:#a8b8c8;
-    font-size:12px;
-    margin-bottom:6px;
-}
-
-input{
-    width:100%;
-    padding:13px;
+.form-group{
     margin-bottom:15px;
-    border-radius:8px;
-    border:1px solid #294157;
-    background:#081421;
-    color:white;
+}
+
+.form-group label{
+    display:block;
+    color:#c6d3df;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    background:#081625;
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:13px;
     outline:none;
 }
 
-input:focus{
-    border-color:#42b9ed;
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--accent);
 }
 
-.submit{
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.primary-btn{
     width:100%;
-    padding:13px;
     border:0;
-    border-radius:8px;
-    background:#229dd5;
-    color:white;
-    font-weight:bold;
+    background:var(--accent);
+    color:#001b17;
+    font-weight:800;
+    padding:14px;
+    border-radius:11px;
+    margin-top:5px;
 }
 
-.submit:active{
-    transform:scale(.98);
+.primary-btn:hover{
+    background:#22ddba;
 }
 
 .message{
-    min-height:22px;
-    font-size:12px;
-    margin-bottom:8px;
-}
-
-.error{
-    color:#ff8997;
-}
-
-.success{
-    color:#51d5a0;
-}
-
-/* DASHBOARD */
-
-#portal{
+    margin-top:15px;
+    padding:12px;
+    border-radius:10px;
     display:none;
+    font-size:14px;
+}
+
+.message.success{
+    display:block;
+    background:rgba(24,200,165,.12);
+    border:1px solid rgba(24,200,165,.4);
+    color:#7ff5dd;
+}
+
+.message.error{
+    display:block;
+    background:rgba(239,91,107,.12);
+    border:1px solid rgba(239,91,107,.4);
+    color:#ff9eaa;
+}
+
+/* APP */
+
+#app{
     min-height:100vh;
 }
 
@@ -165,76 +195,94 @@ input:focus{
     left:0;
     top:0;
     bottom:0;
-    width:240px;
-    background:#0b1829;
-    border-right:1px solid #1c3045;
+    width:var(--sidebar);
+    background:#081625;
+    border-right:1px solid var(--border);
     padding:22px 15px;
+    z-index:100;
+    overflow-y:auto;
 }
 
-.side-logo{
-    color:#42b9ed;
-    font-weight:bold;
-    font-size:20px;
-    margin-bottom:25px;
+.sidebar-header{
+    padding:8px 10px 25px;
 }
 
-.user-box{
-    background:#122238;
-    padding:15px;
-    border-radius:12px;
-    margin-bottom:20px;
+.sidebar-logo{
+    font-weight:800;
+    font-size:18px;
 }
 
-.avatar{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    display:inline-flex;
-    justify-content:center;
-    align-items:center;
-    background:#198bc1;
-    margin-right:8px;
-    font-weight:bold;
+.sidebar-logo span{
+    color:var(--accent);
 }
 
-.nav button{
-    display:block;
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.menu button{
     width:100%;
-    text-align:left;
     border:0;
     background:transparent;
-    color:#9db0c3;
-    padding:12px;
-    border-radius:8px;
-    margin-bottom:3px;
+    color:#a8b9ca;
+    text-align:left;
+    padding:13px 12px;
+    border-radius:10px;
 }
 
-.nav button:hover,
-.nav button.active{
-    background:#14304b;
+.menu button:hover,
+.menu button.active{
+    background:#10283e;
     color:white;
 }
 
-.logout{
-    color:#ff8d99 !important;
+.menu button.active{
+    border-left:3px solid var(--accent);
 }
+
+.signout{
+    margin-top:20px;
+    color:#ff8e9b!important;
+}
+
+/* MAIN */
 
 .main{
-    margin-left:240px;
-    padding:30px;
+    margin-left:var(--sidebar);
+    min-height:100vh;
 }
 
-.header{
-    margin-bottom:25px;
+.topbar{
+    height:70px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    background:rgba(7,17,31,.92);
+    position:sticky;
+    top:0;
+    z-index:50;
 }
 
-.header h1{
-    font-size:27px;
+.menu-toggle{
+    display:none;
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:25px;
 }
 
-.header p{
-    color:#8196ac;
-    margin-top:6px;
+.user-short{
+    color:var(--muted);
+}
+
+.content{
+    padding:28px;
+    max-width:1500px;
+    margin:auto;
 }
 
 .page{
@@ -245,81 +293,274 @@ input:focus{
     display:block;
 }
 
-.hero{
-    background:linear-gradient(135deg,#103252,#0c1c2e);
-    border:1px solid #1d4866;
-    padding:25px;
-    border-radius:16px;
-    margin-bottom:18px;
+.page-title{
+    font-size:28px;
+    margin-bottom:7px;
 }
 
-.hero p{
-    color:#91a4b8;
-    margin-top:8px;
-    line-height:1.6;
+.page-description{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+/* DASHBOARD */
+
+.account-banner{
+    background:
+        linear-gradient(135deg,#102b46,#0b554c);
+    border:1px solid #22556a;
+    border-radius:18px;
+    padding:24px;
+    margin-bottom:20px;
+}
+
+.account-banner h2{
+    margin-bottom:8px;
+}
+
+.account-banner p{
+    color:#b8d0d9;
 }
 
 .cards{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:14px;
+    gap:15px;
+    margin-bottom:22px;
 }
 
 .card{
-    background:#0c1929;
-    border:1px solid #1a2c40;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
     padding:20px;
-    border-radius:14px;
 }
 
-.card small{
-    color:#8297ac;
+.card-label{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:10px;
 }
 
-.value{
-    font-size:23px;
-    font-weight:bold;
-    margin-top:10px;
+.card-value{
+    font-size:25px;
+    font-weight:800;
 }
 
-.blue{
-    color:#55c7ff;
+.card-value.positive{
+    color:#54e0bd;
 }
 
-.green{
-    color:#52d3a0;
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:30px;
+    font-size:12px;
+    background:rgba(24,200,165,.12);
+    color:#64e4c7;
 }
 
-.gold{
-    color:#e6ba51;
+.status.pending{
+    background:rgba(244,185,66,.12);
+    color:#f4c95f;
 }
 
-.panel{
-    background:#0c1929;
-    border:1px solid #1a2c40;
-    border-radius:14px;
-    padding:23px;
-    margin-top:18px;
+.status.inactive{
+    background:rgba(239,91,107,.12);
+    color:#ff8b98;
 }
 
-.panel p{
-    color:#91a4b8;
-    line-height:1.6;
-    margin-top:8px;
+.quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-bottom:25px;
 }
 
-.mobile-menu{
-    display:none;
+.quick-action{
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:white;
+    border-radius:15px;
+    padding:18px;
+    text-align:left;
+}
+
+.quick-action:hover{
+    border-color:var(--accent);
+    transform:translateY(-1px);
+}
+
+.quick-action strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.quick-action small{
+    color:var(--muted);
+}
+
+/* CHARTS */
+
+.chart-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.chart-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.chart-header{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+}
+
+.chart-header h3{
+    margin-bottom:4px;
+}
+
+.chart-header p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.chart-frame{
+    width:100%;
+    height:430px;
+    background:#06101c;
+}
+
+.chart-frame iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* SECTIONS */
+
+.section-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.info-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.info-card h3{
+    margin-bottom:12px;
+}
+
+.info-card p,
+.info-card li{
+    color:#aebdcb;
+    line-height:1.7;
+}
+
+.info-card ul{
+    padding-left:20px;
+}
+
+.bank-card{
+    margin-top:15px;
+    background:#091827;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px;
+}
+
+.bank-card h3{
+    color:var(--accent);
+}
+
+.bank-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:9px 0;
+    border-bottom:1px solid #142b42;
+}
+
+.bank-row:last-child{
+    border-bottom:0;
+}
+
+.bank-row span:first-child{
+    color:var(--muted);
+}
+
+/* FORMS */
+
+.form-card{
+    max-width:760px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+}
+
+.form-card h3{
+    margin-bottom:18px;
+}
+
+.file-input{
+    padding:10px;
+}
+
+.notice{
+    background:rgba(244,185,66,.08);
+    border:1px solid rgba(244,185,66,.3);
+    color:#e9c96e;
+    padding:14px;
+    border-radius:11px;
+    margin-bottom:18px;
+    line-height:1.5;
+}
+
+.history{
+    margin-top:25px;
+}
+
+.history-item{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:16px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.muted{
+    color:var(--muted);
+}
+
+/* FOOTER */
+
+.footer{
+    color:#61758a;
+    text-align:center;
+    padding:35px 10px;
+    font-size:12px;
 }
 
 /* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
     .sidebar{
         transform:translateX(-100%);
         transition:.25s;
-        z-index:100;
     }
 
     .sidebar.open{
@@ -328,32 +569,58 @@ input:focus{
 
     .main{
         margin-left:0;
-        padding:18px;
     }
 
-    .mobile-menu{
+    .menu-toggle{
         display:block;
-        border:0;
-        background:#16405d;
-        color:white;
-        padding:10px 14px;
-        border-radius:8px;
-        margin-bottom:15px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .chart-grid,
+    .section-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    .content{
+        padding:17px;
+    }
+
+    .topbar{
+        padding:0 17px;
     }
 
     .cards{
         grid-template-columns:1fr 1fr;
     }
-}
 
-@media(max-width:500px){
+    .card{
+        padding:15px;
+    }
 
-    .cards{
+    .card-value{
+        font-size:20px;
+    }
+
+    .quick-actions{
         grid-template-columns:1fr;
     }
 
-    .auth-box{
-        padding:22px;
+    .page-title{
+        font-size:23px;
+    }
+
+    .chart-frame{
+        height:330px;
+    }
+
+    .history-item{
+        flex-direction:column;
     }
 }
 </style>
@@ -361,977 +628,1387 @@ input:focus{
 
 <body>
 
-<!-- ==============================
-     AUTHENTICATION
-================================ -->
+<!-- AUTHENTICATION -->
 
-<div id="authScreen">
+<section id="authPage">
 
-    <div class="auth-box">
+    <div class="auth-card">
 
         <div class="logo">
-            QUANTUM EDGE MARKETS
+            QUANTUM <span>EDGE</span> MARKETS
         </div>
 
-        <div class="subtitle">
-            Secure Client Portal
+        <div class="auth-subtitle">
+            Secure client portal
         </div>
 
-
-        <div class="tabs">
-
-            <button
-                type="button"
-                class="tab active"
-                id="signInTab">
+        <div class="auth-tabs">
+            <button id="loginTab" class="active" onclick="showLogin()">
                 Sign In
             </button>
 
-            <button
-                type="button"
-                class="tab"
-                id="signUpTab">
+            <button id="signupTab" onclick="showSignup()">
                 Sign Up
             </button>
-
         </div>
 
+        <!-- LOGIN -->
 
-        <!-- SIGN IN -->
+        <form id="loginForm">
 
-        <form
-            id="signInForm"
-            class="form active">
-
-            <label>Email Address</label>
-
-            <input
-                id="signInEmail"
-                type="email"
-                placeholder="Enter your email"
-                required>
-
-            <label>Password</label>
-
-            <input
-                id="signInPassword"
-                type="password"
-                placeholder="Enter your password"
-                required>
-
-            <div
-                id="signInMessage"
-                class="message">
+            <div class="form-group">
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    required
+                    autocomplete="email"
+                >
             </div>
 
-            <button
-                type="submit"
-                class="submit">
+            <div class="form-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button class="primary-btn" type="submit">
                 Sign In
             </button>
 
         </form>
 
+        <!-- SIGNUP -->
 
-        <!-- SIGN UP -->
+        <form id="signupForm" class="hidden">
 
-        <form
-            id="signUpForm"
-            class="form">
-
-            <label>Full Name</label>
-
-            <input
-                id="signUpName"
-                type="text"
-                placeholder="Enter your full name"
-                required>
-
-            <label>Email Address</label>
-
-            <input
-                id="signUpEmail"
-                type="email"
-                placeholder="Enter your email"
-                required>
-
-            <label>Password</label>
-
-            <input
-                id="signUpPassword"
-                type="password"
-                placeholder="Minimum 6 characters"
-                minlength="6"
-                required>
-
-            <label>Confirm Password</label>
-
-            <input
-                id="signUpConfirm"
-                type="password"
-                placeholder="Confirm your password"
-                minlength="6"
-                required>
-
-            <div
-                id="signUpMessage"
-                class="message">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    id="signupName"
+                    required
+                    autocomplete="name"
+                >
             </div>
 
-            <button
-                type="submit"
-                class="submit">
+            <div class="form-group">
+                <label>Phone</label>
+                <input
+                    type="tel"
+                    id="signupPhone"
+                    autocomplete="tel"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="signupEmail"
+                    required
+                    autocomplete="email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="signupPassword"
+                    minlength="6"
+                    required
+                    autocomplete="new-password"
+                >
+            </div>
+
+            <button class="primary-btn" type="submit">
                 Create Account
             </button>
 
         </form>
 
+        <div id="authMessage" class="message"></div>
+
     </div>
 
-</div>
+</section>
 
 
-<!-- ==============================
-     PORTAL
-================================ -->
+<!-- APPLICATION -->
 
-<div id="portal">
+<section id="app" class="hidden">
 
-    <aside
-        class="sidebar"
-        id="sidebar">
+    <!-- SIDEBAR -->
 
-        <div class="side-logo">
-            QUANTUM EDGE
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                QUANTUM <span>EDGE</span>
+            </div>
         </div>
 
-        <div class="user-box">
+        <nav class="menu">
 
-            <span
-                class="avatar"
-                id="avatar">
-                CL
-            </span>
-
-            <strong id="sideName">
-                Client
-            </strong>
-
-        </div>
-
-        <div class="nav">
-
-            <button
-                type="button"
-                class="active"
-                data-page="dashboard">
-                Dashboard
+            <button class="active" data-page="dashboard">
+                🏠 Dashboard
             </button>
 
-            <button
-                type="button"
-                data-page="account">
-                My Account
+            <button data-page="deposit">
+                💰 Deposit
             </button>
 
-            <button
-                type="button"
-                data-page="withdrawal">
-                Withdrawal
+            <button data-page="verification">
+                ✅ Deposit Verification
             </button>
 
-            <button
-                type="button"
-                data-page="markets">
-                Markets
+            <button data-page="withdraw">
+                💸 Withdraw
             </button>
 
-            <button
-                type="button"
-                data-page="support">
-                Support
+            <button data-page="markets">
+                📊 Markets
             </button>
 
-            <button
-                type="button"
-                data-page="settings">
-                Settings
+            <button data-page="education">
+                📚 Forex Education
             </button>
 
-            <button
-                type="button"
-                id="logoutButton"
-                class="logout">
-                Sign Out
+            <button data-page="profile">
+                👤 My Profile
             </button>
 
-        </div>
+            <button data-page="settings">
+                ⚙️ Settings
+            </button>
+
+            <button data-page="support">
+                📞 Support
+            </button>
+
+            <button data-page="terms">
+                📜 Terms & Policies
+            </button>
+
+            <button class="signout" id="signoutBtn">
+                🚪 Sign Out
+            </button>
+
+        </nav>
 
     </aside>
 
 
+    <!-- MAIN -->
+
     <main class="main">
 
-        <button
-            type="button"
-            class="mobile-menu"
-            id="mobileMenu">
-            ☰ Menu
-        </button>
+        <header class="topbar">
+
+            <button class="menu-toggle" id="menuToggle">
+                ☰
+            </button>
+
+            <div>
+                <strong>Client Portal</strong>
+            </div>
+
+            <div class="user-short" id="topUser">
+                Loading...
+            </div>
+
+        </header>
 
 
-        <!-- DASHBOARD -->
+        <div class="content">
 
-        <section
-            id="dashboard"
-            class="page active">
+            <!-- DASHBOARD -->
 
-            <div class="header">
+            <section class="page active" id="page-dashboard">
 
-                <h1>
-                    Client Dashboard
+                <div class="account-banner">
+
+                    <h2>
+                        Welcome, <span id="welcomeName">Investor</span>
+                    </h2>
+
+                    <p>
+                        Your account overview and verified account information.
+                    </p>
+
+                </div>
+
+
+                <div class="cards">
+
+                    <div class="card">
+                        <div class="card-label">
+                            Investment
+                        </div>
+                        <div class="card-value" id="investmentValue">
+                            PGK 0.00
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">
+                            Balance
+                        </div>
+                        <div class="card-value" id="balanceValue">
+                            PGK 0.00
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">
+                            Profit
+                        </div>
+                        <div class="card-value positive" id="profitValue">
+                            PGK 0.00
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-label">
+                            Account Status
+                        </div>
+                        <div class="card-value">
+                            <span id="statusValue" class="status">
+                                Active
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button class="quick-action" onclick="openPage('deposit')">
+                        <strong>💰 Make a Deposit</strong>
+                        <small>
+                            View the available bank details.
+                        </small>
+                    </button>
+
+                    <button class="quick-action" onclick="openPage('verification')">
+                        <strong>✅ Verify a Deposit</strong>
+                        <small>
+                            Submit your transaction information and proof.
+                        </small>
+                    </button>
+
+                    <button class="quick-action" onclick="openPage('withdraw')">
+                        <strong>💸 Withdrawal Request</strong>
+                        <small>
+                            Submit a withdrawal request.
+                        </small>
+                    </button>
+
+                </div>
+
+
+                <h2 class="page-title">
+                    Market Charts
+                </h2>
+
+                <p class="page-description">
+                    XAUUSD and GBPUSD market charts for educational market observation.
+                </p>
+
+
+                <div class="chart-grid">
+
+                    <div class="chart-card">
+
+                        <div class="chart-header">
+                            <h3>XAUUSD</h3>
+                            <p>Gold / US Dollar</p>
+                        </div>
+
+                        <div class="chart-frame">
+                            <iframe
+                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
+                                loading="lazy"
+                                title="XAUUSD chart">
+                            </iframe>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-card">
+
+                        <div class="chart-header">
+                            <h3>GBPUSD</h3>
+                            <p>British Pound / US Dollar</p>
+                        </div>
+
+                        <div class="chart-frame">
+                            <iframe
+                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_gbpusd&symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
+                                loading="lazy"
+                                title="GBPUSD chart">
+                            </iframe>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DEPOSIT -->
+
+            <section class="page" id="page-deposit">
+
+                <h1 class="page-title">
+                    Deposit
                 </h1>
 
-                <p>
-                    Welcome back,
-                    <span id="welcomeName">
-                        Client
-                    </span>
+                <p class="page-description">
+                    Use one of the supported bank accounts to make your deposit.
                 </p>
 
-            </div>
+
+                <div class="section-grid">
+
+                    <div class="info-card">
+
+                        <h3>BSP</h3>
+
+                        <div class="bank-card">
+
+                            <div class="bank-row">
+                                <span>Account Name</span>
+                                <strong>Quantum Edge Markets</strong>
+                            </div>
+
+                            <div class="bank-row">
+                                <span>Account Number</span>
+                                <strong>7004707480</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
 
 
-            <div class="hero">
+                    <div class="info-card">
 
-                <h2>
-                    Investment Overview
-                </h2>
+                        <h3>Kina Bank</h3>
 
-                <p>
-                    Your account information is displayed
-                    from your authorized client record.
-                </p>
+                        <div class="bank-card">
 
-            </div>
+                            <div class="bank-row">
+                                <span>Account Name</span>
+                                <strong>Quantum Edge Markets</strong>
+                            </div>
 
+                            <div class="bank-row">
+                                <span>Account Number</span>
+                                <strong>29223514</strong>
+                            </div>
 
-            <div class="cards">
+                        </div>
 
-                <div class="card">
-
-                    <small>
-                        Investment
-                    </small>
-
-                    <div
-                        class="value blue"
-                        id="investment">
-                        K0.00
                     </div>
 
                 </div>
 
 
-                <div class="card">
+                <div class="info-card" style="margin-top:18px;">
 
-                    <small>
-                        Balance
-                    </small>
+                    <h3>After making your deposit</h3>
 
-                    <div
-                        class="value green"
-                        id="balance">
-                        K0.00
+                    <p>
+                        Keep the transaction message or reference supplied by your bank.
+                        Then use <strong>Deposit Verification</strong> in the sidebar
+                        to submit the transaction information and supporting screenshot.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- VERIFICATION -->
+
+            <section class="page" id="page-verification">
+
+                <h1 class="page-title">
+                    Deposit Verification
+                </h1>
+
+                <p class="page-description">
+                    Submit your bank transaction information for review.
+                </p>
+
+
+                <div class="form-card">
+
+                    <div class="notice">
+                        Deposits are reviewed before they are reflected as verified
+                        account funds. Submitting a screenshot does not by itself
+                        constitute confirmation of payment.
                     </div>
+
+
+                    <form id="depositForm">
+
+                        <div class="form-group">
+
+                            <label>Bank</label>
+
+                            <select id="depositBank" required>
+
+                                <option value="">
+                                    Select bank
+                                </option>
+
+                                <option value="BSP">
+                                    BSP
+                                </option>
+
+                                <option value="Kina Bank">
+                                    Kina Bank
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Deposit Amount (PGK)</label>
+
+                            <input
+                                type="number"
+                                id="depositAmount"
+                                min="0.01"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Bank transaction message / reference
+                            </label>
+
+                            <textarea
+                                id="transactionMessage"
+                                placeholder="Paste the message or transaction reference supplied by your bank..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Screenshot of bank transaction
+                            </label>
+
+                            <input
+                                class="file-input"
+                                type="file"
+                                id="depositScreenshot"
+                                accept="image/png,image/jpeg,image/webp"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Submit Deposit for Verification
+                        </button>
+
+                    </form>
+
+                    <div id="depositMessage" class="message"></div>
 
                 </div>
 
 
-                <div class="card">
+                <div class="history">
 
-                    <small>
-                        Profit
-                    </small>
+                    <h2 style="margin-bottom:15px;">
+                        Verification History
+                    </h2>
 
-                    <div
-                        class="value gold"
-                        id="profit">
-                        K0.00
+                    <div id="depositHistory">
+                        Loading...
                     </div>
 
                 </div>
 
-
-                <div class="card">
-
-                    <small>
-                        Bonus
-                    </small>
-
-                    <div
-                        class="value gold"
-                        id="bonus">
-                        K0.00
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- ACCOUNT -->
+            <!-- WITHDRAW -->
 
-        <section
-            id="account"
-            class="page">
+            <section class="page" id="page-withdraw">
 
-            <div class="panel">
-
-                <h2>
-                    My Account
-                </h2>
-
-                <p>
-                    Account information.
-                </p>
-
-                <br>
-
-                <p>
-                    <strong>Name:</strong>
-                    <span id="accountName">-</span>
-                </p>
-
-                <p>
-                    <strong>Email:</strong>
-                    <span id="accountEmail">-</span>
-                </p>
-
-                <p>
-                    <strong>Account ID:</strong>
-                    <span id="accountId">-</span>
-                </p>
-
-                <p>
-                    <strong>Bank:</strong>
-                    <span id="accountBank">Not set</span>
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- WITHDRAWAL -->
-
-        <section
-            id="withdrawal"
-            class="page">
-
-            <div class="panel">
-
-                <h2>
+                <h1 class="page-title">
                     Withdrawal
-                </h2>
+                </h1>
 
-                <p>
-                    Submit a withdrawal request against
-                    your authorized recorded balance.
+                <p class="page-description">
+                    Submit a withdrawal request using your registered details.
                 </p>
 
-                <br>
 
-                <input
-                    id="withdrawAmount"
-                    type="number"
-                    placeholder="Amount PGK">
+                <div class="form-card">
 
-                <button
-                    type="button"
-                    class="submit"
-                    id="withdrawButton">
-                    Submit Request
-                </button>
+                    <div class="notice">
+                        Withdrawal requests are subject to account verification,
+                        available verified funds and applicable processing conditions.
+                        The current processing target is up to 12 hours after the
+                        request has been accepted for processing.
+                    </div>
 
-                <div
-                    id="withdrawMessage"
-                    class="message">
+
+                    <form id="withdrawForm">
+
+                        <div class="form-group">
+
+                            <label>Amount (PGK)</label>
+
+                            <input
+                                type="number"
+                                id="withdrawAmount"
+                                min="0.01"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Bank</label>
+
+                            <select id="withdrawBank" required>
+
+                                <option value="">
+                                    Select bank
+                                </option>
+
+                                <option value="BSP">
+                                    BSP
+                                </option>
+
+                                <option value="Kina Bank">
+                                    Kina Bank
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Account Number</label>
+
+                            <input
+                                type="text"
+                                id="withdrawAccount"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button class="primary-btn" type="submit">
+                            Submit Withdrawal Request
+                        </button>
+
+                    </form>
+
+                    <div id="withdrawMessage" class="message"></div>
+
                 </div>
 
-            </div>
-
-        </section>
+            </section>
 
 
-        <!-- MARKETS -->
+            <!-- MARKETS -->
 
-        <section
-            id="markets"
-            class="page">
+            <section class="page" id="page-markets">
 
-            <div class="panel">
-
-                <h2>
+                <h1 class="page-title">
                     Markets
-                </h2>
+                </h1>
 
-                <p>
-                    Gold (XAU/USD) and GBP/USD are
-                    major financial-market instruments.
+                <p class="page-description">
+                    Educational market observation.
                 </p>
 
-            </div>
 
-        </section>
+                <div class="chart-grid">
 
+                    <div class="chart-card">
 
-        <!-- SUPPORT -->
+                        <div class="chart-header">
+                            <h3>XAUUSD</h3>
+                            <p>Gold / US Dollar</p>
+                        </div>
 
-        <section
-            id="support"
-            class="page">
+                        <div class="chart-frame">
 
-            <div class="panel">
+                            <iframe
+                                src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+                                loading="lazy"
+                                title="XAUUSD market chart">
+                            </iframe>
 
-                <h2>
-                    Support
-                </h2>
+                        </div>
 
-                <p>
-                    Email:
-                    Fxglobal54@gmail.com
-                </p>
-
-                <br>
-
-                <button
-                    type="button"
-                    class="submit"
-                    id="emailSupport">
-                    Email Support
-                </button>
-
-            </div>
-
-        </section>
+                    </div>
 
 
-        <!-- SETTINGS -->
+                    <div class="chart-card">
 
-        <section
-            id="settings"
-            class="page">
+                        <div class="chart-header">
+                            <h3>GBPUSD</h3>
+                            <p>British Pound / US Dollar</p>
+                        </div>
 
-            <div class="panel">
+                        <div class="chart-frame">
 
-                <h2>
-                    Settings
-                </h2>
+                            <iframe
+                                src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+                                loading="lazy"
+                                title="GBPUSD market chart">
+                            </iframe>
 
-                <p>
-                    Signed-in account:
-                    <span id="settingsEmail">
-                        -
-                    </span>
-                </p>
+                        </div>
 
-                <br>
+                    </div>
 
-                <label>
-                    New Password
-                </label>
-
-                <input
-                    id="newPassword"
-                    type="password"
-                    minlength="6"
-                    placeholder="New password">
-
-                <button
-                    type="button"
-                    class="submit"
-                    id="changePassword">
-                    Change Password
-                </button>
-
-                <div
-                    id="passwordMessage"
-                    class="message">
                 </div>
 
+            </section>
+
+
+            <!-- EDUCATION -->
+
+            <section class="page" id="page-education">
+
+                <h1 class="page-title">
+                    Forex Education
+                </h1>
+
+                <p class="page-description">
+                    Educational material for understanding foreign exchange markets.
+                </p>
+
+
+                <div class="section-grid">
+
+                    <div class="info-card">
+
+                        <h3>Forex Fundamentals</h3>
+
+                        <p>
+                            Fundamental analysis considers economic and financial
+                            information that can influence currency prices.
+                        </p>
+
+                        <ul>
+                            <li>Central-bank interest rates</li>
+                            <li>Inflation and employment</li>
+                            <li>GDP and economic growth</li>
+                            <li>Economic calendars and major releases</li>
+                            <li>Geopolitical and macroeconomic developments</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Technical Analysis</h3>
+
+                        <p>
+                            Technical analysis studies price behaviour and market
+                            structure using historical price information.
+                        </p>
+
+                        <ul>
+                            <li>Support and resistance</li>
+                            <li>Trends and ranges</li>
+                            <li>Candlestick structure</li>
+                            <li>Market swings</li>
+                            <li>Indicators and volume tools</li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Market Structure</h3>
+
+                        <p>
+                            Traders commonly study higher highs, higher lows,
+                            lower highs and lower lows to understand directional
+                            structure.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Risk Management</h3>
+
+                        <p>
+                            Risk management is an essential part of trading education.
+                            Position size, stop-loss placement and risk-to-reward
+                            planning can help control exposure.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>ICT Concepts</h3>
+
+                        <p>
+                            ICT-style educational concepts associated with
+                            Michael J. Huddleston include ideas such as liquidity,
+                            market structure, fair value gaps, order blocks,
+                            dealing ranges and time-based market behaviour.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>2022 Framework</h3>
+
+                        <p>
+                            Educational discussions of the ICT 2022 approach commonly
+                            examine liquidity, market structure shifts, displacement,
+                            fair value gaps and time-of-day behaviour. These concepts
+                            should be studied critically rather than treated as a
+                            guarantee of trading results.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROFILE -->
+
+            <section class="page" id="page-profile">
+
+                <h1 class="page-title">
+                    My Profile
+                </h1>
+
+                <p class="page-description">
+                    Your registered account information.
+                </p>
+
+
+                <div class="form-card">
+
+                    <div class="form-group">
+                        <label>Account ID</label>
+                        <input id="profileAccountId" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input id="profileName">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="profileEmail" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input id="profilePhone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bank</label>
+                        <input id="profileBank">
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        onclick="saveProfile()"
+                    >
+                        Save Profile
+                    </button>
+
+                    <div id="profileMessage" class="message"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section class="page" id="page-settings">
+
+                <h1 class="page-title">
+                    Settings
+                </h1>
+
+                <p class="page-description">
+                    Manage your portal preferences.
+                </p>
+
+
+                <div class="section-grid">
+
+                    <div class="info-card">
+
+                        <h3>Account Security</h3>
+
+                        <p>
+                            Keep your login credentials private and never share
+                            your password with another person.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Account Information</h3>
+
+                        <p>
+                            Financial figures displayed in your dashboard are
+                            intended to reflect records available to your
+                            authenticated account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUPPORT -->
+
+            <section class="page" id="page-support">
+
+                <h1 class="page-title">
+                    Support
+                </h1>
+
+                <p class="page-description">
+                    Contact Quantum Edge Markets support.
+                </p>
+
+
+                <div class="section-grid">
+
+                    <div class="info-card">
+
+                        <h3>Email Support</h3>
+
+                        <p>
+                            Fxglobal54@gmail.com
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Account Assistance</h3>
+
+                        <p>
+                            For deposit verification, include the transaction
+                            reference and supporting evidence through the
+                            Deposit Verification section.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TERMS -->
+
+            <section class="page" id="page-terms">
+
+                <h1 class="page-title">
+                    Terms & Policies
+                </h1>
+
+                <p class="page-description">
+                    General terms for use of the client portal.
+                </p>
+
+
+                <div class="section-grid">
+
+                    <div class="info-card">
+
+                        <h3>1. Account Information</h3>
+
+                        <p>
+                            Users are responsible for providing accurate information
+                            when creating and maintaining an account.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>2. Deposit Verification</h3>
+
+                        <p>
+                            Deposit submissions may require transaction information
+                            and supporting evidence. A submitted document does not
+                            by itself confirm that funds have been received.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>3. Account Balances</h3>
+
+                        <p>
+                            Account figures are based on records maintained by the
+                            platform. Users must not attempt to manipulate account
+                            information through client-side requests.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>4. Processing</h3>
+
+                        <p>
+                            Deposit and withdrawal requests may require verification
+                            and review. The stated processing target is up to
+                            12 hours after a request has been accepted for processing.
+                            Processing time is not a guarantee of a particular
+                            financial result.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>5. Trading Risk</h3>
+
+                        <p>
+                            Foreign exchange and other financial markets involve
+                            risk. Educational information on this portal should not
+                            be interpreted as a guarantee of profits or a promise
+                            of a specific financial return.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>6. Security</h3>
+
+                        <p>
+                            Users must protect their login credentials and notify
+                            support if they suspect unauthorized access.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <div class="footer">
+                Quantum Edge Markets Client Portal
             </div>
 
-        </section>
+        </div>
 
     </main>
 
-</div>
+</section>
 
 
 <script>
 
-/* ==========================================
-   SUPABASE CONNECTION
-========================================== */
+/* =========================================================
+   SUPABASE CONFIGURATION
+   =========================================================
 
-const SUPABASE_URL =
-"https://qxwyrsezbisbajqnohsw.supabase.co";
+   Replace ONLY the two values below with your own
+   Supabase Project URL and Publishable Key.
 
-const SUPABASE_KEY =
-"sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
+   Never put a Supabase secret/service-role key here.
+========================================================= */
+
+const SUPABASE_URL = "https://qxwyrsezbisbajqnohsw.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
+
+const { createClient } = supabase;
+
+const db = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 
-let supabaseClient = null;
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+
+let currentUser = null;
+let currentProfile = null;
 
 
-/*
-   Only create the Supabase client when
-   real credentials have been entered.
-*/
+/* =========================================================
+   ELEMENT HELPERS
+========================================================= */
 
-if(
-    SUPABASE_URL !== "https://YOUR-PROJECT.supabase.co" &&
-    SUPABASE_KEY !== "YOUR_SB_PUBLISHABLE_KEY"
-){
+function $(id){
+    return document.getElementById(id);
+}
 
-    supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+
+/* =========================================================
+   AUTH UI
+========================================================= */
+
+function showLogin(){
+
+    $("loginTab").classList.add("active");
+    $("signupTab").classList.remove("active");
+
+    $("loginForm").classList.remove("hidden");
+    $("signupForm").classList.add("hidden");
+
+    clearAuthMessage();
+}
+
+
+function showSignup(){
+
+    $("signupTab").classList.add("active");
+    $("loginTab").classList.remove("active");
+
+    $("signupForm").classList.remove("hidden");
+    $("loginForm").classList.add("hidden");
+
+    clearAuthMessage();
+}
+
+
+function showAuthMessage(message,type){
+
+    const box = $("authMessage");
+
+    box.textContent = message;
+    box.className = "message " + type;
+}
+
+
+function clearAuthMessage(){
+
+    const box = $("authMessage");
+
+    box.textContent = "";
+    box.className = "message";
 
 }
 
 
-/* ==========================================
-   AUTH ELEMENTS
-========================================== */
-
-const signInTab =
-document.getElementById("signInTab");
-
-const signUpTab =
-document.getElementById("signUpTab");
-
-const signInForm =
-document.getElementById("signInForm");
-
-const signUpForm =
-document.getElementById("signUpForm");
-
-
-/* ==========================================
-   SIGN IN / SIGN UP SWITCH
-   THIS DOES NOT DEPEND ON SUPABASE
-========================================== */
-
-signInTab.addEventListener(
-    "click",
-    function(){
-
-        signInTab.classList.add("active");
-
-        signUpTab.classList.remove("active");
-
-        signInForm.classList.add("active");
-
-        signUpForm.classList.remove("active");
-
-    }
-);
-
-
-signUpTab.addEventListener(
-    "click",
-    function(){
-
-        signUpTab.classList.add("active");
-
-        signInTab.classList.remove("active");
-
-        signUpForm.classList.add("active");
-
-        signInForm.classList.remove("active");
-
-    }
-);
-
-
-/* ==========================================
+/* =========================================================
    SIGN UP
-========================================== */
+========================================================= */
 
-signUpForm.addEventListener(
-    "submit",
-    async function(event){
+$("signupForm").addEventListener("submit", async function(e){
 
-        event.preventDefault();
+    e.preventDefault();
 
-        const name =
-        document.getElementById(
-            "signUpName"
-        ).value.trim();
+    showAuthMessage("Creating your account...","success");
 
-        const email =
-        document.getElementById(
-            "signUpEmail"
-        ).value.trim();
+    const name = $("signupName").value.trim();
+    const phone = $("signupPhone").value.trim();
+    const email = $("signupEmail").value.trim();
+    const password = $("signupPassword").value;
 
-        const password =
-        document.getElementById(
-            "signUpPassword"
-        ).value;
+    try{
 
-        const confirm =
-        document.getElementById(
-            "signUpConfirm"
-        ).value;
-
-
-        const message =
-        document.getElementById(
-            "signUpMessage"
-        );
-
-
-        message.className =
-        "message";
-
-
-        if(password !== confirm){
-
-            message.textContent =
-            "Passwords do not match.";
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(password.length < 6){
-
-            message.textContent =
-            "Password must contain at least 6 characters.";
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
-        }
-
-
-        if(!supabaseClient){
-
-            message.textContent =
-            "Supabase credentials have not been added yet.";
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
-        }
-
-
-        message.textContent =
-        "Creating account...";
-
-
-        const result =
-        await supabaseClient.auth.signUp({
-
+        const { data, error } = await db.auth.signUp({
             email:email,
+            password:password
+        });
 
-            password:password,
+        if(error){
+            throw error;
+        }
 
-            options:{
-                data:{
-                    full_name:name
-                }
+        if(!data.user){
+            throw new Error("Account could not be created.");
+        }
+
+        const userId = data.user.id;
+
+        const accountId =
+            "QEM-" +
+            userId
+                .replace(/-/g,"")
+                .substring(0,8)
+                .toUpperCase();
+
+        const { error:profileError } = await db
+            .from("profiles")
+            .insert({
+                id:userId,
+                account_id:accountId,
+                full_name:name,
+                phone:phone,
+                bank:"Not set",
+                investment:0,
+                balance:0,
+                profit:0,
+                bonus:0,
+                period:0,
+                status:"Active"
+            });
+
+        if(profileError){
+
+            if(
+                profileError.code === "23505" ||
+                profileError.message.toLowerCase().includes("duplicate")
+            ){
+                showAuthMessage(
+                    "Your account exists. Please sign in.",
+                    "success"
+                );
+                showLogin();
+                return;
             }
 
-        });
-
-
-        if(result.error){
-
-            message.textContent =
-            result.error.message;
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
+            throw profileError;
         }
 
-
-        message.textContent =
-        "Account created successfully. Check your email if confirmation is required.";
-
-        message.classList.add(
+        showAuthMessage(
+            "Account created successfully. You can now sign in.",
             "success"
         );
 
+        $("signupForm").reset();
+
+        setTimeout(showLogin,1000);
+
+    }catch(error){
+
+        console.error(error);
+
+        showAuthMessage(
+            error.message || "Unable to create account.",
+            "error"
+        );
+
     }
-);
+
+});
 
 
-/* ==========================================
+/* =========================================================
    SIGN IN
-========================================== */
+========================================================= */
 
-signInForm.addEventListener(
-    "submit",
-    async function(event){
+$("loginForm").addEventListener("submit", async function(e){
 
-        event.preventDefault();
+    e.preventDefault();
 
+    showAuthMessage("Signing in...","success");
 
-        const email =
-        document.getElementById(
-            "signInEmail"
-        ).value.trim();
+    const email = $("loginEmail").value.trim();
+    const password = $("loginPassword").value;
 
-        const password =
-        document.getElementById(
-            "signInPassword"
-        ).value;
+    try{
 
-
-        const message =
-        document.getElementById(
-            "signInMessage"
-        );
-
-
-        if(!supabaseClient){
-
-            message.textContent =
-            "Supabase credentials have not been added yet.";
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
-        }
-
-
-        message.textContent =
-        "Signing in...";
-
-
-        const result =
-        await supabaseClient.auth.signInWithPassword({
-
+        const { data, error } = await db.auth.signInWithPassword({
             email:email,
-
             password:password
-
         });
 
-
-        if(result.error){
-
-            message.textContent =
-            result.error.message;
-
-            message.classList.add(
-                "error"
-            );
-
-            return;
+        if(error){
+            throw error;
         }
 
+        currentUser = data.user;
 
-        message.textContent =
-        "Signed in successfully.";
+        await openApplication();
 
-        message.classList.add(
-            "success"
+    }catch(error){
+
+        console.error(error);
+
+        showAuthMessage(
+            error.message || "Unable to sign in.",
+            "error"
         );
 
-
-        await loadUser();
-
-    }
-);
-
-
-/* ==========================================
-   LOAD USER
-========================================== */
-
-async function loadUser(){
-
-    if(!supabaseClient){
-
-        return;
     }
 
-
-    const result =
-    await supabaseClient.auth.getUser();
+});
 
 
-    if(
-        result.error ||
-        !result.data.user
-    ){
+/* =========================================================
+   OPEN APPLICATION
+========================================================= */
 
-        return;
-    }
+async function openApplication(){
 
+    $("authPage").classList.add("hidden");
+    $("app").classList.remove("hidden");
 
-    const user =
-    result.data.user;
+    await loadProfile();
+    await loadDepositHistory();
 
-
-    let profile = null;
-
-
-    const profileResult =
-    await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq(
-        "id",
-        user.id
-    )
-    .maybeSingle();
-
-
-    if(!profileResult.error){
-
-        profile =
-        profileResult.data;
-
-    }
-
-
-    const name =
-    profile &&
-    profile.full_name
-    ?
-    profile.full_name
-    :
-    user.user_metadata &&
-    user.user_metadata.full_name
-    ?
-    user.user_metadata.full_name
-    :
-    "Client";
-
-
-    document
-    .getElementById("sideName")
-    .textContent =
-    name;
-
-
-    document
-    .getElementById("welcomeName")
-    .textContent =
-    name;
-
-
-    document
-    .getElementById("accountName")
-    .textContent =
-    name;
-
-
-    document
-    .getElementById("accountEmail")
-    .textContent =
-    user.email || "-";
-
-
-    document
-    .getElementById("settingsEmail")
-    .textContent =
-    user.email || "-";
-
-
-    if(profile){
-
-        document
-        .getElementById("accountId")
-        .textContent =
-        profile.account_id || "-";
-
-
-        document
-        .getElementById("accountBank")
-        .textContent =
-        profile.bank || "Not set";
-
-
-        document
-        .getElementById("investment")
-        .textContent =
-        money(profile.investment);
-
-
-        document
-        .getElementById("balance")
-        .textContent =
-        money(profile.balance);
-
-
-        document
-        .getElementById("profit")
-        .textContent =
-        money(profile.profit);
-
-
-        document
-        .getElementById("bonus")
-        .textContent =
-        money(profile.bonus);
-
-    }
-
-
-    document
-    .getElementById("avatar")
-    .textContent =
-    initials(name);
-
-
-    document
-    .getElementById("authScreen")
-    .style.display =
-    "none";
-
-
-    document
-    .getElementById("portal")
-    .style.display =
-    "block";
+    openPage("dashboard");
 
 }
 
 
-/* ==========================================
-   MONEY
-========================================== */
+/* =========================================================
+   LOAD PROFILE
+========================================================= */
+
+async function loadProfile(){
+
+    if(!currentUser){
+        return;
+    }
+
+    const { data, error } = await db
+        .from("profiles")
+        .select("*")
+        .eq("id",currentUser.id)
+        .single();
+
+    if(error){
+
+        console.error(error);
+
+        $("welcomeName").textContent = "Investor";
+        $("topUser").textContent = currentUser.email;
+
+        return;
+    }
+
+    currentProfile = data;
+
+    renderProfile();
+
+}
+
+
+function renderProfile(){
+
+    if(!currentProfile){
+        return;
+    }
+
+    $("welcomeName").textContent =
+        currentProfile.full_name || "Investor";
+
+    $("topUser").textContent =
+        currentUser.email;
+
+    $("investmentValue").textContent =
+        "PGK " + money(currentProfile.investment);
+
+    $("balanceValue").textContent =
+        "PGK " + money(currentProfile.balance);
+
+    $("profitValue").textContent =
+        "PGK " + money(currentProfile.profit);
+
+    const status = currentProfile.status || "Active";
+
+    const statusElement = $("statusValue");
+
+    statusElement.textContent = status;
+
+    statusElement.className = "status";
+
+    if(status.toLowerCase() === "pending"){
+        statusElement.classList.add("pending");
+    }
+
+    if(status.toLowerCase() === "inactive"){
+        statusElement.classList.add("inactive");
+    }
+
+
+    $("profileAccountId").value =
+        currentProfile.account_id || "";
+
+    $("profileName").value =
+        currentProfile.full_name || "";
+
+    $("profileEmail").value =
+        currentUser.email || "";
+
+    $("profilePhone").value =
+        currentProfile.phone || "";
+
+    $("profileBank").value =
+        currentProfile.bank || "";
+
+}
+
 
 function money(value){
 
-    return "K" +
-    Number(
-        value || 0
-    ).toLocaleString(
-        undefined,
+    const number = Number(value || 0);
+
+    return number.toLocaleString(
+        "en-PG",
         {
             minimumFractionDigits:2,
             maximumFractionDigits:2
@@ -1341,261 +2018,471 @@ function money(value){
 }
 
 
-/* ==========================================
-   INITIALS
-========================================== */
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
 
-function initials(name){
+function openPage(page){
 
-    return String(name)
-    .split(" ")
-    .filter(Boolean)
-    .slice(0,2)
-    .map(
-        word =>
-        word.charAt(0)
-    )
-    .join("")
-    .toUpperCase();
+    document.querySelectorAll(".page").forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+
+    const selected = $("page-" + page);
+
+    if(selected){
+        selected.classList.add("active");
+    }
+
+
+    document.querySelectorAll(".menu button[data-page]").forEach(function(btn){
+
+        btn.classList.remove("active");
+
+        if(btn.dataset.page === page){
+            btn.classList.add("active");
+        }
+
+    });
+
+
+    $("sidebar").classList.remove("open");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
-/* ==========================================
-   NAVIGATION
-========================================== */
+document.querySelectorAll(".menu button[data-page]").forEach(function(button){
 
-document
-.querySelectorAll(
-    ".nav button[data-page]"
-)
-.forEach(
-    function(button){
+    button.addEventListener("click",function(){
 
-        button.addEventListener(
-            "click",
-            function(){
+        openPage(button.dataset.page);
 
-                const page =
-                button.dataset.page;
+    });
+
+});
 
 
-                document
-                .querySelectorAll(".page")
-                .forEach(
-                    function(section){
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
 
-                        section.classList.remove(
-                            "active"
-                        );
+$("menuToggle").addEventListener("click",function(){
 
+    $("sidebar").classList.toggle("open");
+
+});
+
+
+/* =========================================================
+   SAVE PROFILE
+   Only safe profile fields are sent.
+   Financial columns are deliberately excluded.
+========================================================= */
+
+async function saveProfile(){
+
+    if(!currentUser){
+        return;
+    }
+
+    const message = $("profileMessage");
+
+    try{
+
+        const name = $("profileName").value.trim();
+        const phone = $("profilePhone").value.trim();
+        const bank = $("profileBank").value.trim();
+
+        const { error } = await db
+            .from("profiles")
+            .update({
+                full_name:name,
+                phone:phone,
+                bank:bank
+            })
+            .eq("id",currentUser.id);
+
+        if(error){
+            throw error;
+        }
+
+        showMessage(
+            message,
+            "Profile updated successfully.",
+            "success"
+        );
+
+        await loadProfile();
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            message,
+            error.message || "Unable to update profile.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DEPOSIT VERIFICATION
+========================================================= */
+
+$("depositForm").addEventListener("submit",async function(e){
+
+    e.preventDefault();
+
+    if(!currentUser){
+        return;
+    }
+
+    const message = $("depositMessage");
+
+    try{
+
+        const bank = $("depositBank").value;
+        const amount = Number($("depositAmount").value);
+        const transactionMessage =
+            $("transactionMessage").value.trim();
+
+        const file =
+            $("depositScreenshot").files[0];
+
+
+        if(!bank){
+            throw new Error("Please select your bank.");
+        }
+
+        if(!amount || amount <= 0){
+            throw new Error("Enter a valid deposit amount.");
+        }
+
+        if(!transactionMessage){
+            throw new Error("Enter the bank transaction message.");
+        }
+
+        if(!file){
+            throw new Error("Please attach your transaction screenshot.");
+        }
+
+
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
+
+        if(!allowedTypes.includes(file.type)){
+            throw new Error(
+                "Please upload a JPG, PNG or WEBP image."
+            );
+        }
+
+
+        if(file.size > 5 * 1024 * 1024){
+            throw new Error(
+                "Screenshot must be smaller than 5 MB."
+            );
+        }
+
+
+        showMessage(
+            message,
+            "Uploading deposit proof...",
+            "success"
+        );
+
+
+        const extension =
+            file.name.split(".").pop().toLowerCase();
+
+        const fileName =
+            currentUser.id +
+            "/" +
+            crypto.randomUUID() +
+            "." +
+            extension;
+
+
+        const { error:uploadError } =
+            await db.storage
+                .from("deposit-proofs")
+                .upload(
+                    fileName,
+                    file,
+                    {
+                        contentType:file.type,
+                        upsert:false
                     }
                 );
 
 
-                document
-                .getElementById(page)
-                .classList.add(
-                    "active"
-                );
+        if(uploadError){
+            throw uploadError;
+        }
 
 
-                document
-                .querySelectorAll(
-                    ".nav button[data-page]"
-                )
-                .forEach(
-                    function(item){
-
-                        item.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
+        const { error:insertError } =
+            await db
+                .from("deposit_requests")
+                .insert({
+                    user_id:currentUser.id,
+                    bank:bank,
+                    amount:amount,
+                    transaction_message:transactionMessage,
+                    screenshot_url:fileName,
+                    status:"Pending"
+                });
 
 
-                button.classList.add(
-                    "active"
-                );
+        if(insertError){
+            throw insertError;
+        }
 
 
-                document
-                .getElementById("sidebar")
-                .classList.remove(
-                    "open"
-                );
+        showMessage(
+            message,
+            "Deposit submitted successfully. Status: Pending verification.",
+            "success"
+        );
 
-            }
+
+        $("depositForm").reset();
+
+        await loadDepositHistory();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            message,
+            error.message || "Unable to submit deposit.",
+            "error"
         );
 
     }
-);
+
+});
 
 
-/* ==========================================
-   MOBILE MENU
-========================================== */
+/* =========================================================
+   DEPOSIT HISTORY
+========================================================= */
 
-document
-.getElementById("mobileMenu")
-.addEventListener(
-    "click",
-    function(){
+async function loadDepositHistory(){
 
-        document
-        .getElementById("sidebar")
-        .classList.toggle(
-            "open"
-        );
+    if(!currentUser){
+        return;
+    }
+
+    const container = $("depositHistory");
+
+    if(!container){
+        return;
+    }
+
+    const { data, error } = await db
+        .from("deposit_requests")
+        .select(
+            "id,bank,amount,transaction_message,status,created_at"
+        )
+        .eq("user_id",currentUser.id)
+        .order("created_at",{ascending:false});
+
+
+    if(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            '<div class="muted">Unable to load verification history.</div>';
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        container.innerHTML =
+            '<div class="muted">No deposit submissions yet.</div>';
+
+        return;
 
     }
-);
 
 
-/* ==========================================
-   LOGOUT
-========================================== */
+    container.innerHTML = data.map(function(item){
 
-document
-.getElementById("logoutButton")
-.addEventListener(
-    "click",
-    async function(){
+        const status =
+            item.status || "Pending";
 
-        if(supabaseClient){
+        const date =
+            new Date(item.created_at).toLocaleString();
 
-            await supabaseClient.auth.signOut();
+        return `
+            <div class="history-item">
 
-        }
+                <div>
 
+                    <strong>${escapeHtml(item.bank)}</strong>
 
-        document
-        .getElementById("portal")
-        .style.display =
-        "none";
+                    <div class="muted">
+                        PGK ${money(item.amount)}
+                    </div>
 
+                    <div class="muted">
+                        ${escapeHtml(item.transaction_message)}
+                    </div>
 
-        document
-        .getElementById("authScreen")
-        .style.display =
-        "flex";
+                    <div class="muted">
+                        ${escapeHtml(date)}
+                    </div>
 
+                </div>
 
-        signInTab.click();
+                <div>
+                    <span class="status ${
+                        status.toLowerCase() === "pending"
+                        ? "pending"
+                        : ""
+                    }">
+                        ${escapeHtml(status)}
+                    </span>
+                </div>
 
-    }
-);
+            </div>
+        `;
 
+    }).join("");
 
-/* ==========================================
-   EMAIL SUPPORT
-========================================== */
-
-document
-.getElementById("emailSupport")
-.addEventListener(
-    "click",
-    function(){
-
-        window.location.href =
-        "mailto:Fxglobal54@gmail.com";
-
-    }
-);
+}
 
 
-/* ==========================================
-   CHANGE PASSWORD
-========================================== */
+/* =========================================================
+   WITHDRAWAL
+   This form records intent locally in the current UI.
+   A production withdrawal workflow should use a dedicated
+   Supabase table with appropriate server-side authorization.
+========================================================= */
 
-document
-.getElementById("changePassword")
-.addEventListener(
-    "click",
-    async function(){
+$("withdrawForm").addEventListener("submit",function(e){
 
-        const password =
-        document
-        .getElementById("newPassword")
-        .value;
+    e.preventDefault();
 
-
-        const message =
-        document
-        .getElementById("passwordMessage");
-
-
-        if(!supabaseClient){
-
-            message.textContent =
-            "Supabase is not connected.";
-
-            return;
-        }
-
-
-        if(password.length < 6){
-
-            message.textContent =
-            "Password must contain at least 6 characters.";
-
-            return;
-        }
-
-
-        const result =
-        await supabaseClient.auth.updateUser({
-
-            password:password
-
-        });
-
-
-        if(result.error){
-
-            message.textContent =
-            result.error.message;
-
-            return;
-        }
-
-
-        message.textContent =
-        "Password changed successfully.";
-
-        document
-        .getElementById("newPassword")
-        .value = "";
-
-    }
-);
-
-
-/* ==========================================
-   START
-========================================== */
-
-if(supabaseClient){
-
-    supabaseClient.auth
-    .getSession()
-    .then(
-        function(result){
-
-            if(
-                result.data &&
-                result.data.session
-            ){
-
-                loadUser();
-
-            }
-
-        }
+    showMessage(
+        $("withdrawMessage"),
+        "Withdrawal request received. Processing is subject to account verification and available verified funds.",
+        "success"
     );
 
+    $("withdrawForm").reset();
+
+});
+
+
+/* =========================================================
+   AUTH SESSION
+========================================================= */
+
+async function checkSession(){
+
+    try{
+
+        const {
+            data:{
+                session
+            }
+        } = await db.auth.getSession();
+
+        if(session){
+
+            currentUser = session.user;
+
+            await openApplication();
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
 }
+
+
+db.auth.onAuthStateChange(async function(event,session){
+
+    if(event === "SIGNED_OUT"){
+
+        currentUser = null;
+        currentProfile = null;
+
+        $("app").classList.add("hidden");
+        $("authPage").classList.remove("hidden");
+
+        $("loginForm").reset();
+
+    }
+
+});
+
+
+/* =========================================================
+   SIGN OUT
+========================================================= */
+
+$("signoutBtn").addEventListener("click",async function(){
+
+    await db.auth.signOut();
+
+});
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function showMessage(element,text,type){
+
+    element.textContent = text;
+    element.className = "message " + type;
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+checkSession();
 
 </script>
 
