@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -9,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -35,7 +37,10 @@ body{
     min-height:100vh;
 }
 
-button,input,select,textarea{
+button,
+input,
+select,
+textarea{
     font:inherit;
 }
 
@@ -47,7 +52,9 @@ button{
     display:none!important;
 }
 
-/* AUTH */
+/* =========================================================
+   AUTH
+   ========================================================= */
 
 #authPage{
     min-height:100vh;
@@ -55,9 +62,18 @@ button{
     align-items:center;
     justify-content:center;
     padding:20px;
+
     background:
-        radial-gradient(circle at top right,#12395c 0,transparent 35%),
-        radial-gradient(circle at bottom left,#073b3a 0,transparent 30%),
+        radial-gradient(
+            circle at top right,
+            #12395c 0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            #073b3a 0,
+            transparent 30%
+        ),
         var(--bg);
 }
 
@@ -157,12 +173,23 @@ textarea{
     background:#22ddba;
 }
 
+.secondary-btn{
+    width:100%;
+    border:1px solid var(--border);
+    background:transparent;
+    color:white;
+    padding:13px;
+    border-radius:11px;
+    margin-top:10px;
+}
+
 .message{
     margin-top:15px;
     padding:12px;
     border-radius:10px;
     display:none;
     font-size:14px;
+    line-height:1.5;
 }
 
 .message.success{
@@ -179,7 +206,10 @@ textarea{
     color:#ff9eaa;
 }
 
-/* APP */
+
+/* =========================================================
+   APP
+   ========================================================= */
 
 #app{
     min-height:100vh;
@@ -292,7 +322,10 @@ textarea{
     margin-bottom:25px;
 }
 
-/* DASHBOARD */
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
 
 .account-banner{
     background:linear-gradient(135deg,#102b46,#0b554c);
@@ -312,9 +345,9 @@ textarea{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:15px;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .card{
@@ -331,7 +364,7 @@ textarea{
 }
 
 .card-value{
-    font-size:25px;
+    font-size:23px;
     font-weight:800;
 }
 
@@ -358,36 +391,10 @@ textarea{
     color:#ff8b98;
 }
 
-.quick-actions{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:25px;
-}
 
-.quick-action{
-    border:1px solid var(--border);
-    background:var(--panel);
-    color:white;
-    border-radius:15px;
-    padding:18px;
-    text-align:left;
-}
-
-.quick-action:hover{
-    border-color:var(--accent);
-}
-
-.quick-action strong{
-    display:block;
-    margin-bottom:6px;
-}
-
-.quick-action small{
-    color:var(--muted);
-}
-
-/* CHARTS */
+/* =========================================================
+   CHARTS
+   ========================================================= */
 
 .chart-grid{
     display:grid;
@@ -428,7 +435,10 @@ textarea{
     border:0;
 }
 
-/* CARDS */
+
+/* =========================================================
+   GENERAL CARDS
+   ========================================================= */
 
 .section-grid{
     display:grid;
@@ -457,36 +467,8 @@ textarea{
     padding-left:20px;
 }
 
-.bank-card{
-    margin-top:15px;
-    background:#091827;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:18px;
-}
-
-.bank-card h3{
-    color:var(--accent);
-}
-
-.bank-row{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:9px 0;
-    border-bottom:1px solid #142b42;
-}
-
-.bank-row:last-child{
-    border-bottom:0;
-}
-
-.bank-row span:first-child{
-    color:var(--muted);
-}
-
 .form-card{
-    max-width:800px;
+    max-width:850px;
     background:var(--panel);
     border:1px solid var(--border);
     border-radius:16px;
@@ -533,6 +515,72 @@ textarea{
     font-size:12px;
 }
 
+
+/* =========================================================
+   PAYMENT METHODS
+   ========================================================= */
+
+.payment-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.payment-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.payment-card h3{
+    margin-bottom:5px;
+}
+
+.payment-type{
+    color:var(--accent);
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.payment-row{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:10px 0;
+    border-bottom:1px solid #142b42;
+}
+
+.payment-row:last-child{
+    border-bottom:0;
+}
+
+.payment-row span:first-child{
+    color:var(--muted);
+}
+
+.payment-instructions{
+    margin-top:15px;
+    padding:13px;
+    background:#091827;
+    border-radius:10px;
+    color:#aebdcb;
+    line-height:1.6;
+}
+
+.empty-state{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
 .settings-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -560,7 +608,18 @@ textarea{
     margin-bottom:18px;
 }
 
-/* MOBILE */
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:1100px){
+
+    .cards{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
 
 @media(max-width:900px){
 
@@ -587,13 +646,15 @@ textarea{
 
     .chart-grid,
     .section-grid,
-    .settings-grid{
+    .settings-grid,
+    .payment-grid{
         grid-template-columns:1fr;
     }
 
     .setting-card.full{
         grid-column:auto;
     }
+
 }
 
 @media(max-width:600px){
@@ -615,11 +676,7 @@ textarea{
     }
 
     .card-value{
-        font-size:20px;
-    }
-
-    .quick-actions{
-        grid-template-columns:1fr;
+        font-size:19px;
     }
 
     .page-title{
@@ -633,13 +690,23 @@ textarea{
     .history-item{
         flex-direction:column;
     }
+
+    .payment-row{
+        flex-direction:column;
+        gap:4px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- AUTH -->
+
+<!-- =======================================================
+     AUTH PAGE
+======================================================= -->
 
 <section id="authPage">
 
@@ -653,128 +720,266 @@ QUANTUM <span>EDGE</span> MARKETS
 Secure client portal
 </div>
 
+
 <div class="auth-tabs">
 
-<button id="loginTab" class="active" onclick="showLogin()">
+<button
+id="loginTab"
+class="active"
+onclick="showLogin()">
 Sign In
 </button>
 
-<button id="signupTab" onclick="showSignup()">
+<button
+id="signupTab"
+onclick="showSignup()">
 Sign Up
 </button>
 
 </div>
 
+
+<!-- LOGIN -->
+
 <form id="loginForm">
 
 <div class="form-group">
+
 <label>Email</label>
-<input type="email" id="loginEmail" required>
+
+<input
+type="email"
+id="loginEmail"
+required>
+
 </div>
+
 
 <div class="form-group">
+
 <label>Password</label>
-<input type="password" id="loginPassword" required>
+
+<input
+type="password"
+id="loginPassword"
+required>
+
 </div>
 
-<button class="primary-btn" type="submit">
+
+<button
+class="primary-btn"
+type="submit">
+
 Sign In
+
 </button>
 
 </form>
 
-<form id="signupForm" class="hidden">
+
+<!-- SIGNUP -->
+
+<form
+id="signupForm"
+class="hidden">
 
 <div class="form-group">
+
 <label>Full Name</label>
-<input type="text" id="signupName" required>
+
+<input
+type="text"
+id="signupName"
+required>
+
 </div>
 
+
 <div class="form-group">
+
 <label>Phone</label>
-<input type="tel" id="signupPhone">
+
+<input
+type="tel"
+id="signupPhone">
+
 </div>
 
+
 <div class="form-group">
+
 <label>Email</label>
-<input type="email" id="signupEmail" required>
+
+<input
+type="email"
+id="signupEmail"
+required>
+
 </div>
+
 
 <div class="form-group">
+
 <label>Password</label>
-<input type="password" id="signupPassword" minlength="6" required>
+
+<input
+type="password"
+id="signupPassword"
+minlength="6"
+required>
+
 </div>
 
-<button class="primary-btn" type="submit">
+
+<button
+class="primary-btn"
+type="submit">
+
 Create Account
+
 </button>
 
 </form>
 
-<div id="authMessage" class="message"></div>
+
+<div
+id="authMessage"
+class="message">
+</div>
 
 </div>
+
 </section>
 
 
-<!-- APPLICATION -->
 
-<section id="app" class="hidden">
+<!-- =======================================================
+     APPLICATION
+======================================================= -->
 
-<aside class="sidebar" id="sidebar">
+<section
+id="app"
+class="hidden">
+
+
+<!-- SIDEBAR -->
+
+<aside
+class="sidebar"
+id="sidebar">
 
 <div class="sidebar-header">
+
 <div class="sidebar-logo">
 QUANTUM <span>EDGE</span>
 </div>
+
 </div>
+
 
 <nav class="menu">
 
-<button class="active" data-page="dashboard">🏠 Dashboard</button>
-<button data-page="deposit">💰 Deposit</button>
-<button data-page="verification">✅ Deposit Verification</button>
-<button data-page="withdraw">💸 Withdraw</button>
-<button data-page="markets">📊 Markets</button>
-<button data-page="education">📚 Forex Education</button>
-<button data-page="profile">👤 My Profile</button>
-<button data-page="settings">⚙️ Settings</button>
-<button data-page="support">📞 Support</button>
-<button data-page="terms">📜 Terms & Policies</button>
-<button class="signout" id="signoutBtn">🚪 Sign Out</button>
+<button
+class="active"
+data-page="dashboard">
+🏠 Dashboard
+</button>
+
+<button data-page="deposit">
+💰 Deposit
+</button>
+
+<button data-page="verification">
+✅ Deposit Verification
+</button>
+
+<button data-page="withdraw">
+💸 Withdraw
+</button>
+
+<button data-page="markets">
+📊 Markets
+</button>
+
+<button data-page="education">
+📚 Forex Education
+</button>
+
+<button data-page="profile">
+👤 My Profile
+</button>
+
+<button data-page="settings">
+⚙️ Settings
+</button>
+
+<button data-page="support">
+📞 Support
+</button>
+
+<button data-page="terms">
+📜 Terms & Policies
+</button>
+
+<button
+class="signout"
+id="signoutBtn">
+🚪 Sign Out
+</button>
 
 </nav>
+
 </aside>
 
 
+
+<!-- MAIN -->
+
 <main class="main">
+
 
 <header class="topbar">
 
-<button class="menu-toggle" id="menuToggle">
+<button
+class="menu-toggle"
+id="menuToggle">
 ☰
 </button>
 
-<strong>Client Portal</strong>
+<strong>
+Client Portal
+</strong>
 
-<div class="user-short" id="topUser">
+<div
+class="user-short"
+id="topUser">
 Loading...
 </div>
 
 </header>
 
 
+
 <div class="content">
 
 
-<!-- DASHBOARD -->
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
 
-<section class="page active" id="page-dashboard">
+<section
+class="page active"
+id="page-dashboard">
+
 
 <div class="account-banner">
 
 <h2>
-Welcome, <span id="welcomeName">Investor</span>
+Welcome,
+<span id="welcomeName">
+Investor
+</span>
 </h2>
 
 <p>
@@ -783,50 +988,90 @@ Your account overview and verified account information.
 
 </div>
 
+
 <div class="cards">
 
-<div class="card">
-<div class="card-label">Investment</div>
-<div class="card-value" id="investmentValue">PGK 0.00</div>
-</div>
 
 <div class="card">
-<div class="card-label">Balance</div>
-<div class="card-value" id="balanceValue">PGK 0.00</div>
+
+<div class="card-label">
+Investment
 </div>
 
-<div class="card">
-<div class="card-label">Profit</div>
-<div class="card-value positive" id="profitValue">PGK 0.00</div>
+<div
+class="card-value"
+id="investmentValue">
+USD 0.00
 </div>
 
+</div>
+
+
 <div class="card">
-<div class="card-label">Account Status</div>
+
+<div class="card-label">
+Balance
+</div>
+
+<div
+class="card-value"
+id="balanceValue">
+USD 0.00
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-label">
+Profit
+</div>
+
+<div
+class="card-value positive"
+id="profitValue">
+USD 0.00
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-label">
+Bonus
+</div>
+
+<div
+class="card-value positive"
+id="bonusValue">
+USD 0.00
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-label">
+Account Status
+</div>
+
 <div class="card-value">
-<span id="statusValue" class="status">Active</span>
-</div>
-</div>
+
+<span
+id="statusValue"
+class="status">
+Active
+</span>
 
 </div>
 
-<div class="quick-actions">
-
-<button class="quick-action" onclick="openPage('deposit')">
-<strong>💰 Make a Deposit</strong>
-<small>View available bank details.</small>
-</button>
-
-<button class="quick-action" onclick="openPage('verification')">
-<strong>✅ Verify a Deposit</strong>
-<small>Submit transaction information and proof.</small>
-</button>
-
-<button class="quick-action" onclick="openPage('withdraw')">
-<strong>💸 Withdrawal Request</strong>
-<small>Submit a withdrawal request.</small>
-</button>
+</div>
 
 </div>
+
 
 <h2 class="page-title">
 Market Charts
@@ -836,14 +1081,24 @@ Market Charts
 XAUUSD and GBPUSD market charts for market observation.
 </p>
 
+
 <div class="chart-grid">
+
 
 <div class="chart-card">
 
 <div class="chart-header">
-<h3>XAUUSD</h3>
-<p>Gold / US Dollar</p>
+
+<h3>
+XAUUSD
+</h3>
+
+<p>
+Gold / US Dollar
+</p>
+
 </div>
+
 
 <div class="chart-frame">
 
@@ -854,15 +1109,25 @@ title="XAUUSD chart">
 </iframe>
 
 </div>
+
 </div>
+
 
 
 <div class="chart-card">
 
 <div class="chart-header">
-<h3>GBPUSD</h3>
-<p>British Pound / US Dollar</p>
+
+<h3>
+GBPUSD
+</h3>
+
+<p>
+British Pound / US Dollar
+</p>
+
 </div>
+
 
 <div class="chart-frame">
 
@@ -873,73 +1138,56 @@ title="GBPUSD chart">
 </iframe>
 
 </div>
+
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- DEPOSIT -->
 
-<section class="page" id="page-deposit">
+<!-- =====================================================
+     DEPOSIT
+===================================================== -->
 
-<h1 class="page-title">Deposit</h1>
+<section
+class="page"
+id="page-deposit">
+
+<h1 class="page-title">
+Deposit
+</h1>
 
 <p class="page-description">
-Use the supported bank details when making a deposit.
+Available payment methods for your account.
 </p>
 
-<div class="section-grid">
 
-<div class="info-card">
+<div
+id="paymentMethodsContainer"
+class="payment-grid">
 
-<h3>BSP</h3>
-
-<div class="bank-card">
-
-<div class="bank-row">
-<span>Account Name</span>
-<strong>Quantum Edge Markets</strong>
-</div>
-
-<div class="bank-row">
-<span>Account Number</span>
-<strong>7004707480</strong>
-</div>
-
-</div>
-</div>
-
-
-<div class="info-card">
-
-<h3>Kina Bank</h3>
-
-<div class="bank-card">
-
-<div class="bank-row">
-<span>Account Name</span>
-<strong>Quantum Edge Markets</strong>
-</div>
-
-<div class="bank-row">
-<span>Account Number</span>
-<strong>29223514</strong>
-</div>
-
-</div>
+<div class="empty-state">
+Loading payment methods...
 </div>
 
 </div>
 
-<div class="info-card" style="margin-top:18px">
 
-<h3>After making your deposit</h3>
+<div
+class="info-card"
+style="margin-top:18px">
+
+<h3>
+After making your deposit
+</h3>
 
 <p>
-Keep your bank transaction message or reference and use
-<strong>Deposit Verification</strong> to submit the information and screenshot.
+Keep your transaction reference or receipt. Then use
+<strong>Deposit Verification</strong> to submit your transaction
+information and supporting proof.
 </p>
 
 </div>
@@ -947,9 +1195,14 @@ Keep your bank transaction message or reference and use
 </section>
 
 
-<!-- VERIFICATION -->
 
-<section class="page" id="page-verification">
+<!-- =====================================================
+     VERIFICATION
+===================================================== -->
+
+<section
+class="page"
+id="page-verification">
 
 <h1 class="page-title">
 Deposit Verification
@@ -959,33 +1212,46 @@ Deposit Verification
 Submit your transaction information for review.
 </p>
 
+
 <div class="form-card">
 
+
 <div class="notice">
-Deposit submissions are reviewed before they are reflected as verified
-account funds. Uploading a screenshot does not by itself confirm receipt
-of funds.
+
+Deposit submissions are reviewed before they are reflected
+as verified account funds. Uploading a screenshot does not
+by itself confirm receipt of funds.
+
 </div>
+
 
 <form id="depositForm">
 
+
 <div class="form-group">
 
-<label>Bank</label>
+<label>
+Payment Method
+</label>
 
-<select id="depositBank" required>
+<select
+id="depositMethod"
+required>
 
-<option value="">Select bank</option>
-<option value="BSP">BSP</option>
-<option value="Kina Bank">Kina Bank</option>
+<option value="">
+Select payment method
+</option>
 
 </select>
 
 </div>
 
+
 <div class="form-group">
 
-<label>Deposit Amount (PGK)</label>
+<label>
+Deposit Amount
+</label>
 
 <input
 type="number"
@@ -996,21 +1262,27 @@ required>
 
 </div>
 
+
 <div class="form-group">
 
-<label>Bank Transaction Message / Reference</label>
+<label>
+Transaction Message / Reference
+</label>
 
 <textarea
 id="transactionMessage"
 required
-placeholder="Paste the transaction message or reference supplied by your bank...">
+placeholder="Paste the transaction message or reference supplied by your bank or payment provider...">
 </textarea>
 
 </div>
 
+
 <div class="form-group">
 
-<label>Transaction Screenshot</label>
+<label>
+Transaction Screenshot
+</label>
 
 <input
 class="file-input"
@@ -1021,15 +1293,25 @@ required>
 
 </div>
 
-<button class="primary-btn" type="submit">
+
+<button
+class="primary-btn"
+type="submit">
+
 Submit Deposit for Verification
+
 </button>
 
 </form>
 
-<div id="depositMessage" class="message"></div>
+
+<div
+id="depositMessage"
+class="message">
+</div>
 
 </div>
+
 
 <div class="history">
 
@@ -1046,9 +1328,14 @@ Loading...
 </section>
 
 
-<!-- WITHDRAW -->
 
-<section class="page" id="page-withdraw">
+<!-- =====================================================
+     WITHDRAW
+===================================================== -->
+
+<section
+class="page"
+id="page-withdraw">
 
 <h1 class="page-title">
 Withdrawal
@@ -1058,68 +1345,126 @@ Withdrawal
 Submit a withdrawal request using your registered information.
 </p>
 
+
 <div class="form-card">
 
+
 <div class="notice">
-Withdrawal requests are subject to account verification and available
-verified funds. The stated processing target is up to 12 hours after
-a request has been accepted for processing.
+
+Withdrawal requests are subject to account verification and
+available verified funds. Requests are reviewed before processing.
+
 </div>
+
 
 <form id="withdrawForm">
 
+
 <div class="form-group">
-<label>Amount</label>
-<input type="number" id="withdrawAmount" min="0.01" step="0.01" required>
+
+<label>
+Amount
+</label>
+
+<input
+type="number"
+id="withdrawAmount"
+min="0.01"
+step="0.01"
+required>
+
 </div>
 
-<div class="form-group">
-<label>Bank</label>
 
-<select id="withdrawBank" required>
-<option value="">Select bank</option>
-<option value="BSP">BSP</option>
-<option value="Kina Bank">Kina Bank</option>
+<div class="form-group">
+
+<label>
+Payment Method
+</label>
+
+<select
+id="withdrawMethod"
+required>
+
+<option value="">
+Select payment method
+</option>
+
 </select>
 
 </div>
 
+
 <div class="form-group">
-<label>Account Number</label>
-<input type="text" id="withdrawAccount" required>
+
+<label>
+Receiving Account / Wallet / Phone
+</label>
+
+<input
+type="text"
+id="withdrawAccount"
+required>
+
 </div>
 
-<button class="primary-btn" type="submit">
+
+<button
+class="primary-btn"
+type="submit">
+
 Submit Withdrawal Request
+
 </button>
 
 </form>
 
-<div id="withdrawMessage" class="message"></div>
+
+<div
+id="withdrawMessage"
+class="message">
+</div>
 
 </div>
 
 </section>
 
 
-<!-- MARKETS -->
 
-<section class="page" id="page-markets">
+<!-- =====================================================
+     MARKETS
+===================================================== -->
 
-<h1 class="page-title">Markets</h1>
+<section
+class="page"
+id="page-markets">
+
+<h1 class="page-title">
+Markets
+</h1>
 
 <p class="page-description">
 Market observation and educational analysis.
 </p>
 
+
 <div class="chart-grid">
+
 
 <div class="chart-card">
 
 <div class="chart-header">
-<h3>XAUUSD</h3>
-<p>Gold / US Dollar</p>
+
+<h3>
+XAUUSD
+</h3>
+
+<p>
+Gold / US Dollar
+</p>
+
 </div>
+
 
 <div class="chart-frame">
 
@@ -1129,15 +1474,25 @@ loading="lazy">
 </iframe>
 
 </div>
+
 </div>
+
 
 
 <div class="chart-card">
 
 <div class="chart-header">
-<h3>GBPUSD</h3>
-<p>British Pound / US Dollar</p>
+
+<h3>
+GBPUSD
+</h3>
+
+<p>
+British Pound / US Dollar
+</p>
+
 </div>
+
 
 <div class="chart-frame">
 
@@ -1147,16 +1502,23 @@ loading="lazy">
 </iframe>
 
 </div>
+
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- EDUCATION -->
 
-<section class="page" id="page-education">
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
+<section
+class="page"
+id="page-education">
 
 <h1 class="page-title">
 Forex Education
@@ -1166,15 +1528,19 @@ Forex Education
 Educational information about foreign exchange markets.
 </p>
 
+
 <div class="section-grid">
+
 
 <div class="info-card">
 
-<h3>Forex Fundamentals</h3>
+<h3>
+Forex Fundamentals
+</h3>
 
 <p>
-Fundamental analysis considers economic information that can influence
-currency markets.
+Fundamental analysis considers economic information that
+can influence currency markets.
 </p>
 
 <ul>
@@ -1192,10 +1558,13 @@ currency markets.
 
 <div class="info-card">
 
-<h3>Technical Analysis</h3>
+<h3>
+Technical Analysis
+</h3>
 
 <p>
-Technical analysis studies historical price behaviour and market structure.
+Technical analysis studies historical price behaviour and
+market structure.
 </p>
 
 <ul>
@@ -1212,11 +1581,13 @@ Technical analysis studies historical price behaviour and market structure.
 
 <div class="info-card">
 
-<h3>Market Structure</h3>
+<h3>
+Market Structure
+</h3>
 
 <p>
-Traders may study higher highs, higher lows, lower highs and lower lows
-to understand directional price structure.
+Traders may study higher highs, higher lows, lower highs
+and lower lows to understand directional price structure.
 </p>
 
 </div>
@@ -1224,11 +1595,13 @@ to understand directional price structure.
 
 <div class="info-card">
 
-<h3>Risk Management</h3>
+<h3>
+Risk Management
+</h3>
 
 <p>
-Position sizing, stop-loss planning and risk-to-reward analysis are
-important components of responsible trading education.
+Position sizing, stop-loss planning and risk-to-reward
+analysis are important components of responsible trading education.
 </p>
 
 </div>
@@ -1236,12 +1609,14 @@ important components of responsible trading education.
 
 <div class="info-card">
 
-<h3>ICT Concepts</h3>
+<h3>
+ICT Concepts
+</h3>
 
 <p>
-Educational ICT-style concepts include liquidity, market structure,
-fair value gaps, order blocks, dealing ranges and time-based market
-behaviour.
+Educational ICT-style concepts include liquidity, market
+structure, fair value gaps, order blocks, dealing ranges
+and time-based market behaviour.
 </p>
 
 </div>
@@ -1249,24 +1624,32 @@ behaviour.
 
 <div class="info-card">
 
-<h3>2022 Framework</h3>
+<h3>
+2022 Framework
+</h3>
 
 <p>
-Educational discussions of the ICT 2022 framework commonly examine
-liquidity, displacement, market structure shifts, fair value gaps and
-time-of-day behaviour.
+Educational discussions of the ICT 2022 framework commonly
+examine liquidity, displacement, market structure shifts,
+fair value gaps and time-of-day behaviour.
 </p>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- PROFILE -->
 
-<section class="page" id="page-profile">
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<section
+class="page"
+id="page-profile">
 
 <h1 class="page-title">
 My Profile
@@ -1276,47 +1659,100 @@ My Profile
 Your registered account information.
 </p>
 
+
 <div class="form-card">
 
-<div class="form-group">
-<label>Account ID</label>
-<input id="profileAccountId" readonly>
-</div>
 
 <div class="form-group">
-<label>Full Name</label>
-<input id="profileName">
+
+<label>
+Account ID
+</label>
+
+<input
+id="profileAccountId"
+readonly>
+
 </div>
+
 
 <div class="form-group">
-<label>Email</label>
-<input id="profileEmail" readonly>
+
+<label>
+Full Name
+</label>
+
+<input
+id="profileName">
+
 </div>
+
 
 <div class="form-group">
-<label>Phone</label>
-<input id="profilePhone">
+
+<label>
+Email
+</label>
+
+<input
+id="profileEmail"
+readonly>
+
 </div>
+
 
 <div class="form-group">
-<label>Bank</label>
-<input id="profileBank">
+
+<label>
+Phone
+</label>
+
+<input
+id="profilePhone">
+
 </div>
 
-<button class="primary-btn" onclick="saveProfile()">
+
+<div class="form-group">
+
+<label>
+Bank / Receiving Details
+</label>
+
+<input
+id="profileBank"
+placeholder="Enter your preferred receiving details">
+
+</div>
+
+
+<button
+class="primary-btn"
+onclick="saveProfile()">
+
 Save Profile
+
 </button>
 
-<div id="profileMessage" class="message"></div>
+
+<div
+id="profileMessage"
+class="message">
+</div>
 
 </div>
 
 </section>
 
 
-<!-- SETTINGS -->
 
-<section class="page" id="page-settings">
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+class="page"
+id="page-settings">
 
 <h1 class="page-title">
 Settings
@@ -1326,13 +1762,19 @@ Settings
 Customize your country, currency and international phone information.
 </p>
 
+
 <div class="settings-grid">
+
 
 <div class="setting-card">
 
-<h3>🌍 Country</h3>
+<h3>
+🌍 Country
+</h3>
 
-<p>Select your country of residence.</p>
+<p>
+Select your country of residence.
+</p>
 
 <select id="countrySelect"></select>
 
@@ -1341,9 +1783,14 @@ Customize your country, currency and international phone information.
 
 <div class="setting-card">
 
-<h3>💱 Currency</h3>
+<h3>
+💱 Currency
+</h3>
 
-<p>Select the currency you want associated with your profile.</p>
+<p>
+Select the currency used for displaying your account values.
+The underlying account records remain unchanged.
+</p>
 
 <select id="currencySelect"></select>
 
@@ -1352,11 +1799,13 @@ Customize your country, currency and international phone information.
 
 <div class="setting-card full">
 
-<h3>📞 Phone Country Code</h3>
+<h3>
+📞 Phone Country Code
+</h3>
 
 <p>
-Select your international calling code. Your existing phone number
-will remain separate.
+Select your international calling code.
+Your phone number remains separate.
 </p>
 
 <select id="phoneCodeSelect"></select>
@@ -1366,34 +1815,53 @@ will remain separate.
 
 <div class="setting-card full">
 
-<button class="primary-btn" onclick="saveSettings()">
+<button
+class="primary-btn"
+onclick="saveSettings()">
+
 Save Settings
+
 </button>
 
-<div id="settingsMessage" class="message"></div>
+<div
+id="settingsMessage"
+class="message">
+</div>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- SUPPORT -->
 
-<section class="page" id="page-support">
+<!-- =====================================================
+     SUPPORT
+===================================================== -->
 
-<h1 class="page-title">Support</h1>
+<section
+class="page"
+id="page-support">
+
+<h1 class="page-title">
+Support
+</h1>
 
 <p class="page-description">
 Contact Quantum Edge Markets support.
 </p>
 
+
 <div class="section-grid">
+
 
 <div class="info-card">
 
-<h3>Email Support</h3>
+<h3>
+Email Support
+</h3>
 
 <p>
 Fxglobal54@gmail.com
@@ -1401,25 +1869,34 @@ Fxglobal54@gmail.com
 
 </div>
 
+
 <div class="info-card">
 
-<h3>Deposit Assistance</h3>
+<h3>
+Deposit Assistance
+</h3>
 
 <p>
-For deposit verification, provide your bank transaction reference
+For deposit verification, provide your transaction reference
 and supporting evidence through the Deposit Verification section.
 </p>
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- TERMS -->
 
-<section class="page" id="page-terms">
+<!-- =====================================================
+     TERMS
+===================================================== -->
+
+<section
+class="page"
+id="page-terms">
 
 <h1 class="page-title">
 Terms & Policies
@@ -1429,97 +1906,155 @@ Terms & Policies
 General terms governing use of the client portal.
 </p>
 
+
 <div class="section-grid">
 
-<div class="info-card">
-<h3>1. Account Information</h3>
-<p>
-Users should provide accurate information when creating and maintaining
-their accounts.
-</p>
-</div>
 
 <div class="info-card">
-<h3>2. Deposit Verification</h3>
+
+<h3>
+1. Account Information
+</h3>
+
 <p>
-Deposit submissions may require transaction information and supporting
-evidence. Submission does not itself confirm receipt of funds.
+Users should provide accurate information when creating and
+maintaining their accounts.
 </p>
+
 </div>
 
-<div class="info-card">
-<h3>3. Account Balances</h3>
-<p>
-Dashboard figures should reflect authorized records maintained by the
-platform.
-</p>
-</div>
 
 <div class="info-card">
-<h3>4. Processing</h3>
+
+<h3>
+2. Deposit Verification
+</h3>
+
+<p>
+Deposit submissions may require transaction information and
+supporting evidence. Submission does not itself confirm receipt of funds.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>
+3. Account Balances
+</h3>
+
+<p>
+Dashboard figures should reflect authorized records maintained
+by the platform.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<h3>
+4. Processing
+</h3>
+
 <p>
 Deposit and withdrawal requests may require verification and review.
-The stated processing target is up to 12 hours after acceptance for
-processing.
 </p>
+
 </div>
 
-<div class="info-card">
-<h3>5. Trading Risk</h3>
-<p>
-Foreign exchange markets involve financial risk. Educational information
-does not guarantee profits or specific returns.
-</p>
-</div>
 
 <div class="info-card">
-<h3>6. Security</h3>
+
+<h3>
+5. Trading Risk
+</h3>
+
 <p>
-Users should protect their passwords and notify support about suspected
-unauthorized access.
+Foreign exchange markets involve financial risk. Educational
+information does not guarantee profits or specific returns.
 </p>
+
 </div>
+
+
+<div class="info-card">
+
+<h3>
+6. Security
+</h3>
+
+<p>
+Users should protect their passwords and notify support about
+suspected unauthorized access.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
+
 
 
 <div class="footer">
+
 Quantum Edge Markets Client Portal
-</div>
 
 </div>
+
+
+</div>
+
 </main>
 
 </section>
+
 
 
 <script>
 
 /* =========================================================
    SUPABASE
-   ========================================================= */
+========================================================= */
 
-const SUPABASE_URL = "https://qxwyrsezbisbajqnohsw.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
+const SUPABASE_URL =
+"https://qxwyrsezbisbajqnohsw.supabase.co";
 
-const {createClient} = supabase;
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
+
+const {
+    createClient
+} = supabase;
 
 const db = createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
 );
 
+
+/* =========================================================
+   APPLICATION SETTINGS
+========================================================= */
+
+const SITE_URL =
+"https://mercydalton347-del.github.io/quantum-edge-markets/";
+
+
 let currentUser = null;
 let currentProfile = null;
+let paymentMethods = [];
 
 
 /* =========================================================
-   COUNTRY / CURRENCY / PHONE DATA
-   ========================================================= */
+   COUNTRY DATA
+========================================================= */
 
 const countries = [
+
 ["Afghanistan","AFN","+93"],
 ["Albania","ALL","+355"],
 ["Algeria","DZD","+213"],
@@ -1717,8 +2252,6 @@ const countries = [
 ["Zambia","ZMW","+260"],
 ["Zimbabwe","ZWG","+263"],
 
-/* Additional territories */
-
 ["Åland Islands","EUR","+358"],
 ["American Samoa","USD","+1-684"],
 ["Anguilla","XCD","+1-264"],
@@ -1762,23 +2295,134 @@ const countries = [
 ["Turks and Caicos Islands","USD","+1-649"],
 ["U.S. Virgin Islands","USD","+1-340"],
 ["Wallis and Futuna","XPF","+681"]
+
 ];
 
 
 /* =========================================================
+   HELPERS
+========================================================= */
+
+function $(id){
+    return document.getElementById(id);
+}
+
+
+function showMessage(element,text,type){
+
+    element.textContent = text;
+    element.className =
+        "message " + type;
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   CURRENCY DISPLAY
+========================================================= */
+
+/*
+   Base currency is USD.
+
+   The database values investment/balance/profit/bonus
+   are treated as USD base amounts.
+
+   A selected currency is currently used as the display
+   currency. Actual conversion rates can later be connected
+   to a trusted FX data source if required.
+*/
+
+const currencySymbols = {
+
+    USD:"$",
+    EUR:"€",
+    GBP:"£",
+    KES:"KSh",
+    PGK:"K",
+    AUD:"A$",
+    CAD:"C$",
+    NZD:"NZ$",
+    JPY:"¥",
+    CNY:"¥",
+    INR:"₹",
+    ZAR:"R",
+    UGX:"USh",
+    TZS:"TSh",
+    ZMW:"ZK",
+    GHS:"GH₵",
+    NGN:"₦",
+    XOF:"CFA",
+    XAF:"CFA",
+    RWF:"FRw"
+
+};
+
+
+function getCurrencySymbol(currency){
+
+    return currencySymbols[currency] || currency;
+
+}
+
+
+function money(value,currency){
+
+    const number =
+        Number(value || 0);
+
+    const selectedCurrency =
+        currency || "USD";
+
+    const symbol =
+        getCurrencySymbol(selectedCurrency);
+
+    return symbol + " " +
+        number.toLocaleString(
+            "en-US",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
+
+}
+
+
+/* =========================================================
    POPULATE SETTINGS
-   ========================================================= */
+========================================================= */
 
 function populateSettings(){
 
-    const countrySelect = $("countrySelect");
-    const currencySelect = $("currencySelect");
-    const phoneSelect = $("phoneCodeSelect");
+    const countrySelect =
+        $("countrySelect");
+
+    const currencySelect =
+        $("currencySelect");
+
+    const phoneSelect =
+        $("phoneCodeSelect");
+
 
     countrySelect.innerHTML =
         '<option value="">Select country</option>';
 
-    const currencies = new Set();
+
+    const currencies =
+        new Set(["USD"]);
+
 
     countries.forEach(function(item){
 
@@ -1788,218 +2432,405 @@ function populateSettings(){
 
         currencies.add(currency);
 
-        const option = document.createElement("option");
 
-        option.value = country;
-        option.textContent = country;
+        const option =
+            document.createElement("option");
+
+        option.value =
+            country;
+
+        option.textContent =
+            country;
 
         countrySelect.appendChild(option);
+
     });
 
 
     currencySelect.innerHTML =
         '<option value="">Select currency</option>';
 
+
     Array.from(currencies)
         .sort()
         .forEach(function(currency){
 
-            const option = document.createElement("option");
+            const option =
+                document.createElement("option");
 
-            option.value = currency;
-            option.textContent = currency;
+            option.value =
+                currency;
+
+            option.textContent =
+                currency;
 
             currencySelect.appendChild(option);
+
         });
 
 
     phoneSelect.innerHTML =
         '<option value="">Select phone country code</option>';
 
+
     countries.forEach(function(item){
 
         const country = item[0];
         const code = item[2];
 
-        const option = document.createElement("option");
 
-        option.value = code;
-        option.textContent = country + " (" + code + ")";
+        const option =
+            document.createElement("option");
+
+        option.value =
+            code;
+
+        option.textContent =
+            country + " (" + code + ")";
 
         phoneSelect.appendChild(option);
+
     });
-}
 
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function $(id){
-    return document.getElementById(id);
-}
-
-function money(value){
-
-    return Number(value || 0).toLocaleString(
-        "en-PG",
-        {
-            minimumFractionDigits:2,
-            maximumFractionDigits:2
-        }
-    );
-}
-
-function showMessage(element,text,type){
-
-    element.textContent = text;
-    element.className = "message " + type;
-}
-
-function escapeHtml(value){
-
-    return String(value || "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
 }
 
 
 /* =========================================================
    AUTH UI
-   ========================================================= */
+========================================================= */
 
 function showLogin(){
 
-    $("loginTab").classList.add("active");
-    $("signupTab").classList.remove("active");
+    $("loginTab")
+        .classList.add("active");
 
-    $("loginForm").classList.remove("hidden");
-    $("signupForm").classList.add("hidden");
+    $("signupTab")
+        .classList.remove("active");
 
-    $("authMessage").className = "message";
-    $("authMessage").textContent = "";
+
+    $("loginForm")
+        .classList.remove("hidden");
+
+    $("signupForm")
+        .classList.add("hidden");
+
+
+    $("authMessage").className =
+        "message";
+
+    $("authMessage").textContent =
+        "";
+
 }
+
 
 function showSignup(){
 
-    $("signupTab").classList.add("active");
-    $("loginTab").classList.remove("active");
+    $("signupTab")
+        .classList.add("active");
 
-    $("signupForm").classList.remove("hidden");
-    $("loginForm").classList.add("hidden");
+    $("loginTab")
+        .classList.remove("active");
 
-    $("authMessage").className = "message";
-    $("authMessage").textContent = "";
+
+    $("signupForm")
+        .classList.remove("hidden");
+
+    $("loginForm")
+        .classList.add("hidden");
+
+
+    $("authMessage").className =
+        "message";
+
+    $("authMessage").textContent =
+        "";
+
 }
 
 
 /* =========================================================
    SIGN UP
-   ========================================================= */
+========================================================= */
 
-$("signupForm").addEventListener("submit",async function(e){
+$("signupForm")
+.addEventListener(
+"submit",
+async function(e){
 
     e.preventDefault();
 
+
+    const message =
+        $("authMessage");
+
+
     showMessage(
-        $("authMessage"),
+        message,
         "Creating your account...",
         "success"
     );
 
-    const name = $("signupName").value.trim();
-    const phone = $("signupPhone").value.trim();
-    const email = $("signupEmail").value.trim();
-    const password = $("signupPassword").value;
+
+    const name =
+        $("signupName")
+        .value
+        .trim();
+
+    const phone =
+        $("signupPhone")
+        .value
+        .trim();
+
+    const email =
+        $("signupEmail")
+        .value
+        .trim();
+
+    const password =
+        $("signupPassword")
+        .value;
+
 
     try{
 
-        const {data,error} =
-            await db.auth.signUp({
-                email:email,
-                password:password
-            });
+        /*
+           IMPORTANT:
+           This is the live GitHub Pages URL.
+           Supabase will use it after email verification.
+        */
+
+        const {
+            data,
+            error
+        } =
+        await db.auth.signUp({
+
+            email:email,
+
+            password:password,
+
+            options:{
+
+                emailRedirectTo:SITE_URL,
+
+                data:{
+
+                    full_name:name,
+
+                    phone:phone
+
+                }
+
+            }
+
+        });
+
 
         if(error){
             throw error;
         }
 
+
         if(!data.user){
-            throw new Error("Account could not be created.");
+            throw new Error(
+                "Account could not be created."
+            );
         }
 
-        const userId = data.user.id;
-
-        const accountId =
-            "QEM-" +
-            userId.replace(/-/g,"")
-            .substring(0,8)
-            .toUpperCase();
 
         /*
-          The profile is created only when Supabase allows
-          the authenticated insert.
+           If email confirmation is disabled,
+           create the profile immediately.
+
+           If confirmation is required,
+           the profile will be created when the
+           user signs in after confirming email.
         */
 
         if(data.session){
 
-            const {error:profileError} =
-                await db
-                .from("profiles")
-                .insert({
-                    id:userId,
-                    account_id:accountId,
-                    full_name:name,
-                    phone:phone,
-                    bank:"Not set",
-                    investment:0,
-                    balance:0,
-                    profit:0,
-                    bonus:0,
-                    period:0,
-                    status:"Active"
-                });
-
-            if(profileError){
-                throw profileError;
-            }
+            await ensureProfile(
+                data.user
+            );
 
         }
 
+
+        $("signupForm").reset();
+
+
         showMessage(
-            $("authMessage"),
+            message,
+
             data.session
-            ? "Account created successfully. You can now sign in."
-            : "Account created. Please confirm your email, then sign in.",
+
+            ?
+
+            "Account created successfully. You can now sign in."
+
+            :
+
+            "Account created successfully. Please check your email and confirm your account before signing in.",
+
             "success"
         );
 
-        $("signupForm").reset();
 
     }catch(error){
 
         console.error(error);
 
+
         showMessage(
-            $("authMessage"),
-            error.message || "Unable to create account.",
+            message,
+            error.message ||
+            "Unable to create account.",
             "error"
         );
+
     }
 
 });
 
 
 /* =========================================================
-   SIGN IN
-   ========================================================= */
+   ENSURE PROFILE
+========================================================= */
 
-$("loginForm").addEventListener("submit",async function(e){
+async function ensureProfile(user){
+
+    if(!user){
+        return null;
+    }
+
+
+    const {
+        data:existing,
+        error:selectError
+    } =
+    await db
+        .from("profiles")
+        .select("*")
+        .eq("id",user.id)
+        .maybeSingle();
+
+
+    if(selectError){
+        throw selectError;
+    }
+
+
+    if(existing){
+        return existing;
+    }
+
+
+    const metadata =
+        user.user_metadata || {};
+
+
+    const fullName =
+        metadata.full_name ||
+        user.email ||
+        "Investor";
+
+
+    const phone =
+        metadata.phone ||
+        "";
+
+
+    const accountId =
+        "QEM-" +
+        user.id
+        .replace(/-/g,"")
+        .substring(0,8)
+        .toUpperCase();
+
+
+    const {
+        data,
+        error
+    } =
+    await db
+        .from("profiles")
+        .insert({
+
+            id:user.id,
+
+            account_id:accountId,
+
+            full_name:fullName,
+
+            phone:phone,
+
+            bank:"Not set",
+
+            country:"",
+
+            currency:"USD",
+
+            phone_country_code:"",
+
+            investment:0,
+
+            balance:0,
+
+            profit:0,
+
+            bonus:0,
+
+            period:0,
+
+            status:"Active"
+
+        })
+        .select()
+        .single();
+
+
+    if(error){
+
+        /*
+           If a database trigger already created the profile,
+           try loading it again instead of failing.
+        */
+
+        const {
+            data:retry
+        } =
+        await db
+            .from("profiles")
+            .select("*")
+            .eq("id",user.id)
+            .maybeSingle();
+
+
+        if(retry){
+            return retry;
+        }
+
+        throw error;
+    }
+
+
+    return data;
+
+}
+
+
+/* =========================================================
+   SIGN IN
+========================================================= */
+
+$("loginForm")
+.addEventListener(
+"submit",
+async function(e){
 
     e.preventDefault();
+
 
     showMessage(
         $("authMessage"),
@@ -2007,55 +2838,94 @@ $("loginForm").addEventListener("submit",async function(e){
         "success"
     );
 
+
     try{
 
-        const {data,error} =
-            await db.auth.signInWithPassword({
-                email:$("loginEmail").value.trim(),
-                password:$("loginPassword").value
-            });
+        const {
+            data,
+            error
+        } =
+        await db.auth.signInWithPassword({
+
+            email:
+                $("loginEmail")
+                .value
+                .trim(),
+
+            password:
+                $("loginPassword")
+                .value
+
+        });
+
 
         if(error){
             throw error;
         }
 
-        currentUser = data.user;
+
+        currentUser =
+            data.user;
+
+
+        /*
+           Make sure an account profile exists.
+        */
+
+        await ensureProfile(
+            currentUser
+        );
+
 
         await openApplication();
+
 
     }catch(error){
 
         console.error(error);
 
+
         showMessage(
             $("authMessage"),
-            error.message || "Unable to sign in.",
+            error.message ||
+            "Unable to sign in.",
             "error"
         );
+
     }
 
 });
 
 
 /* =========================================================
-   APPLICATION
-   ========================================================= */
+   OPEN APPLICATION
+========================================================= */
 
 async function openApplication(){
 
-    $("authPage").classList.add("hidden");
-    $("app").classList.remove("hidden");
+    $("authPage")
+        .classList
+        .add("hidden");
+
+    $("app")
+        .classList
+        .remove("hidden");
+
 
     await loadProfile();
+
+    await loadPaymentMethods();
+
     await loadDepositHistory();
 
     openPage("dashboard");
+
 }
 
 
 /* =========================================================
    LOAD PROFILE
-   ========================================================= */
+========================================================= */
 
 async function loadProfile(){
 
@@ -2063,28 +2933,70 @@ async function loadProfile(){
         return;
     }
 
-    const {data,error} =
-        await db
+
+    const {
+        data,
+        error
+    } =
+    await db
         .from("profiles")
         .select("*")
         .eq("id",currentUser.id)
-        .single();
+        .maybeSingle();
+
 
     if(error){
 
         console.error(error);
 
-        $("welcomeName").textContent = "Investor";
-        $("topUser").textContent = currentUser.email;
+        $("welcomeName")
+            .textContent =
+            currentUser.user_metadata?.full_name ||
+            "Investor";
+
+        $("topUser")
+            .textContent =
+            currentUser.email;
+
+        return;
+
+    }
+
+
+    if(!data){
+
+        try{
+
+            currentProfile =
+                await ensureProfile(
+                    currentUser
+                );
+
+            renderProfile();
+
+        }catch(profileError){
+
+            console.error(
+                profileError
+            );
+
+        }
 
         return;
     }
 
-    currentProfile = data;
+
+    currentProfile =
+        data;
 
     renderProfile();
+
 }
 
+
+/* =========================================================
+   RENDER PROFILE
+========================================================= */
 
 function renderProfile(){
 
@@ -2092,71 +3004,154 @@ function renderProfile(){
         return;
     }
 
-    $("welcomeName").textContent =
-        currentProfile.full_name || "Investor";
 
-    $("topUser").textContent =
+    const currency =
+        currentProfile.currency ||
+        "USD";
+
+
+    $("welcomeName")
+        .textContent =
+        currentProfile.full_name ||
+        "Investor";
+
+
+    $("topUser")
+        .textContent =
         currentUser.email;
 
-    $("investmentValue").textContent =
-        "PGK " + money(currentProfile.investment);
 
-    $("balanceValue").textContent =
-        "PGK " + money(currentProfile.balance);
+    /*
+       These values remain the actual database values.
+       The selected currency controls their display.
+    */
 
-    $("profitValue").textContent =
-        "PGK " + money(currentProfile.profit);
+    $("investmentValue")
+        .textContent =
+        money(
+            currentProfile.investment,
+            currency
+        );
+
+
+    $("balanceValue")
+        .textContent =
+        money(
+            currentProfile.balance,
+            currency
+        );
+
+
+    $("profitValue")
+        .textContent =
+        money(
+            currentProfile.profit,
+            currency
+        );
+
+
+    $("bonusValue")
+        .textContent =
+        money(
+            currentProfile.bonus,
+            currency
+        );
+
 
     const status =
-        currentProfile.status || "Active";
+        currentProfile.status ||
+        "Active";
+
 
     const statusElement =
         $("statusValue");
 
-    statusElement.textContent = status;
 
-    statusElement.className = "status";
+    statusElement.textContent =
+        status;
 
-    if(status.toLowerCase() === "pending"){
-        statusElement.classList.add("pending");
+
+    statusElement.className =
+        "status";
+
+
+    if(
+        status.toLowerCase() ===
+        "pending"
+    ){
+
+        statusElement
+            .classList
+            .add("pending");
+
     }
 
-    if(status.toLowerCase() === "inactive"){
-        statusElement.classList.add("inactive");
+
+    if(
+        status.toLowerCase() ===
+        "inactive"
+    ){
+
+        statusElement
+            .classList
+            .add("inactive");
+
     }
 
-    $("profileAccountId").value =
-        currentProfile.account_id || "";
 
-    $("profileName").value =
-        currentProfile.full_name || "";
-
-    $("profileEmail").value =
-        currentUser.email || "";
-
-    $("profilePhone").value =
-        currentProfile.phone || "";
-
-    $("profileBank").value =
-        currentProfile.bank || "";
+    $("profileAccountId")
+        .value =
+        currentProfile.account_id ||
+        "";
 
 
-    /* SETTINGS */
+    $("profileName")
+        .value =
+        currentProfile.full_name ||
+        "";
 
-    $("countrySelect").value =
-        currentProfile.country || "";
 
-    $("currencySelect").value =
-        currentProfile.currency || "PGK";
+    $("profileEmail")
+        .value =
+        currentUser.email ||
+        "";
 
-    $("phoneCodeSelect").value =
-        currentProfile.phone_country_code || "";
+
+    $("profilePhone")
+        .value =
+        currentProfile.phone ||
+        "";
+
+
+    $("profileBank")
+        .value =
+        currentProfile.bank ||
+        "";
+
+
+    $("countrySelect")
+        .value =
+        currentProfile.country ||
+        "";
+
+
+    $("currencySelect")
+        .value =
+        currentProfile.currency ||
+        "USD";
+
+
+    $("phoneCodeSelect")
+        .value =
+        currentProfile.phone_country_code ||
+        "";
+
 }
 
 
 /* =========================================================
    SAVE PROFILE
-   ========================================================= */
+========================================================= */
 
 async function saveProfile(){
 
@@ -2164,21 +3159,51 @@ async function saveProfile(){
         return;
     }
 
+
     try{
 
-        const {error} =
-            await db
+        const fullName =
+            $("profileName")
+            .value
+            .trim();
+
+
+        const phone =
+            $("profilePhone")
+            .value
+            .trim();
+
+
+        const bank =
+            $("profileBank")
+            .value
+            .trim();
+
+
+        const {
+            error
+        } =
+        await db
             .from("profiles")
             .update({
-                full_name:$("profileName").value.trim(),
-                phone:$("profilePhone").value.trim(),
-                bank:$("profileBank").value.trim()
+
+                full_name:fullName,
+
+                phone:phone,
+
+                bank:bank
+
             })
-            .eq("id",currentUser.id);
+            .eq(
+                "id",
+                currentUser.id
+            );
+
 
         if(error){
             throw error;
         }
+
 
         showMessage(
             $("profileMessage"),
@@ -2186,24 +3211,30 @@ async function saveProfile(){
             "success"
         );
 
+
         await loadProfile();
+
 
     }catch(error){
 
         console.error(error);
 
+
         showMessage(
             $("profileMessage"),
-            error.message || "Unable to update profile.",
+            error.message ||
+            "Unable to update profile.",
             "error"
         );
+
     }
+
 }
 
 
 /* =========================================================
    SAVE SETTINGS
-   ========================================================= */
+========================================================= */
 
 async function saveSettings(){
 
@@ -2211,57 +3242,85 @@ async function saveSettings(){
         return;
     }
 
+
     const country =
-        $("countrySelect").value;
+        $("countrySelect")
+        .value;
+
 
     const currency =
-        $("currencySelect").value;
+        $("currencySelect")
+        .value;
+
 
     const phoneCode =
-        $("phoneCodeSelect").value;
+        $("phoneCodeSelect")
+        .value;
+
 
     if(!country){
+
         showMessage(
             $("settingsMessage"),
             "Please select your country.",
             "error"
         );
+
         return;
     }
 
+
     if(!currency){
+
         showMessage(
             $("settingsMessage"),
             "Please select your currency.",
             "error"
         );
+
         return;
     }
 
+
     if(!phoneCode){
+
         showMessage(
             $("settingsMessage"),
             "Please select your phone country code.",
             "error"
         );
+
         return;
     }
 
+
     try{
 
-        const {error} =
-            await db
+        const {
+            error
+        } =
+        await db
             .from("profiles")
             .update({
+
                 country:country,
+
                 currency:currency,
-                phone_country_code:phoneCode
+
+                phone_country_code:
+                    phoneCode
+
             })
-            .eq("id",currentUser.id);
+            .eq(
+                "id",
+                currentUser.id
+            );
+
 
         if(error){
             throw error;
         }
+
 
         showMessage(
             $("settingsMessage"),
@@ -2269,136 +3328,552 @@ async function saveSettings(){
             "success"
         );
 
+
         await loadProfile();
+
 
     }catch(error){
 
         console.error(error);
 
+
         showMessage(
             $("settingsMessage"),
-            error.message || "Unable to save settings.",
+            error.message ||
+            "Unable to save settings.",
             "error"
         );
+
     }
+
 }
 
 
 /* =========================================================
    NAVIGATION
-   ========================================================= */
+========================================================= */
 
 function openPage(page){
 
-    document.querySelectorAll(".page")
-    .forEach(function(item){
-        item.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".page")
+        .forEach(function(item){
+
+            item.classList.remove(
+                "active"
+            );
+
+        });
+
 
     const selected =
         $("page-" + page);
 
+
     if(selected){
-        selected.classList.add("active");
+
+        selected.classList.add(
+            "active"
+        );
+
     }
 
-    document.querySelectorAll(
-        ".menu button[data-page]"
-    ).forEach(function(btn){
 
-        btn.classList.remove("active");
+    document
+        .querySelectorAll(
+            ".menu button[data-page]"
+        )
+        .forEach(function(btn){
 
-        if(btn.dataset.page === page){
-            btn.classList.add("active");
-        }
-    });
+            btn.classList.remove(
+                "active"
+            );
 
-    $("sidebar").classList.remove("open");
+
+            if(
+                btn.dataset.page ===
+                page
+            ){
+
+                btn.classList.add(
+                    "active"
+                );
+
+            }
+
+        });
+
+
+    $("sidebar")
+        .classList
+        .remove("open");
+
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
+
 }
 
 
-document.querySelectorAll(
-    ".menu button[data-page]"
-).forEach(function(button){
+document
+    .querySelectorAll(
+        ".menu button[data-page]"
+    )
+    .forEach(function(button){
 
-    button.addEventListener(
-        "click",
-        function(){
-            openPage(button.dataset.page);
-        }
-    );
-});
+        button.addEventListener(
+            "click",
+            function(){
+
+                openPage(
+                    button.dataset.page
+                );
+
+            }
+        );
+
+    });
 
 
 /* =========================================================
    MOBILE SIDEBAR
-   ========================================================= */
+========================================================= */
 
-$("menuToggle").addEventListener(
-    "click",
-    function(){
-        $("sidebar").classList.toggle("open");
+$("menuToggle")
+.addEventListener(
+"click",
+function(){
+
+    $("sidebar")
+        .classList
+        .toggle("open");
+
+});
+
+
+/* =========================================================
+   LOAD PAYMENT METHODS
+========================================================= */
+
+async function loadPaymentMethods(){
+
+    const container =
+        $("paymentMethodsContainer");
+
+
+    if(!container){
+        return;
     }
-);
+
+
+    container.innerHTML =
+        '<div class="empty-state">Loading payment methods...</div>';
+
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await db
+            .from("payment_methods")
+            .select("*")
+            .eq("enabled",true)
+            .order(
+                "sort_order",
+                {
+                    ascending:true
+                }
+            );
+
+
+        if(error){
+            throw error;
+        }
+
+
+        paymentMethods =
+            data || [];
+
+
+        renderPaymentMethods();
+
+        populatePaymentSelects();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        container.innerHTML =
+            `
+            <div class="empty-state">
+                Unable to load payment methods.
+                Please try again later.
+            </div>
+            `;
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER PAYMENT METHODS
+========================================================= */
+
+function renderPaymentMethods(){
+
+    const container =
+        $("paymentMethodsContainer");
+
+
+    if(
+        !paymentMethods ||
+        paymentMethods.length === 0
+    ){
+
+        container.innerHTML =
+            `
+            <div class="empty-state">
+                No payment methods are currently available.
+            </div>
+            `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        paymentMethods
+        .map(function(method){
+
+            let rows = "";
+
+
+            if(method.account_name){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Account Name</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.account_name
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            if(method.account_number){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Account Number</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.account_number
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            if(method.phone_number){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Phone Number</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.phone_number
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            if(method.wallet_address){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Wallet Address</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.wallet_address
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            if(method.currency){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Currency</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.currency
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            if(method.country){
+
+                rows += `
+                <div class="payment-row">
+                    <span>Country</span>
+                    <strong>
+                        ${escapeHtml(
+                            method.country
+                        )}
+                    </strong>
+                </div>
+                `;
+
+            }
+
+
+            return `
+            <div class="payment-card">
+
+                <h3>
+                    ${escapeHtml(
+                        method.method_name ||
+                        method.provider ||
+                        "Payment Method"
+                    )}
+                </h3>
+
+                <div class="payment-type">
+                    ${escapeHtml(
+                        method.method_type ||
+                        ""
+                    )}
+                    ${method.provider
+                        ? " • " +
+                          escapeHtml(
+                              method.provider
+                          )
+                        : ""}
+                </div>
+
+                ${rows}
+
+                ${
+                    method.instructions
+                    ?
+                    `
+                    <div class="payment-instructions">
+                        ${escapeHtml(
+                            method.instructions
+                        )}
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+/* =========================================================
+   PAYMENT SELECTS
+========================================================= */
+
+function populatePaymentSelects(){
+
+    const deposit =
+        $("depositMethod");
+
+    const withdraw =
+        $("withdrawMethod");
+
+
+    const defaultOption =
+        '<option value="">Select payment method</option>';
+
+
+    deposit.innerHTML =
+        defaultOption;
+
+
+    withdraw.innerHTML =
+        defaultOption;
+
+
+    paymentMethods.forEach(
+        function(method){
+
+            const label =
+                (
+                    method.method_name ||
+                    method.provider ||
+                    "Payment Method"
+                ) +
+                (
+                    method.currency
+                    ?
+                    " • " +
+                    method.currency
+                    :
+                    ""
+                );
+
+
+            const depositOption =
+                document.createElement(
+                    "option"
+                );
+
+            depositOption.value =
+                method.id;
+
+            depositOption.textContent =
+                label;
+
+            deposit.appendChild(
+                depositOption
+            );
+
+
+            const withdrawOption =
+                document.createElement(
+                    "option"
+                );
+
+            withdrawOption.value =
+                method.id;
+
+            withdrawOption.textContent =
+                label;
+
+            withdraw.appendChild(
+                withdrawOption
+            );
+
+        }
+    );
+
+}
 
 
 /* =========================================================
    DEPOSIT VERIFICATION
-   ========================================================= */
+========================================================= */
 
-$("depositForm").addEventListener(
+$("depositForm")
+.addEventListener(
 "submit",
 async function(e){
 
     e.preventDefault();
 
+
     if(!currentUser){
         return;
     }
 
+
     const message =
         $("depositMessage");
 
+
     try{
 
-        const bank =
-            $("depositBank").value;
+        const methodId =
+            $("depositMethod")
+            .value;
+
 
         const amount =
-            Number($("depositAmount").value);
+            Number(
+                $("depositAmount")
+                .value
+            );
+
 
         const transactionMessage =
             $("transactionMessage")
-            .value.trim();
+            .value
+            .trim();
+
 
         const file =
             $("depositScreenshot")
             .files[0];
 
-        if(!bank){
-            throw new Error("Please select your bank.");
+
+        if(!methodId){
+
+            throw new Error(
+                "Please select a payment method."
+            );
+
         }
+
 
         if(!amount || amount <= 0){
-            throw new Error("Enter a valid deposit amount.");
+
+            throw new Error(
+                "Enter a valid deposit amount."
+            );
+
         }
+
 
         if(!transactionMessage){
-            throw new Error("Enter the bank transaction message.");
+
+            throw new Error(
+                "Enter the transaction reference."
+            );
+
         }
+
 
         if(!file){
-            throw new Error("Please attach your transaction screenshot.");
+
+            throw new Error(
+                "Please attach your transaction screenshot."
+            );
+
         }
 
-        if(file.size > 5 * 1024 * 1024){
-            throw new Error("Screenshot must be smaller than 5 MB.");
+
+        if(
+            file.size >
+            5 * 1024 * 1024
+        ){
+
+            throw new Error(
+                "Screenshot must be smaller than 5 MB."
+            );
+
         }
+
 
         showMessage(
             message,
@@ -2406,11 +3881,13 @@ async function(e){
             "success"
         );
 
+
         const extension =
             file.name
             .split(".")
             .pop()
             .toLowerCase();
+
 
         const fileName =
             currentUser.id +
@@ -2419,37 +3896,63 @@ async function(e){
             "." +
             extension;
 
-        const {error:uploadError} =
-            await db.storage
+
+        const {
+            error:uploadError
+        } =
+        await db.storage
             .from("deposit-proofs")
             .upload(
                 fileName,
                 file,
                 {
-                    contentType:file.type,
+
+                    contentType:
+                        file.type,
+
                     upsert:false
+
                 }
             );
+
 
         if(uploadError){
             throw uploadError;
         }
 
-        const {error:insertError} =
-            await db
+
+        const {
+            error:insertError
+        } =
+        await db
             .from("deposit_requests")
             .insert({
-                user_id:currentUser.id,
-                bank:bank,
-                amount:amount,
-                transaction_message:transactionMessage,
-                screenshot_url:fileName,
-                status:"Pending"
+
+                user_id:
+                    currentUser.id,
+
+                payment_method_id:
+                    methodId,
+
+                amount:
+                    amount,
+
+                transaction_message:
+                    transactionMessage,
+
+                screenshot_url:
+                    fileName,
+
+                status:
+                    "Pending"
+
             });
+
 
         if(insertError){
             throw insertError;
         }
+
 
         showMessage(
             message,
@@ -2457,19 +3960,26 @@ async function(e){
             "success"
         );
 
-        $("depositForm").reset();
+
+        $("depositForm")
+            .reset();
+
 
         await loadDepositHistory();
+
 
     }catch(error){
 
         console.error(error);
 
+
         showMessage(
             message,
-            error.message || "Unable to submit deposit.",
+            error.message ||
+            "Unable to submit deposit.",
             "error"
         );
+
     }
 
 });
@@ -2477,7 +3987,7 @@ async function(e){
 
 /* =========================================================
    DEPOSIT HISTORY
-   ========================================================= */
+========================================================= */
 
 async function loadDepositHistory(){
 
@@ -2485,71 +3995,122 @@ async function loadDepositHistory(){
         return;
     }
 
+
     const container =
         $("depositHistory");
+
 
     if(!container){
         return;
     }
 
-    const {data,error} =
-        await db
+
+    const {
+        data,
+        error
+    } =
+    await db
         .from("deposit_requests")
         .select(
-            "id,bank,amount,transaction_message,status,created_at"
+            "id,amount,transaction_message,status,created_at"
         )
-        .eq("user_id",currentUser.id)
-        .order("created_at",{ascending:false});
+        .eq(
+            "user_id",
+            currentUser.id
+        )
+        .order(
+            "created_at",
+            {
+                ascending:false
+            }
+        );
+
 
     if(error){
 
         console.error(error);
 
-        container.innerHTML =
-            '<div class="muted">Unable to load verification history.</div>';
-
-        return;
-    }
-
-    if(!data || data.length === 0){
 
         container.innerHTML =
-            '<div class="muted">No deposit submissions yet.</div>';
+            `
+            <div class="muted">
+                Unable to load verification history.
+            </div>
+            `;
 
         return;
+
     }
+
+
+    if(
+        !data ||
+        data.length === 0
+    ){
+
+        container.innerHTML =
+            `
+            <div class="muted">
+                No deposit submissions yet.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    const currency =
+        currentProfile?.currency ||
+        "USD";
+
 
     container.innerHTML =
-        data.map(function(item){
+        data
+        .map(function(item){
 
             const status =
-                item.status || "Pending";
+                item.status ||
+                "Pending";
+
 
             const date =
                 new Date(
                     item.created_at
-                ).toLocaleString();
+                )
+                .toLocaleString();
+
 
             const statusClass =
-                status.toLowerCase() === "pending"
-                ? "pending"
-                : "";
+                status.toLowerCase() ===
+                "pending"
+                ?
+                "pending"
+                :
+                "";
+
 
             return `
+
             <div class="history-item">
 
                 <div>
 
                     <strong>
-                        ${escapeHtml(item.bank)}
+                        Deposit
                     </strong>
 
                     <div class="muted">
-                        PGK ${money(item.amount)}
+                        ${money(
+                            item.amount,
+                            currency
+                        )}
                     </div>
 
                     <div class="muted">
-                        ${escapeHtml(item.transaction_message)}
+                        ${escapeHtml(
+                            item.transaction_message
+                        )}
                     </div>
 
                     <div class="muted">
@@ -2560,88 +4121,268 @@ async function loadDepositHistory(){
 
                 <div>
 
-                    <span class="status ${statusClass}">
-                        ${escapeHtml(status)}
+                    <span
+                    class="status ${statusClass}">
+
+                        ${escapeHtml(
+                            status
+                        )}
+
                     </span>
 
                 </div>
 
             </div>
+
             `;
 
-        }).join("");
+        })
+        .join("");
+
 }
 
 
 /* =========================================================
-   WITHDRAWAL UI
-   ========================================================= */
+   WITHDRAWAL
+========================================================= */
 
-$("withdrawForm").addEventListener(
+$("withdrawForm")
+.addEventListener(
 "submit",
-function(e){
+async function(e){
 
     e.preventDefault();
 
-    showMessage(
-        $("withdrawMessage"),
-        "Your withdrawal request has been recorded for review. Processing is subject to account verification and available verified funds.",
-        "success"
-    );
 
-    $("withdrawForm").reset();
+    if(!currentUser){
+        return;
+    }
+
+
+    const message =
+        $("withdrawMessage");
+
+
+    const amount =
+        Number(
+            $("withdrawAmount")
+            .value
+        );
+
+
+    const methodId =
+        $("withdrawMethod")
+        .value;
+
+
+    const account =
+        $("withdrawAccount")
+        .value
+        .trim();
+
+
+    if(!amount || amount <= 0){
+
+        showMessage(
+            message,
+            "Enter a valid withdrawal amount.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(!methodId){
+
+        showMessage(
+            message,
+            "Please select a payment method.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(!account){
+
+        showMessage(
+            message,
+            "Enter your receiving account, wallet or phone number.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       This version does not silently change the client's
+       balance. A withdrawal should be inserted as a request
+       and reviewed by the authorized host/admin.
+    */
+
+    try{
+
+        const {
+            error
+        } =
+        await db
+            .from("withdrawal_requests")
+            .insert({
+
+                user_id:
+                    currentUser.id,
+
+                amount:
+                    amount,
+
+                payment_method_id:
+                    methodId,
+
+                receiving_account:
+                    account,
+
+                status:
+                    "Pending"
+
+            });
+
+
+        if(error){
+            throw error;
+        }
+
+
+        showMessage(
+            message,
+            "Withdrawal request submitted successfully and is pending review.",
+            "success"
+        );
+
+
+        $("withdrawForm")
+            .reset();
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        showMessage(
+            message,
+            error.message ||
+            "Unable to submit withdrawal request.",
+            "error"
+        );
+
+    }
+
 });
 
 
 /* =========================================================
    SESSION
-   ========================================================= */
+========================================================= */
 
 async function checkSession(){
 
     try{
 
         const {
-            data:{session}
+            data:{
+                session
+            }
         } =
         await db.auth.getSession();
+
 
         if(session){
 
             currentUser =
                 session.user;
 
+
+            try{
+
+                await ensureProfile(
+                    currentUser
+                );
+
+            }catch(error){
+
+                console.error(
+                    "Profile setup:",
+                    error
+                );
+
+            }
+
+
             await openApplication();
+
         }
 
     }catch(error){
 
         console.error(error);
+
     }
+
 }
 
+
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
 db.auth.onAuthStateChange(
 function(event,session){
 
-    if(event === "SIGNED_OUT"){
+    if(
+        event ===
+        "SIGNED_OUT"
+    ){
 
-        currentUser = null;
-        currentProfile = null;
+        currentUser =
+            null;
 
-        $("app").classList.add("hidden");
-        $("authPage").classList.remove("hidden");
+        currentProfile =
+            null;
 
-        $("loginForm").reset();
+        paymentMethods =
+            [];
+
+
+        $("app")
+            .classList
+            .add("hidden");
+
+
+        $("authPage")
+            .classList
+            .remove("hidden");
+
+
+        $("loginForm")
+            .reset();
+
     }
+
 });
 
 
 /* =========================================================
    SIGN OUT
-   ========================================================= */
+========================================================= */
 
-$("signoutBtn").addEventListener(
+$("signoutBtn")
+.addEventListener(
 "click",
 async function(){
 
@@ -2651,10 +4392,11 @@ async function(){
 
 
 /* =========================================================
-   START
-   ========================================================= */
+   START APPLICATION
+========================================================= */
 
 populateSettings();
+
 checkSession();
 
 </script>
