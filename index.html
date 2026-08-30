@@ -51,9 +51,7 @@ button{
     display:none!important;
 }
 
-/* =========================
-   AUTH
-========================= */
+/* AUTH */
 
 #authPage{
     min-height:100vh;
@@ -70,7 +68,7 @@ button{
 .auth-card{
     width:100%;
     max-width:440px;
-    background:rgba(13,27,46,.97);
+    background:rgba(13,27,46,.96);
     border:1px solid var(--border);
     border-radius:22px;
     padding:30px;
@@ -164,18 +162,12 @@ textarea{
     background:#22ddba;
 }
 
-.primary-btn:disabled{
-    opacity:.6;
-    cursor:not-allowed;
-}
-
 .message{
     margin-top:15px;
     padding:12px;
     border-radius:10px;
     display:none;
     font-size:14px;
-    line-height:1.5;
 }
 
 .message.success{
@@ -192,16 +184,7 @@ textarea{
     color:#ff9eaa;
 }
 
-.message.warning{
-    display:block;
-    background:rgba(244,185,66,.12);
-    border:1px solid rgba(244,185,66,.4);
-    color:#f4c95f;
-}
-
-/* =========================
-   APP
-========================= */
+/* APP */
 
 #app{
     min-height:100vh;
@@ -264,9 +247,7 @@ textarea{
     color:#ff8e9b!important;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .main{
     margin-left:var(--sidebar);
@@ -280,7 +261,7 @@ textarea{
     align-items:center;
     justify-content:space-between;
     padding:0 28px;
-    background:rgba(7,17,31,.94);
+    background:rgba(7,17,31,.92);
     position:sticky;
     top:0;
     z-index:50;
@@ -322,9 +303,7 @@ textarea{
     margin-bottom:25px;
 }
 
-/* =========================
-   DASHBOARD
-========================= */
+/* DASHBOARD */
 
 .account-banner{
     background:
@@ -405,7 +384,6 @@ textarea{
     border-radius:15px;
     padding:18px;
     text-align:left;
-    transition:.2s;
 }
 
 .quick-action:hover{
@@ -422,9 +400,7 @@ textarea{
     color:var(--muted);
 }
 
-/* =========================
-   CHARTS
-========================= */
+/* CHARTS */
 
 .chart-grid{
     display:grid;
@@ -465,9 +441,7 @@ textarea{
     border:0;
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 .section-grid{
     display:grid;
@@ -524,9 +498,7 @@ textarea{
     color:var(--muted);
 }
 
-/* =========================
-   FORMS
-========================= */
+/* FORMS */
 
 .form-card{
     max-width:760px;
@@ -573,16 +545,7 @@ textarea{
     color:var(--muted);
 }
 
-.small-note{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.6;
-    margin-top:10px;
-}
-
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
     color:#61758a;
@@ -591,9 +554,7 @@ textarea{
     font-size:12px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -661,19 +622,13 @@ textarea{
     .history-item{
         flex-direction:column;
     }
-
-    .auth-card{
-        padding:22px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     AUTHENTICATION
-===================================================== -->
+<!-- AUTHENTICATION -->
 
 <section id="authPage">
 
@@ -688,22 +643,14 @@ textarea{
         </div>
 
         <div class="auth-tabs">
-
-            <button
-                id="loginTab"
-                class="active"
-                onclick="showLogin()">
+            <button id="loginTab" class="active" onclick="showLogin()">
                 Sign In
             </button>
 
-            <button
-                id="signupTab"
-                onclick="showSignup()">
+            <button id="signupTab" onclick="showSignup()">
                 Sign Up
             </button>
-
         </div>
-
 
         <!-- LOGIN -->
 
@@ -711,222 +658,145 @@ textarea{
 
             <div class="form-group">
                 <label>Email</label>
-
                 <input
                     type="email"
                     id="loginEmail"
                     required
-                    autocomplete="email">
+                    autocomplete="email"
+                >
             </div>
-
 
             <div class="form-group">
                 <label>Password</label>
-
                 <input
                     type="password"
                     id="loginPassword"
                     required
-                    autocomplete="current-password">
+                    autocomplete="current-password"
+                >
             </div>
 
-
-            <button
-                class="primary-btn"
-                type="submit"
-                id="loginButton">
-
+            <button class="primary-btn" type="submit">
                 Sign In
-
             </button>
 
         </form>
 
+        <!-- SIGNUP -->
 
-        <!-- SIGN UP -->
-
-        <form
-            id="signupForm"
-            class="hidden">
+        <form id="signupForm" class="hidden">
 
             <div class="form-group">
-
                 <label>Full Name</label>
-
                 <input
                     type="text"
                     id="signupName"
                     required
-                    autocomplete="name">
-
+                    autocomplete="name"
+                >
             </div>
 
-
             <div class="form-group">
-
                 <label>Phone</label>
-
                 <input
                     type="tel"
                     id="signupPhone"
-                    autocomplete="tel">
-
+                    autocomplete="tel"
+                >
             </div>
 
-
             <div class="form-group">
-
                 <label>Email</label>
-
                 <input
                     type="email"
                     id="signupEmail"
                     required
-                    autocomplete="email">
-
+                    autocomplete="email"
+                >
             </div>
 
-
             <div class="form-group">
-
                 <label>Password</label>
-
                 <input
                     type="password"
                     id="signupPassword"
                     minlength="6"
                     required
-                    autocomplete="new-password">
-
+                    autocomplete="new-password"
+                >
             </div>
 
-
-            <button
-                class="primary-btn"
-                type="submit"
-                id="signupButton">
-
+            <button class="primary-btn" type="submit">
                 Create Account
-
             </button>
 
         </form>
 
-
-        <div
-            id="authMessage"
-            class="message">
-        </div>
+        <div id="authMessage" class="message"></div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     APPLICATION
-===================================================== -->
+<!-- APPLICATION -->
 
-<section
-    id="app"
-    class="hidden">
-
+<section id="app" class="hidden">
 
     <!-- SIDEBAR -->
 
-    <aside
-        class="sidebar"
-        id="sidebar">
+    <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-header">
-
             <div class="sidebar-logo">
                 QUANTUM <span>EDGE</span>
             </div>
-
         </div>
-
 
         <nav class="menu">
 
-            <button
-                class="active"
-                data-page="dashboard">
-
+            <button class="active" data-page="dashboard">
                 🏠 Dashboard
-
             </button>
-
 
             <button data-page="deposit">
-
                 💰 Deposit
-
             </button>
-
 
             <button data-page="verification">
-
                 ✅ Deposit Verification
-
             </button>
-
 
             <button data-page="withdraw">
-
                 💸 Withdraw
-
             </button>
-
 
             <button data-page="markets">
-
                 📊 Markets
-
             </button>
-
 
             <button data-page="education">
-
                 📚 Forex Education
-
             </button>
-
 
             <button data-page="profile">
-
                 👤 My Profile
-
             </button>
-
 
             <button data-page="settings">
-
                 ⚙️ Settings
-
             </button>
-
 
             <button data-page="support">
-
                 📞 Support
-
             </button>
-
 
             <button data-page="terms">
-
                 📜 Terms & Policies
-
             </button>
 
-
-            <button
-                class="signout"
-                id="signoutBtn">
-
+            <button class="signout" id="signoutBtn">
                 🚪 Sign Out
-
             </button>
 
         </nav>
@@ -940,26 +810,16 @@ textarea{
 
         <header class="topbar">
 
-            <button
-                class="menu-toggle"
-                id="menuToggle">
-
+            <button class="menu-toggle" id="menuToggle">
                 ☰
-
             </button>
-
 
             <div>
                 <strong>Client Portal</strong>
             </div>
 
-
-            <div
-                class="user-short"
-                id="topUser">
-
+            <div class="user-short" id="topUser">
                 Loading...
-
             </div>
 
         </header>
@@ -967,23 +827,14 @@ textarea{
 
         <div class="content">
 
+            <!-- DASHBOARD -->
 
-            <!-- =================================================
-                 DASHBOARD
-            ================================================== -->
-
-            <section
-                class="page active"
-                id="page-dashboard">
-
+            <section class="page active" id="page-dashboard">
 
                 <div class="account-banner">
 
                     <h2>
-                        Welcome,
-                        <span id="welcomeName">
-                            Investor
-                        </span>
+                        Welcome, <span id="welcomeName">Investor</span>
                     </h2>
 
                     <p>
@@ -995,76 +846,42 @@ textarea{
 
                 <div class="cards">
 
-
                     <div class="card">
-
                         <div class="card-label">
                             Investment
                         </div>
-
-                        <div
-                            class="card-value"
-                            id="investmentValue">
-
+                        <div class="card-value" id="investmentValue">
                             PGK 0.00
-
                         </div>
-
                     </div>
 
-
                     <div class="card">
-
                         <div class="card-label">
                             Balance
                         </div>
-
-                        <div
-                            class="card-value"
-                            id="balanceValue">
-
+                        <div class="card-value" id="balanceValue">
                             PGK 0.00
-
                         </div>
-
                     </div>
 
-
                     <div class="card">
-
                         <div class="card-label">
                             Profit
                         </div>
-
-                        <div
-                            class="card-value positive"
-                            id="profitValue">
-
+                        <div class="card-value positive" id="profitValue">
                             PGK 0.00
-
                         </div>
-
                     </div>
 
-
                     <div class="card">
-
                         <div class="card-label">
                             Account Status
                         </div>
-
                         <div class="card-value">
-
-                            <span
-                                id="statusValue"
-                                class="status">
-
+                            <span id="statusValue" class="status">
                                 Active
-
                             </span>
-
                         </div>
-
                     </div>
 
                 </div>
@@ -1072,49 +889,25 @@ textarea{
 
                 <div class="quick-actions">
 
-
-                    <button
-                        class="quick-action"
-                        onclick="openPage('deposit')">
-
-                        <strong>
-                            💰 Make a Deposit
-                        </strong>
-
+                    <button class="quick-action" onclick="openPage('deposit')">
+                        <strong>💰 Make a Deposit</strong>
                         <small>
-                            View supported bank details.
+                            View the available bank details.
                         </small>
-
                     </button>
 
-
-                    <button
-                        class="quick-action"
-                        onclick="openPage('verification')">
-
-                        <strong>
-                            ✅ Verify a Deposit
-                        </strong>
-
+                    <button class="quick-action" onclick="openPage('verification')">
+                        <strong>✅ Verify a Deposit</strong>
                         <small>
-                            Submit transaction information and proof.
+                            Submit your transaction information and proof.
                         </small>
-
                     </button>
 
-
-                    <button
-                        class="quick-action"
-                        onclick="openPage('withdraw')">
-
-                        <strong>
-                            💸 Withdrawal Request
-                        </strong>
-
+                    <button class="quick-action" onclick="openPage('withdraw')">
+                        <strong>💸 Withdrawal Request</strong>
                         <small>
                             Submit a withdrawal request.
                         </small>
-
                     </button>
 
                 </div>
@@ -1131,28 +924,19 @@ textarea{
 
                 <div class="chart-grid">
 
-
                     <div class="chart-card">
 
                         <div class="chart-header">
-
                             <h3>XAUUSD</h3>
-
-                            <p>
-                                Gold / US Dollar
-                            </p>
-
+                            <p>Gold / US Dollar</p>
                         </div>
 
-
                         <div class="chart-frame">
-
                             <iframe
-                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_xauusd&symbol=OANDA%3AXAUUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
                                 loading="lazy"
                                 title="XAUUSD chart">
                             </iframe>
-
                         </div>
 
                     </div>
@@ -1161,24 +945,16 @@ textarea{
                     <div class="chart-card">
 
                         <div class="chart-header">
-
                             <h3>GBPUSD</h3>
-
-                            <p>
-                                British Pound / US Dollar
-                            </p>
-
+                            <p>British Pound / US Dollar</p>
                         </div>
 
-
                         <div class="chart-frame">
-
                             <iframe
-                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_gbpusd&symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&theme=dark&style=1&timezone=Etc%2FUTC"
+                                src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_gbpusd&symbol=OANDA%3AGBPUSD&interval=60&hidesidetoolbar=1&hidetoptoolbar=1&symboledit=0&saveimage=0&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=1&timezone=Etc%2FUTC"
                                 loading="lazy"
                                 title="GBPUSD chart">
                             </iframe>
-
                         </div>
 
                     </div>
@@ -1188,13 +964,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 DEPOSIT
-            ================================================== -->
+            <!-- DEPOSIT -->
 
-            <section
-                class="page"
-                id="page-deposit">
+            <section class="page" id="page-deposit">
 
                 <h1 class="page-title">
                     Deposit
@@ -1207,7 +979,6 @@ textarea{
 
                 <div class="section-grid">
 
-
                     <div class="info-card">
 
                         <h3>BSP</h3>
@@ -1215,28 +986,13 @@ textarea{
                         <div class="bank-card">
 
                             <div class="bank-row">
-
-                                <span>
-                                    Account Name
-                                </span>
-
-                                <strong>
-                                    Quantum Edge Markets
-                                </strong>
-
+                                <span>Account Name</span>
+                                <strong>Quantum Edge Markets</strong>
                             </div>
 
-
                             <div class="bank-row">
-
-                                <span>
-                                    Account Number
-                                </span>
-
-                                <strong>
-                                    7004707480
-                                </strong>
-
+                                <span>Account Number</span>
+                                <strong>7004707480</strong>
                             </div>
 
                         </div>
@@ -1251,28 +1007,13 @@ textarea{
                         <div class="bank-card">
 
                             <div class="bank-row">
-
-                                <span>
-                                    Account Name
-                                </span>
-
-                                <strong>
-                                    Quantum Edge Markets
-                                </strong>
-
+                                <span>Account Name</span>
+                                <strong>Quantum Edge Markets</strong>
                             </div>
 
-
                             <div class="bank-row">
-
-                                <span>
-                                    Account Number
-                                </span>
-
-                                <strong>
-                                    29223514
-                                </strong>
-
+                                <span>Account Number</span>
+                                <strong>29223514</strong>
                             </div>
 
                         </div>
@@ -1282,24 +1023,14 @@ textarea{
                 </div>
 
 
-                <div
-                    class="info-card"
-                    style="margin-top:18px;">
+                <div class="info-card" style="margin-top:18px;">
 
-                    <h3>
-                        After making your deposit
-                    </h3>
+                    <h3>After making your deposit</h3>
 
                     <p>
-                        Keep your official bank transaction message or reference.
-                        Then open <strong>Deposit Verification</strong> from the
-                        sidebar and submit your transaction details and screenshot.
-                    </p>
-
-                    <p class="small-note">
-                        A submitted transaction is treated as pending until it has
-                        been independently verified. Client-side submissions do not
-                        directly change account balances.
+                        Keep the transaction message or reference supplied by your bank.
+                        Then use <strong>Deposit Verification</strong> in the sidebar
+                        to submit the transaction information and supporting screenshot.
                     </p>
 
                 </div>
@@ -1307,13 +1038,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 VERIFICATION
-            ================================================== -->
+            <!-- VERIFICATION -->
 
-            <section
-                class="page"
-                id="page-verification">
+            <section class="page" id="page-verification">
 
                 <h1 class="page-title">
                     Deposit Verification
@@ -1326,27 +1053,20 @@ textarea{
 
                 <div class="form-card">
 
-
                     <div class="notice">
-
-                        Deposit submissions are reviewed before being reflected
-                        as verified account funds.
-
+                        Deposits are reviewed before they are reflected as verified
+                        account funds. Submitting a screenshot does not by itself
+                        constitute confirmation of payment.
                     </div>
 
 
                     <form id="depositForm">
 
-
                         <div class="form-group">
 
-                            <label>
-                                Bank
-                            </label>
+                            <label>Bank</label>
 
-                            <select
-                                id="depositBank"
-                                required>
+                            <select id="depositBank" required>
 
                                 <option value="">
                                     Select bank
@@ -1367,16 +1087,15 @@ textarea{
 
                         <div class="form-group">
 
-                            <label>
-                                Deposit Amount (PGK)
-                            </label>
+                            <label>Deposit Amount (PGK)</label>
 
                             <input
                                 type="number"
                                 id="depositAmount"
                                 min="0.01"
                                 step="0.01"
-                                required>
+                                required
+                            >
 
                         </div>
 
@@ -1384,14 +1103,14 @@ textarea{
                         <div class="form-group">
 
                             <label>
-                                Bank Transaction Message / Reference
+                                Bank transaction message / reference
                             </label>
 
                             <textarea
                                 id="transactionMessage"
-                                placeholder="Paste the transaction message or reference supplied by your bank..."
-                                required>
-                            </textarea>
+                                placeholder="Paste the message or transaction reference supplied by your bank..."
+                                required
+                            ></textarea>
 
                         </div>
 
@@ -1399,7 +1118,7 @@ textarea{
                         <div class="form-group">
 
                             <label>
-                                Screenshot of Bank Transaction
+                                Screenshot of bank transaction
                             </label>
 
                             <input
@@ -1407,7 +1126,8 @@ textarea{
                                 type="file"
                                 id="depositScreenshot"
                                 accept="image/png,image/jpeg,image/webp"
-                                required>
+                                required
+                            >
 
                         </div>
 
@@ -1415,19 +1135,13 @@ textarea{
                         <button
                             type="submit"
                             class="primary-btn"
-                            id="depositButton">
-
+                        >
                             Submit Deposit for Verification
-
                         </button>
 
                     </form>
 
-
-                    <div
-                        id="depositMessage"
-                        class="message">
-                    </div>
+                    <div id="depositMessage" class="message"></div>
 
                 </div>
 
@@ -1447,13 +1161,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 WITHDRAW
-            ================================================== -->
+            <!-- WITHDRAW -->
 
-            <section
-                class="page"
-                id="page-withdraw">
+            <section class="page" id="page-withdraw">
 
                 <h1 class="page-title">
                     Withdrawal
@@ -1467,43 +1177,35 @@ textarea{
                 <div class="form-card">
 
                     <div class="notice">
-
                         Withdrawal requests are subject to account verification,
                         available verified funds and applicable processing conditions.
-                        The stated processing target is up to 12 hours after a request
-                        has been accepted for processing.
-
+                        The current processing target is up to 12 hours after the
+                        request has been accepted for processing.
                     </div>
 
 
                     <form id="withdrawForm">
 
-
                         <div class="form-group">
 
-                            <label>
-                                Amount (PGK)
-                            </label>
+                            <label>Amount (PGK)</label>
 
                             <input
                                 type="number"
                                 id="withdrawAmount"
                                 min="0.01"
                                 step="0.01"
-                                required>
+                                required
+                            >
 
                         </div>
 
 
                         <div class="form-group">
 
-                            <label>
-                                Bank
-                            </label>
+                            <label>Bank</label>
 
-                            <select
-                                id="withdrawBank"
-                                required>
+                            <select id="withdrawBank" required>
 
                                 <option value="">
                                     Select bank
@@ -1524,46 +1226,33 @@ textarea{
 
                         <div class="form-group">
 
-                            <label>
-                                Account Number
-                            </label>
+                            <label>Account Number</label>
 
                             <input
                                 type="text"
                                 id="withdrawAccount"
-                                required>
+                                required
+                            >
 
                         </div>
 
 
-                        <button
-                            class="primary-btn"
-                            type="submit">
-
+                        <button class="primary-btn" type="submit">
                             Submit Withdrawal Request
-
                         </button>
 
                     </form>
 
-
-                    <div
-                        id="withdrawMessage"
-                        class="message">
-                    </div>
+                    <div id="withdrawMessage" class="message"></div>
 
                 </div>
 
             </section>
 
 
-            <!-- =================================================
-                 MARKETS
-            ================================================== -->
+            <!-- MARKETS -->
 
-            <section
-                class="page"
-                id="page-markets">
+            <section class="page" id="page-markets">
 
                 <h1 class="page-title">
                     Markets
@@ -1576,21 +1265,12 @@ textarea{
 
                 <div class="chart-grid">
 
-
                     <div class="chart-card">
 
                         <div class="chart-header">
-
-                            <h3>
-                                XAUUSD
-                            </h3>
-
-                            <p>
-                                Gold / US Dollar
-                            </p>
-
+                            <h3>XAUUSD</h3>
+                            <p>Gold / US Dollar</p>
                         </div>
-
 
                         <div class="chart-frame">
 
@@ -1608,17 +1288,9 @@ textarea{
                     <div class="chart-card">
 
                         <div class="chart-header">
-
-                            <h3>
-                                GBPUSD
-                            </h3>
-
-                            <p>
-                                British Pound / US Dollar
-                            </p>
-
+                            <h3>GBPUSD</h3>
+                            <p>British Pound / US Dollar</p>
                         </div>
-
 
                         <div class="chart-frame">
 
@@ -1637,13 +1309,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 EDUCATION
-            ================================================== -->
+            <!-- EDUCATION -->
 
-            <section
-                class="page"
-                id="page-education">
+            <section class="page" id="page-education">
 
                 <h1 class="page-title">
                     Forex Education
@@ -1656,12 +1324,9 @@ textarea{
 
                 <div class="section-grid">
 
-
                     <div class="info-card">
 
-                        <h3>
-                            Forex Fundamentals
-                        </h3>
+                        <h3>Forex Fundamentals</h3>
 
                         <p>
                             Fundamental analysis considers economic and financial
@@ -1672,9 +1337,8 @@ textarea{
                             <li>Central-bank interest rates</li>
                             <li>Inflation and employment</li>
                             <li>GDP and economic growth</li>
-                            <li>Economic calendars</li>
-                            <li>Major economic releases</li>
-                            <li>Geopolitical developments</li>
+                            <li>Economic calendars and major releases</li>
+                            <li>Geopolitical and macroeconomic developments</li>
                         </ul>
 
                     </div>
@@ -1682,13 +1346,11 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            Technical Analysis
-                        </h3>
+                        <h3>Technical Analysis</h3>
 
                         <p>
                             Technical analysis studies price behaviour and market
-                            structure using historical market information.
+                            structure using historical price information.
                         </p>
 
                         <ul>
@@ -1696,8 +1358,7 @@ textarea{
                             <li>Trends and ranges</li>
                             <li>Candlestick structure</li>
                             <li>Market swings</li>
-                            <li>Indicators</li>
-                            <li>Risk management</li>
+                            <li>Indicators and volume tools</li>
                         </ul>
 
                     </div>
@@ -1705,14 +1366,12 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            Market Structure
-                        </h3>
+                        <h3>Market Structure</h3>
 
                         <p>
                             Traders commonly study higher highs, higher lows,
                             lower highs and lower lows to understand directional
-                            structure and possible changes in market behaviour.
+                            structure.
                         </p>
 
                     </div>
@@ -1720,14 +1379,12 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            Risk Management
-                        </h3>
+                        <h3>Risk Management</h3>
 
                         <p>
-                            Position sizing, stop-loss placement and risk-to-reward
-                            planning are important components of responsible trading
-                            education.
+                            Risk management is an essential part of trading education.
+                            Position size, stop-loss placement and risk-to-reward
+                            planning can help control exposure.
                         </p>
 
                     </div>
@@ -1735,15 +1392,13 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            ICT Concepts
-                        </h3>
+                        <h3>ICT Concepts</h3>
 
                         <p>
                             ICT-style educational concepts associated with
-                            Michael J. Huddleston include liquidity, market structure,
-                            fair value gaps, order blocks, dealing ranges and
-                            time-based market behaviour.
+                            Michael J. Huddleston include ideas such as liquidity,
+                            market structure, fair value gaps, order blocks,
+                            dealing ranges and time-based market behaviour.
                         </p>
 
                     </div>
@@ -1751,14 +1406,14 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            2022 Framework
-                        </h3>
+                        <h3>2022 Framework</h3>
 
                         <p>
                             Educational discussions of the ICT 2022 approach commonly
-                            examine liquidity, displacement, market structure shifts,
-                            fair value gaps and time-of-day behaviour.
+                            examine liquidity, market structure shifts, displacement,
+                            fair value gaps and time-of-day behaviour. These concepts
+                            should be studied critically rather than treated as a
+                            guarantee of trading results.
                         </p>
 
                     </div>
@@ -1768,13 +1423,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 PROFILE
-            ================================================== -->
+            <!-- PROFILE -->
 
-            <section
-                class="page"
-                id="page-profile">
+            <section class="page" id="page-profile">
 
                 <h1 class="page-title">
                     My Profile
@@ -1787,113 +1438,63 @@ textarea{
 
                 <div class="form-card">
 
-
                     <div class="form-group">
-
-                        <label>
-                            Account ID
-                        </label>
-
-                        <input
-                            id="profileAccountId"
-                            readonly>
-
+                        <label>Account ID</label>
+                        <input id="profileAccountId" readonly>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Full Name
-                        </label>
-
-                        <input
-                            id="profileName">
-
+                        <label>Full Name</label>
+                        <input id="profileName">
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Email
-                        </label>
-
-                        <input
-                            id="profileEmail"
-                            readonly>
-
+                        <label>Email</label>
+                        <input id="profileEmail" readonly>
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Phone
-                        </label>
-
-                        <input
-                            id="profilePhone">
-
+                        <label>Phone</label>
+                        <input id="profilePhone">
                     </div>
 
-
                     <div class="form-group">
-
-                        <label>
-                            Bank
-                        </label>
-
-                        <input
-                            id="profileBank">
-
+                        <label>Bank</label>
+                        <input id="profileBank">
                     </div>
-
 
                     <button
                         class="primary-btn"
-                        onclick="saveProfile()">
-
+                        onclick="saveProfile()"
+                    >
                         Save Profile
-
                     </button>
 
-
-                    <div
-                        id="profileMessage"
-                        class="message">
-                    </div>
+                    <div id="profileMessage" class="message"></div>
 
                 </div>
 
             </section>
 
 
-            <!-- =================================================
-                 SETTINGS
-            ================================================== -->
+            <!-- SETTINGS -->
 
-            <section
-                class="page"
-                id="page-settings">
+            <section class="page" id="page-settings">
 
                 <h1 class="page-title">
                     Settings
                 </h1>
 
                 <p class="page-description">
-                    Manage your portal preferences and security.
+                    Manage your portal preferences.
                 </p>
 
 
                 <div class="section-grid">
 
-
                     <div class="info-card">
 
-                        <h3>
-                            Account Security
-                        </h3>
+                        <h3>Account Security</h3>
 
                         <p>
                             Keep your login credentials private and never share
@@ -1905,13 +1506,12 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            Account Information
-                        </h3>
+                        <h3>Account Information</h3>
 
                         <p>
-                            Financial figures shown in the dashboard are retrieved
-                            from your authenticated account record.
+                            Financial figures displayed in your dashboard are
+                            intended to reflect records available to your
+                            authenticated account.
                         </p>
 
                     </div>
@@ -1921,13 +1521,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 SUPPORT
-            ================================================== -->
+            <!-- SUPPORT -->
 
-            <section
-                class="page"
-                id="page-support">
+            <section class="page" id="page-support">
 
                 <h1 class="page-title">
                     Support
@@ -1940,12 +1536,9 @@ textarea{
 
                 <div class="section-grid">
 
-
                     <div class="info-card">
 
-                        <h3>
-                            Email Support
-                        </h3>
+                        <h3>Email Support</h3>
 
                         <p>
                             Fxglobal54@gmail.com
@@ -1956,9 +1549,7 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            Account Assistance
-                        </h3>
+                        <h3>Account Assistance</h3>
 
                         <p>
                             For deposit verification, include the transaction
@@ -1973,13 +1564,9 @@ textarea{
             </section>
 
 
-            <!-- =================================================
-                 TERMS
-            ================================================== -->
+            <!-- TERMS -->
 
-            <section
-                class="page"
-                id="page-terms">
+            <section class="page" id="page-terms">
 
                 <h1 class="page-title">
                     Terms & Policies
@@ -1992,12 +1579,9 @@ textarea{
 
                 <div class="section-grid">
 
-
                     <div class="info-card">
 
-                        <h3>
-                            1. Account Information
-                        </h3>
+                        <h3>1. Account Information</h3>
 
                         <p>
                             Users are responsible for providing accurate information
@@ -2009,14 +1593,12 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            2. Deposit Verification
-                        </h3>
+                        <h3>2. Deposit Verification</h3>
 
                         <p>
                             Deposit submissions may require transaction information
-                            and supporting evidence. Submission of a screenshot does
-                            not by itself confirm that funds have been received.
+                            and supporting evidence. A submitted document does not
+                            by itself confirm that funds have been received.
                         </p>
 
                     </div>
@@ -2024,14 +1606,12 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            3. Account Balances
-                        </h3>
+                        <h3>3. Account Balances</h3>
 
                         <p>
                             Account figures are based on records maintained by the
-                            platform. Client-side submissions must not be treated
-                            as authorization to modify financial records.
+                            platform. Users must not attempt to manipulate account
+                            information through client-side requests.
                         </p>
 
                     </div>
@@ -2039,14 +1619,14 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            4. Processing
-                        </h3>
+                        <h3>4. Processing</h3>
 
                         <p>
                             Deposit and withdrawal requests may require verification
                             and review. The stated processing target is up to
                             12 hours after a request has been accepted for processing.
+                            Processing time is not a guarantee of a particular
+                            financial result.
                         </p>
 
                     </div>
@@ -2054,9 +1634,7 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            5. Trading Risk
-                        </h3>
+                        <h3>5. Trading Risk</h3>
 
                         <p>
                             Foreign exchange and other financial markets involve
@@ -2070,9 +1648,7 @@ textarea{
 
                     <div class="info-card">
 
-                        <h3>
-                            6. Security
-                        </h3>
+                        <h3>6. Security</h3>
 
                         <p>
                             Users must protect their login credentials and notify
@@ -2101,19 +1677,16 @@ textarea{
 
 /* =========================================================
    SUPABASE CONFIGURATION
+   =========================================================
 
-   PUT YOUR REAL SUPABASE VALUES HERE.
+   Replace ONLY the two values below with your own
+   Supabase Project URL and Publishable Key.
 
-   IMPORTANT:
-   Use the Project URL and PUBLISHABLE key.
-   NEVER use the service_role/secret key in this HTML.
+   Never put a Supabase secret/service-role key here.
 ========================================================= */
 
 const SUPABASE_URL = "https://qxwyrsezbisbajqnohsw.supabase.co";
-
-const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_YRqy0CaezYAMiMs0BCSlog_zsAFQKEd";
-
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_j_M_Vk5KdoKed3Vr-rUbPA_CC0RGlsH";
 
 const { createClient } = supabase;
 
@@ -2132,7 +1705,7 @@ let currentProfile = null;
 
 
 /* =========================================================
-   SHORT ELEMENT HELPER
+   ELEMENT HELPERS
 ========================================================= */
 
 function $(id){
@@ -2183,355 +1756,151 @@ function clearAuthMessage(){
 
     box.textContent = "";
     box.className = "message";
+
 }
 
 
 /* =========================================================
    SIGN UP
-
-   IMPORTANT FIX:
-   We DO NOT insert into profiles immediately after
-   auth.signUp().
-
-   If email confirmation is enabled, there may be no
-   authenticated session yet, so the RLS policy correctly
-   rejects the insert.
-
-   Instead, the profile is created after the user signs in.
 ========================================================= */
 
-$("signupForm").addEventListener(
-    "submit",
-    async function(e){
+$("signupForm").addEventListener("submit", async function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const button = $("signupButton");
+    showAuthMessage("Creating your account...","success");
 
-        button.disabled = true;
+    const name = $("signupName").value.trim();
+    const phone = $("signupPhone").value.trim();
+    const email = $("signupEmail").value.trim();
+    const password = $("signupPassword").value;
+
+    try{
+
+        const { data, error } = await db.auth.signUp({
+    email: email,
+    password: password,
+    options: {
+        data: {
+            full_name: name,
+            phone: phone
+        }
+    }
+});
+
+        if(error){
+            throw error;
+        }
+
+        if(!data.user){
+            throw new Error("Account could not be created.");
+        }
+
+        const userId = data.user.id;
+
+        const accountId =
+            "QEM-" +
+            userId
+                .replace(/-/g,"")
+                .substring(0,8)
+                .toUpperCase();
+
+        const { error:profileError } = await db
+            .from("profiles")
+            .insert({
+                id:userId,
+                account_id:accountId,
+                full_name:name,
+                phone:phone,
+                bank:"Not set",
+                investment:0,
+                balance:0,
+                profit:0,
+                bonus:0,
+                period:0,
+                status:"Active"
+            });
+
+        if(profileError){
+
+            if(
+                profileError.code === "23505" ||
+                profileError.message.toLowerCase().includes("duplicate")
+            ){
+                showAuthMessage(
+                    "Your account exists. Please sign in.",
+                    "success"
+                );
+                showLogin();
+                return;
+            }
+
+            throw profileError;
+        }
 
         showAuthMessage(
-            "Creating your account...",
+            "Account created successfully. You can now sign in.",
             "success"
         );
 
+        $("signupForm").reset();
 
-        const name =
-            $("signupName").value.trim();
+        setTimeout(showLogin,1000);
 
-        const phone =
-            $("signupPhone").value.trim();
+    }catch(error){
 
-        const email =
-            $("signupEmail").value.trim();
+        console.error(error);
 
-        const password =
-            $("signupPassword").value;
-
-
-        try{
-
-            const {
-                data,
-                error
-            } = await db.auth.signUp({
-
-                email:email,
-
-                password:password,
-
-                options:{
-                    data:{
-                        full_name:name,
-                        phone:phone
-                    }
-                }
-
-            });
-
-
-            if(error){
-                throw error;
-            }
-
-
-            if(!data.user){
-                throw new Error(
-                    "Account could not be created."
-                );
-            }
-
-
-            /*
-             If email confirmation is enabled,
-             session will be null.
-            */
-
-            if(!data.session){
-
-                showAuthMessage(
-                    "Account created successfully. Please check your email and confirm your email address before signing in.",
-                    "success"
-                );
-
-            }else{
-
-                currentUser = data.user;
-
-                await ensureProfile(
-                    currentUser,
-                    name,
-                    phone
-                );
-
-                await openApplication();
-
-            }
-
-
-            $("signupForm").reset();
-
-
-        }catch(error){
-
-            console.error(error);
-
-            showAuthMessage(
-                error.message ||
-                "Unable to create account.",
-                "error"
-            );
-
-        }finally{
-
-            button.disabled = false;
-
-        }
+        showAuthMessage(
+            error.message || "Unable to create account.",
+            "error"
+        );
 
     }
-);
+
+});
 
 
 /* =========================================================
    SIGN IN
 ========================================================= */
 
-$("loginForm").addEventListener(
-    "submit",
-    async function(e){
+$("loginForm").addEventListener("submit", async function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
-        const button = $("loginButton");
+    showAuthMessage("Signing in...","success");
 
-        button.disabled = true;
+    const email = $("loginEmail").value.trim();
+    const password = $("loginPassword").value;
+
+    try{
+
+        const { data, error } = await db.auth.signInWithPassword({
+            email:email,
+            password:password
+        });
+
+        if(error){
+            throw error;
+        }
+
+        currentUser = data.user;
+
+        await openApplication();
+
+    }catch(error){
+
+        console.error(error);
 
         showAuthMessage(
-            "Signing in...",
-            "success"
+            error.message || "Unable to sign in.",
+            "error"
         );
 
-
-        const email =
-            $("loginEmail").value.trim();
-
-        const password =
-            $("loginPassword").value;
-
-
-        try{
-
-            const {
-                data,
-                error
-            } = await db.auth.signInWithPassword({
-
-                email:email,
-
-                password:password
-
-            });
-
-
-            if(error){
-                throw error;
-            }
-
-
-            currentUser = data.user;
-
-
-            /*
-             This creates the profile if it does
-             not exist yet.
-            */
-
-            await ensureProfile(
-                currentUser,
-                currentUser.user_metadata?.full_name || "Investor",
-                currentUser.user_metadata?.phone || ""
-            );
-
-
-            await openApplication();
-
-
-        }catch(error){
-
-            console.error(error);
-
-            showAuthMessage(
-                error.message ||
-                "Unable to sign in.",
-                "error"
-            );
-
-        }finally{
-
-            button.disabled = false;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ENSURE PROFILE EXISTS
-========================================================= */
-
-async function ensureProfile(
-    user,
-    suppliedName,
-    suppliedPhone
-){
-
-    if(!user){
-        return null;
     }
 
-
-    const {
-        data,
-        error
-    } = await db
-        .from("profiles")
-        .select("*")
-        .eq("id",user.id)
-        .maybeSingle();
-
-
-    if(error){
-
-        console.error(
-            "Profile lookup error:",
-            error
-        );
-
-        throw error;
-    }
-
-
-    /*
-     Profile already exists.
-    */
-
-    if(data){
-
-        currentProfile = data;
-
-        return data;
-    }
-
-
-    /*
-     No profile exists.
-
-     Create it while the user is authenticated.
-     The RLS policy allows auth.uid() = id.
-    */
-
-    const accountId =
-        "QEM-" +
-        user.id
-            .replace(/-/g,"")
-            .substring(0,8)
-            .toUpperCase();
-
-
-    const {
-        data:newProfile,
-        error:insertError
-    } = await db
-        .from("profiles")
-        .insert({
-
-            id:user.id,
-
-            account_id:accountId,
-
-            full_name:
-                suppliedName || "Investor",
-
-            phone:
-                suppliedPhone || "",
-
-            bank:"Not set",
-
-            investment:0,
-
-            balance:0,
-
-            profit:0,
-
-            bonus:0,
-
-            period:0,
-
-            status:"Active"
-
-        })
-        .select("*")
-        .single();
-
-
-    if(insertError){
-
-        /*
-         Another request may have created
-         the profile at almost the same time.
-        */
-
-        if(insertError.code === "23505"){
-
-            const {
-                data:existingProfile,
-                error:existingError
-            } = await db
-                .from("profiles")
-                .select("*")
-                .eq("id",user.id)
-                .single();
-
-
-            if(existingError){
-                throw existingError;
-            }
-
-            currentProfile = existingProfile;
-
-            return existingProfile;
-        }
-
-
-        throw insertError;
-    }
-
-
-    currentProfile = newProfile;
-
-    return newProfile;
-}
+});
 
 
 /* =========================================================
@@ -2541,24 +1910,13 @@ async function ensureProfile(
 async function openApplication(){
 
     $("authPage").classList.add("hidden");
-
     $("app").classList.remove("hidden");
 
-
-    try{
-
-        await loadProfile();
-
-        await loadDepositHistory();
-
-    }catch(error){
-
-        console.error(error);
-
-    }
-
+    await loadProfile();
+    await loadDepositHistory();
 
     openPage("dashboard");
+
 }
 
 
@@ -2572,57 +1930,28 @@ async function loadProfile(){
         return;
     }
 
-
-    const {
-        data,
-        error
-    } = await db
+    const { data, error } = await db
         .from("profiles")
         .select("*")
         .eq("id",currentUser.id)
-        .maybeSingle();
-
+        .single();
 
     if(error){
 
         console.error(error);
 
-        $("welcomeName").textContent =
-            "Investor";
-
-        $("topUser").textContent =
-            currentUser.email;
+        $("welcomeName").textContent = "Investor";
+        $("topUser").textContent = currentUser.email;
 
         return;
     }
 
-
-    /*
-     If there is no profile, create it.
-    */
-
-    if(!data){
-
-        await ensureProfile(
-            currentUser,
-            currentUser.user_metadata?.full_name || "Investor",
-            currentUser.user_metadata?.phone || ""
-        );
-
-    }else{
-
-        currentProfile = data;
-
-    }
-
+    currentProfile = data;
 
     renderProfile();
+
 }
 
-
-/* =========================================================
-   RENDER PROFILE
-========================================================= */
 
 function renderProfile(){
 
@@ -2630,82 +1959,49 @@ function renderProfile(){
         return;
     }
 
-
     $("welcomeName").textContent =
-        currentProfile.full_name ||
-        "Investor";
-
+        currentProfile.full_name || "Investor";
 
     $("topUser").textContent =
-        currentUser?.email ||
-        "";
-
+        currentUser.email;
 
     $("investmentValue").textContent =
-        "PGK " +
-        money(currentProfile.investment);
-
+        "PGK " + money(currentProfile.investment);
 
     $("balanceValue").textContent =
-        "PGK " +
-        money(currentProfile.balance);
-
+        "PGK " + money(currentProfile.balance);
 
     $("profitValue").textContent =
-        "PGK " +
-        money(currentProfile.profit);
+        "PGK " + money(currentProfile.profit);
 
+    const status = currentProfile.status || "Active";
 
-    const status =
-        currentProfile.status ||
-        "Active";
+    const statusElement = $("statusValue");
 
+    statusElement.textContent = status;
 
-    const statusElement =
-        $("statusValue");
-
-
-    statusElement.textContent =
-        status;
-
-
-    statusElement.className =
-        "status";
-
+    statusElement.className = "status";
 
     if(status.toLowerCase() === "pending"){
-
-        statusElement.classList.add(
-            "pending"
-        );
-
+        statusElement.classList.add("pending");
     }
 
-
     if(status.toLowerCase() === "inactive"){
-
-        statusElement.classList.add(
-            "inactive"
-        );
-
+        statusElement.classList.add("inactive");
     }
 
 
     $("profileAccountId").value =
         currentProfile.account_id || "";
 
-
     $("profileName").value =
         currentProfile.full_name || "";
 
-
     $("profileEmail").value =
-        currentUser?.email || "";
-
+        currentUser.email || "";
 
     $("profilePhone").value =
         currentProfile.phone || "";
-
 
     $("profileBank").value =
         currentProfile.bank || "";
@@ -2713,15 +2009,9 @@ function renderProfile(){
 }
 
 
-/* =========================================================
-   MONEY FORMAT
-========================================================= */
-
 function money(value){
 
-    const number =
-        Number(value || 0);
-
+    const number = Number(value || 0);
 
     return number.toLocaleString(
         "en-PG",
@@ -2740,55 +2030,32 @@ function money(value){
 
 function openPage(page){
 
-    document
-        .querySelectorAll(".page")
-        .forEach(function(item){
+    document.querySelectorAll(".page").forEach(function(item){
 
-            item.classList.remove(
-                "active"
-            );
+        item.classList.remove("active");
 
-        });
+    });
 
 
-    const selected =
-        $("page-" + page);
-
+    const selected = $("page-" + page);
 
     if(selected){
-
-        selected.classList.add(
-            "active"
-        );
-
+        selected.classList.add("active");
     }
 
 
-    document
-        .querySelectorAll(
-            ".menu button[data-page]"
-        )
-        .forEach(function(btn){
+    document.querySelectorAll(".menu button[data-page]").forEach(function(btn){
 
-            btn.classList.remove(
-                "active"
-            );
+        btn.classList.remove("active");
 
+        if(btn.dataset.page === page){
+            btn.classList.add("active");
+        }
 
-            if(btn.dataset.page === page){
-
-                btn.classList.add(
-                    "active"
-                );
-
-            }
-
-        });
+    });
 
 
-    $("sidebar")
-        .classList.remove("open");
-
+    $("sidebar").classList.remove("open");
 
     window.scrollTo({
         top:0,
@@ -2798,43 +2065,32 @@ function openPage(page){
 }
 
 
-document
-    .querySelectorAll(
-        ".menu button[data-page]"
-    )
-    .forEach(function(button){
+document.querySelectorAll(".menu button[data-page]").forEach(function(button){
 
-        button.addEventListener(
-            "click",
-            function(){
+    button.addEventListener("click",function(){
 
-                openPage(
-                    button.dataset.page
-                );
-
-            }
-        );
+        openPage(button.dataset.page);
 
     });
+
+});
 
 
 /* =========================================================
    MOBILE SIDEBAR
 ========================================================= */
 
-$("menuToggle").addEventListener(
-    "click",
-    function(){
+$("menuToggle").addEventListener("click",function(){
 
-        $("sidebar")
-            .classList.toggle("open");
+    $("sidebar").classList.toggle("open");
 
-    }
-);
+});
 
 
 /* =========================================================
    SAVE PROFILE
+   Only safe profile fields are sent.
+   Financial columns are deliberately excluded.
 ========================================================= */
 
 async function saveProfile(){
@@ -2843,46 +2099,26 @@ async function saveProfile(){
         return;
     }
 
-
-    const message =
-        $("profileMessage");
-
+    const message = $("profileMessage");
 
     try{
 
-        const name =
-            $("profileName").value.trim();
+        const name = $("profileName").value.trim();
+        const phone = $("profilePhone").value.trim();
+        const bank = $("profileBank").value.trim();
 
-        const phone =
-            $("profilePhone").value.trim();
-
-        const bank =
-            $("profileBank").value.trim();
-
-
-        const {
-            error
-        } = await db
+        const { error } = await db
             .from("profiles")
             .update({
-
                 full_name:name,
-
                 phone:phone,
-
                 bank:bank
-
             })
-            .eq(
-                "id",
-                currentUser.id
-            );
-
+            .eq("id",currentUser.id);
 
         if(error){
             throw error;
         }
-
 
         showMessage(
             message,
@@ -2890,19 +2126,15 @@ async function saveProfile(){
             "success"
         );
 
-
         await loadProfile();
-
 
     }catch(error){
 
         console.error(error);
 
-
         showMessage(
             message,
-            error.message ||
-            "Unable to update profile.",
+            error.message || "Unable to update profile.",
             "error"
         );
 
@@ -2915,155 +2147,84 @@ async function saveProfile(){
    DEPOSIT VERIFICATION
 ========================================================= */
 
-$("depositForm").addEventListener(
-    "submit",
-    async function(e){
+$("depositForm").addEventListener("submit",async function(e){
 
-        e.preventDefault();
+    e.preventDefault();
+
+    if(!currentUser){
+        return;
+    }
+
+    const message = $("depositMessage");
+
+    try{
+
+        const bank = $("depositBank").value;
+        const amount = Number($("depositAmount").value);
+        const transactionMessage =
+            $("transactionMessage").value.trim();
+
+        const file =
+            $("depositScreenshot").files[0];
 
 
-        if(!currentUser){
-            return;
+        if(!bank){
+            throw new Error("Please select your bank.");
+        }
+
+        if(!amount || amount <= 0){
+            throw new Error("Enter a valid deposit amount.");
+        }
+
+        if(!transactionMessage){
+            throw new Error("Enter the bank transaction message.");
+        }
+
+        if(!file){
+            throw new Error("Please attach your transaction screenshot.");
         }
 
 
-        const message =
-            $("depositMessage");
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
 
-        const button =
-            $("depositButton");
-
-
-        button.disabled = true;
-
-
-        try{
-
-            const bank =
-                $("depositBank").value;
-
-
-            const amount =
-                Number(
-                    $("depositAmount").value
-                );
-
-
-            const transactionMessage =
-                $("transactionMessage")
-                    .value
-                    .trim();
-
-
-            const file =
-                $("depositScreenshot")
-                    .files[0];
-
-
-            if(!bank){
-
-                throw new Error(
-                    "Please select your bank."
-                );
-
-            }
-
-
-            if(!amount || amount <= 0){
-
-                throw new Error(
-                    "Enter a valid deposit amount."
-                );
-
-            }
-
-
-            if(!transactionMessage){
-
-                throw new Error(
-                    "Enter the bank transaction message."
-                );
-
-            }
-
-
-            if(!file){
-
-                throw new Error(
-                    "Please attach your transaction screenshot."
-                );
-
-            }
-
-
-            const allowedTypes = [
-
-                "image/jpeg",
-
-                "image/png",
-
-                "image/webp"
-
-            ];
-
-
-            if(
-                !allowedTypes
-                    .includes(file.type)
-            ){
-
-                throw new Error(
-                    "Please upload a JPG, PNG or WEBP image."
-                );
-
-            }
-
-
-            if(
-                file.size >
-                5 * 1024 * 1024
-            ){
-
-                throw new Error(
-                    "Screenshot must be smaller than 5 MB."
-                );
-
-            }
-
-
-            showMessage(
-                message,
-                "Uploading deposit proof...",
-                "success"
+        if(!allowedTypes.includes(file.type)){
+            throw new Error(
+                "Please upload a JPG, PNG or WEBP image."
             );
+        }
 
 
-            /*
-             Unique storage path.
-            */
-
-            const extension =
-                file.name
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
+        if(file.size > 5 * 1024 * 1024){
+            throw new Error(
+                "Screenshot must be smaller than 5 MB."
+            );
+        }
 
 
-            const fileName =
-                currentUser.id +
-                "/" +
-                crypto.randomUUID() +
-                "." +
-                extension;
+        showMessage(
+            message,
+            "Uploading deposit proof...",
+            "success"
+        );
 
 
-            /*
-             Upload screenshot.
-            */
+        const extension =
+            file.name.split(".").pop().toLowerCase();
 
-            const {
-                error:uploadError
-            } = await db.storage
+        const fileName =
+            currentUser.id +
+            "/" +
+            crypto.randomUUID() +
+            "." +
+            extension;
+
+
+        const { error:uploadError } =
+            await db.storage
                 .from("deposit-proofs")
                 .upload(
                     fileName,
@@ -3075,81 +2236,54 @@ $("depositForm").addEventListener(
                 );
 
 
-            if(uploadError){
-                throw uploadError;
-            }
+        if(uploadError){
+            throw uploadError;
+        }
 
 
-            /*
-             Record the submission as Pending.
-
-             IMPORTANT:
-             This does NOT change investment,
-             balance or profit.
-            */
-
-            const {
-                error:insertError
-            } = await db
+        const { error:insertError } =
+            await db
                 .from("deposit_requests")
                 .insert({
-
-                    user_id:
-                        currentUser.id,
-
+                    user_id:currentUser.id,
                     bank:bank,
-
                     amount:amount,
-
-                    transaction_message:
-                        transactionMessage,
-
-                    screenshot_url:
-                        fileName,
-
+                    transaction_message:transactionMessage,
+                    screenshot_url:fileName,
                     status:"Pending"
-
                 });
 
 
-            if(insertError){
-                throw insertError;
-            }
-
-
-            showMessage(
-                message,
-                "Deposit submitted successfully. Status: Pending verification.",
-                "success"
-            );
-
-
-            $("depositForm").reset();
-
-
-            await loadDepositHistory();
-
-
-        }catch(error){
-
-            console.error(error);
-
-
-            showMessage(
-                message,
-                error.message ||
-                "Unable to submit deposit.",
-                "error"
-            );
-
-        }finally{
-
-            button.disabled = false;
-
+        if(insertError){
+            throw insertError;
         }
 
+
+        showMessage(
+            message,
+            "Deposit submitted successfully. Status: Pending verification.",
+            "success"
+        );
+
+
+        $("depositForm").reset();
+
+        await loadDepositHistory();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            message,
+            error.message || "Unable to submit deposit.",
+            "error"
+        );
+
     }
-);
+
+});
 
 
 /* =========================================================
@@ -3162,34 +2296,19 @@ async function loadDepositHistory(){
         return;
     }
 
-
-    const container =
-        $("depositHistory");
-
+    const container = $("depositHistory");
 
     if(!container){
         return;
     }
 
-
-    const {
-        data,
-        error
-    } = await db
+    const { data, error } = await db
         .from("deposit_requests")
         .select(
             "id,bank,amount,transaction_message,status,created_at"
         )
-        .eq(
-            "user_id",
-            currentUser.id
-        )
-        .order(
-            "created_at",
-            {
-                ascending:false
-            }
-        );
+        .eq("user_id",currentUser.id)
+        .order("created_at",{ascending:false});
 
 
     if(error){
@@ -3209,101 +2328,77 @@ async function loadDepositHistory(){
             '<div class="muted">No deposit submissions yet.</div>';
 
         return;
+
     }
 
 
-    container.innerHTML =
-        data.map(function(item){
+    container.innerHTML = data.map(function(item){
 
-            const status =
-                item.status ||
-                "Pending";
+        const status =
+            item.status || "Pending";
 
+        const date =
+            new Date(item.created_at).toLocaleString();
 
-            const date =
-                new Date(
-                    item.created_at
-                ).toLocaleString();
+        return `
+            <div class="history-item">
 
+                <div>
 
-            const statusClass =
-                status.toLowerCase() ===
-                "pending"
-                    ? "pending"
-                    : "";
+                    <strong>${escapeHtml(item.bank)}</strong>
 
-
-            return `
-
-                <div class="history-item">
-
-                    <div>
-
-                        <strong>
-                            ${escapeHtml(item.bank)}
-                        </strong>
-
-                        <div class="muted">
-                            PGK ${money(item.amount)}
-                        </div>
-
-                        <div class="muted">
-                            ${escapeHtml(
-                                item.transaction_message
-                            )}
-                        </div>
-
-                        <div class="muted">
-                            ${escapeHtml(date)}
-                        </div>
-
+                    <div class="muted">
+                        PGK ${money(item.amount)}
                     </div>
 
+                    <div class="muted">
+                        ${escapeHtml(item.transaction_message)}
+                    </div>
 
-                    <div>
-
-                        <span class="status ${statusClass}">
-
-                            ${escapeHtml(status)}
-
-                        </span>
-
+                    <div class="muted">
+                        ${escapeHtml(date)}
                     </div>
 
                 </div>
 
-            `;
+                <div>
+                    <span class="status ${
+                        status.toLowerCase() === "pending"
+                        ? "pending"
+                        : ""
+                    }">
+                        ${escapeHtml(status)}
+                    </span>
+                </div>
 
-        }).join("");
+            </div>
+        `;
+
+    }).join("");
 
 }
 
 
 /* =========================================================
    WITHDRAWAL
-
-   This only records the user's request in the UI.
-   It does NOT manufacture or alter account funds.
+   This form records intent locally in the current UI.
+   A production withdrawal workflow should use a dedicated
+   Supabase table with appropriate server-side authorization.
 ========================================================= */
 
-$("withdrawForm").addEventListener(
-    "submit",
-    function(e){
+$("withdrawForm").addEventListener("submit",function(e){
 
-        e.preventDefault();
+    e.preventDefault();
 
+    showMessage(
+        $("withdrawMessage"),
+        "Withdrawal request received. Processing is subject to account verification and available verified funds.",
+        "success"
+    );
 
-        showMessage(
-            $("withdrawMessage"),
-            "Withdrawal request received. Processing is subject to account verification and available verified funds.",
-            "success"
-        );
+    $("withdrawForm").reset();
 
-
-        $("withdrawForm").reset();
-
-    }
-);
+});
 
 
 /* =========================================================
@@ -3320,21 +2415,9 @@ async function checkSession(){
             }
         } = await db.auth.getSession();
 
-
         if(session){
 
-            currentUser =
-                session.user;
-
-
-            await ensureProfile(
-                currentUser,
-                currentUser.user_metadata?.full_name ||
-                "Investor",
-                currentUser.user_metadata?.phone ||
-                ""
-            );
-
+            currentUser = session.user;
 
             await openApplication();
 
@@ -3342,129 +2425,67 @@ async function checkSession(){
 
     }catch(error){
 
-        console.error(
-            "Session error:",
-            error
-        );
+        console.error(error);
 
     }
 
 }
 
 
-/* =========================================================
-   AUTH STATE
-========================================================= */
+db.auth.onAuthStateChange(async function(event,session){
 
-db.auth.onAuthStateChange(
-    async function(event,session){
+    if(event === "SIGNED_OUT"){
 
-        if(event === "SIGNED_OUT"){
+        currentUser = null;
+        currentProfile = null;
 
-            currentUser = null;
+        $("app").classList.add("hidden");
+        $("authPage").classList.remove("hidden");
 
-            currentProfile = null;
-
-
-            $("app")
-                .classList.add("hidden");
-
-
-            $("authPage")
-                .classList.remove("hidden");
-
-
-            $("loginForm").reset();
-
-            $("signupForm").reset();
-
-            showLogin();
-
-        }
+        $("loginForm").reset();
 
     }
-);
+
+});
 
 
 /* =========================================================
    SIGN OUT
 ========================================================= */
 
-$("signoutBtn").addEventListener(
-    "click",
-    async function(){
+$("signoutBtn").addEventListener("click",async function(){
 
-        try{
+    await db.auth.signOut();
 
-            await db.auth.signOut();
-
-        }catch(error){
-
-            console.error(error);
-
-        }
-
-    }
-);
+});
 
 
 /* =========================================================
-   MESSAGE HELPER
+   HELPERS
 ========================================================= */
 
-function showMessage(
-    element,
-    text,
-    type
-){
+function showMessage(element,text,type){
 
-    element.textContent =
-        text;
-
-    element.className =
-        "message " + type;
+    element.textContent = text;
+    element.className = "message " + type;
 
 }
 
-
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
 
 function escapeHtml(value){
 
     return String(value || "")
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================================
-   START APPLICATION
+   START
 ========================================================= */
 
 checkSession();
