@@ -52,18 +52,12 @@ button{
     display:none!important;
 }
 
-
-/* =========================================================
-   AUTH
-   ========================================================= */
-
 #authPage{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
-
     background:
         radial-gradient(circle at top right,#12395c 0,transparent 35%),
         radial-gradient(circle at bottom left,#073b3a 0,transparent 30%),
@@ -196,11 +190,6 @@ textarea{
     color:#ff9eaa;
 }
 
-
-/* =========================================================
-   APP
-   ========================================================= */
-
 #app{
     min-height:100vh;
 }
@@ -312,11 +301,6 @@ textarea{
     margin-bottom:25px;
 }
 
-
-/* =========================================================
-   DASHBOARD
-   ========================================================= */
-
 .account-banner{
     background:linear-gradient(135deg,#102b46,#0b554c);
     border:1px solid #22556a;
@@ -394,11 +378,6 @@ textarea{
     line-height:1.7;
 }
 
-
-/* =========================================================
-   CHARTS
-   ========================================================= */
-
 .chart-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -437,11 +416,6 @@ textarea{
     height:100%;
     border:0;
 }
-
-
-/* =========================================================
-   GENERAL CARDS
-   ========================================================= */
 
 .section-grid{
     display:grid;
@@ -546,11 +520,6 @@ textarea{
     font-size:12px;
 }
 
-
-/* =========================================================
-   SETTINGS
-   ========================================================= */
-
 .settings-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -577,11 +546,6 @@ textarea{
     line-height:1.6;
     margin-bottom:18px;
 }
-
-
-/* =========================================================
-   PAYMENT METHODS
-   ========================================================= */
 
 .payment-method{
     margin-bottom:18px;
@@ -610,11 +574,6 @@ textarea{
     padding:8px 12px;
     border-radius:8px;
 }
-
-
-/* =========================================================
-   ADMIN
-   ========================================================= */
 
 .admin-list{
     display:flex;
@@ -676,10 +635,44 @@ textarea{
     font-size:12px;
 }
 
-
 /* =========================================================
-   MOBILE
+   ADMIN EDITOR INPUT FIX
    ========================================================= */
+
+#investorEditor{
+    pointer-events:auto!important;
+}
+
+#investorEditor input,
+#investorEditor select,
+#investorEditor textarea,
+#investorEditor button{
+    pointer-events:auto!important;
+    position:relative;
+    z-index:2;
+}
+
+#investorEditor input:not([readonly]){
+    user-select:text;
+    -webkit-user-select:text;
+    cursor:text;
+}
+
+#investorEditor select{
+    cursor:pointer;
+}
+
+#investorEditor input[type="number"]{
+    -webkit-appearance:auto;
+    appearance:auto;
+}
+
+#investorEditor input:focus,
+#investorEditor select:focus{
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(24,200,165,.12);
+}
 
 @media(max-width:1100px){
 
@@ -771,13 +764,7 @@ textarea{
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================================================
-     AUTHENTICATION
-     ========================================================= -->
 
 <section id="authPage">
 
@@ -806,7 +793,6 @@ Sign Up
 
 </div>
 
-
 <form id="loginForm">
 
 <div class="form-group">
@@ -820,7 +806,6 @@ required>
 
 </div>
 
-
 <div class="form-group">
 
 <label>Password</label>
@@ -832,7 +817,6 @@ required>
 
 </div>
 
-
 <button
 class="primary-btn"
 type="submit">
@@ -842,7 +826,6 @@ Sign In
 </button>
 
 </form>
-
 
 <form id="signupForm"
 class="hidden">
@@ -858,7 +841,6 @@ required>
 
 </div>
 
-
 <div class="form-group">
 
 <label>Phone</label>
@@ -868,7 +850,6 @@ type="tel"
 id="signupPhone">
 
 </div>
-
 
 <div class="form-group">
 
@@ -880,7 +861,6 @@ id="signupEmail"
 required>
 
 </div>
-
 
 <div class="form-group">
 
@@ -894,7 +874,6 @@ required>
 
 </div>
 
-
 <button
 class="primary-btn"
 type="submit">
@@ -905,7 +884,6 @@ Create Account
 
 </form>
 
-
 <div
 id="authMessage"
 class="message">
@@ -915,15 +893,8 @@ class="message">
 
 </section>
 
-
-
-<!-- =========================================================
-     APPLICATION
-     ========================================================= -->
-
 <section id="app"
 class="hidden">
-
 
 <aside
 class="sidebar"
@@ -936,7 +907,6 @@ QUANTUM <span>EDGE</span>
 </div>
 
 </div>
-
 
 <nav class="menu">
 
@@ -991,8 +961,6 @@ data-page="terms">
 📜 Terms & Policies
 </button>
 
-<!-- ADMIN MENU: HIDDEN UNTIL ADMIN IS VERIFIED -->
-
 <button
 data-page="admin"
 id="adminMenu"
@@ -1010,10 +978,7 @@ id="signoutBtn">
 
 </aside>
 
-
-
 <main class="main">
-
 
 <header class="topbar">
 
@@ -1035,19 +1000,11 @@ Loading...
 
 </header>
 
-
-
 <div class="content">
-
-
-<!-- =========================================================
-     DASHBOARD
-     ========================================================= -->
 
 <section
 class="page active"
 id="page-dashboard">
-
 
 <div class="account-banner">
 
@@ -1064,9 +1021,7 @@ Your account overview and authorized account information.
 
 </div>
 
-
 <div class="cards">
-
 
 <div class="card">
 
@@ -1082,7 +1037,6 @@ $0.00
 
 </div>
 
-
 <div class="card">
 
 <div class="card-label">
@@ -1096,7 +1050,6 @@ $0.00
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -1112,7 +1065,6 @@ $0.00
 
 </div>
 
-
 <div class="card">
 
 <div class="card-label">
@@ -1126,7 +1078,6 @@ $0.00
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -1146,9 +1097,7 @@ Active
 
 </div>
 
-
 </div>
-
 
 <div class="market-note">
 
@@ -1164,7 +1113,6 @@ database records.
 
 </div>
 
-
 <h2 class="page-title">
 Market Charts
 </h2>
@@ -1173,9 +1121,7 @@ Market Charts
 XAUUSD and GBPUSD market charts.
 </p>
 
-
 <div class="chart-grid">
-
 
 <div class="chart-card">
 
@@ -1203,8 +1149,6 @@ title="XAUUSD chart">
 
 </div>
 
-
-
 <div class="chart-card">
 
 <div class="chart-header">
@@ -1231,16 +1175,9 @@ title="GBPUSD chart">
 
 </div>
 
-
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     DEPOSIT
-     ========================================================= -->
 
 <section
 class="page"
@@ -1254,7 +1191,6 @@ Deposit
 Available payment methods are loaded directly from the database.
 </p>
 
-
 <div id="paymentMethods">
 
 <div class="info-card">
@@ -1266,7 +1202,6 @@ Loading payment methods...
 </div>
 
 </div>
-
 
 <div
 class="info-card"
@@ -1286,12 +1221,6 @@ and submit the payment information and proof.
 
 </section>
 
-
-
-<!-- =========================================================
-     DEPOSIT VERIFICATION
-     ========================================================= -->
-
 <section
 class="page"
 id="page-verification">
@@ -1304,7 +1233,6 @@ Deposit Verification
 Submit your transaction information for review.
 </p>
 
-
 <div class="form-card">
 
 <div class="notice">
@@ -1315,9 +1243,7 @@ receipt of funds.
 
 </div>
 
-
 <form id="depositForm">
-
 
 <div class="form-group">
 
@@ -1337,7 +1263,6 @@ Select payment method
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -1353,7 +1278,6 @@ required>
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -1367,7 +1291,6 @@ placeholder="Enter your transaction reference or payment confirmation...">
 </textarea>
 
 </div>
-
 
 <div class="form-group">
 
@@ -1384,7 +1307,6 @@ required>
 
 </div>
 
-
 <button
 class="primary-btn"
 type="submit">
@@ -1395,14 +1317,12 @@ Submit Deposit for Verification
 
 </form>
 
-
 <div
 id="depositMessage"
 class="message">
 </div>
 
 </div>
-
 
 <div class="history">
 
@@ -1418,12 +1338,6 @@ Loading...
 
 </section>
 
-
-
-<!-- =========================================================
-     WITHDRAW
-     ========================================================= -->
-
 <section
 class="page"
 id="page-withdraw">
@@ -1436,7 +1350,6 @@ Withdrawal
 Submit a withdrawal request using your registered information.
 </p>
 
-
 <div class="form-card">
 
 <div class="notice">
@@ -1447,9 +1360,7 @@ processing.
 
 </div>
 
-
 <form id="withdrawForm">
-
 
 <div class="form-group">
 
@@ -1465,7 +1376,6 @@ step="0.01"
 required>
 
 </div>
-
 
 <div class="form-group">
 
@@ -1493,7 +1403,6 @@ Kina Bank
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -1507,7 +1416,6 @@ required>
 
 </div>
 
-
 <button
 class="primary-btn"
 type="submit">
@@ -1518,7 +1426,6 @@ Submit Withdrawal Request
 
 </form>
 
-
 <div
 id="withdrawMessage"
 class="message">
@@ -1527,12 +1434,6 @@ class="message">
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     MARKETS
-     ========================================================= -->
 
 <section
 class="page"
@@ -1546,9 +1447,7 @@ Markets
 Market observation and educational analysis.
 </p>
 
-
 <div class="chart-grid">
-
 
 <div class="chart-card">
 
@@ -1575,8 +1474,6 @@ loading="lazy">
 
 </div>
 
-
-
 <div class="chart-card">
 
 <div class="chart-header">
@@ -1602,16 +1499,9 @@ loading="lazy">
 
 </div>
 
-
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     EDUCATION
-     ========================================================= -->
 
 <section
 class="page"
@@ -1625,9 +1515,7 @@ Forex Education
 Educational information about foreign exchange markets.
 </p>
 
-
 <div class="section-grid">
-
 
 <div class="info-card">
 
@@ -1652,7 +1540,6 @@ influence currency markets.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -1675,7 +1562,6 @@ market structure.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -1689,7 +1575,6 @@ lower lows to understand directional price structure.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -1702,7 +1587,6 @@ are important components of responsible trading education.
 </p>
 
 </div>
-
 
 <div class="info-card">
 
@@ -1718,7 +1602,6 @@ behaviour.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -1733,16 +1616,9 @@ and time-of-day behaviour.
 
 </div>
 
-
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     PROFILE
-     ========================================================= -->
 
 <section
 class="page"
@@ -1756,9 +1632,7 @@ My Profile
 Your registered account information.
 </p>
 
-
 <div class="form-card">
-
 
 <div class="form-group">
 
@@ -1772,7 +1646,6 @@ readonly>
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -1783,7 +1656,6 @@ Full Name
 id="profileName">
 
 </div>
-
 
 <div class="form-group">
 
@@ -1797,7 +1669,6 @@ readonly>
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -1808,7 +1679,6 @@ Phone
 id="profilePhone">
 
 </div>
-
 
 <div class="form-group">
 
@@ -1821,7 +1691,6 @@ id="profileBank">
 
 </div>
 
-
 <button
 class="primary-btn"
 onclick="saveProfile()">
@@ -1829,7 +1698,6 @@ onclick="saveProfile()">
 Save Profile
 
 </button>
-
 
 <div
 id="profileMessage"
@@ -1839,12 +1707,6 @@ class="message">
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     SETTINGS
-     ========================================================= -->
 
 <section
 class="page"
@@ -1858,9 +1720,7 @@ Settings
 Manage your country, preferred currency and international phone code.
 </p>
 
-
 <div class="settings-grid">
-
 
 <div class="setting-card">
 
@@ -1877,7 +1737,6 @@ id="countrySelect">
 </select>
 
 </div>
-
 
 <div class="setting-card">
 
@@ -1896,7 +1755,6 @@ id="currencySelect">
 
 </div>
 
-
 <div class="setting-card full">
 
 <h3>
@@ -1912,7 +1770,6 @@ id="phoneCodeSelect">
 </select>
 
 </div>
-
 
 <div class="setting-card full">
 
@@ -1935,12 +1792,6 @@ class="message">
 
 </section>
 
-
-
-<!-- =========================================================
-     SUPPORT
-     ========================================================= -->
-
 <section
 class="page"
 id="page-support">
@@ -1953,9 +1804,7 @@ Support
 Contact Quantum Edge Markets support.
 </p>
 
-
 <div class="section-grid">
-
 
 <div class="info-card">
 
@@ -1968,7 +1817,6 @@ Fxglobal54@gmail.com
 </p>
 
 </div>
-
 
 <div class="info-card">
 
@@ -1983,16 +1831,9 @@ and supporting evidence through the Deposit Verification section.
 
 </div>
 
-
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     TERMS
-     ========================================================= -->
 
 <section
 class="page"
@@ -2006,9 +1847,7 @@ Terms & Policies
 General terms governing use of the client portal.
 </p>
 
-
 <div class="section-grid">
-
 
 <div class="info-card">
 
@@ -2022,7 +1861,6 @@ maintaining their accounts.
 </p>
 
 </div>
-
 
 <div class="info-card">
 
@@ -2038,7 +1876,6 @@ of funds.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -2052,7 +1889,6 @@ by the platform.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -2064,7 +1900,6 @@ Deposit and withdrawal requests may require verification and review.
 </p>
 
 </div>
-
 
 <div class="info-card">
 
@@ -2079,7 +1914,6 @@ information does not guarantee profits or specific returns.
 
 </div>
 
-
 <div class="info-card">
 
 <h3>
@@ -2093,16 +1927,9 @@ suspected unauthorized access.
 
 </div>
 
-
 </div>
 
 </section>
-
-
-
-<!-- =========================================================
-     ADMIN / INVESTOR MANAGEMENT
-     ========================================================= -->
 
 <section
 class="page"
@@ -2116,12 +1943,12 @@ Investor Management
 Manage authorized investor profile records.
 </p>
 
-
 <div class="info-card">
 
 <div class="admin-editor-header">
 
 <div>
+
 <h3>
 Investor Accounts
 </h3>
@@ -2129,6 +1956,7 @@ Investor Accounts
 <p class="muted">
 Search for an investor and select the account you want to edit.
 </p>
+
 </div>
 
 <span class="admin-badge">
@@ -2136,7 +1964,6 @@ ADMIN
 </span>
 
 </div>
-
 
 <div class="form-group">
 
@@ -2152,7 +1979,6 @@ autocomplete="off">
 
 </div>
 
-
 <div id="investorList"
 class="admin-list">
 
@@ -2163,7 +1989,6 @@ Loading investors...
 </div>
 
 </div>
-
 
 <div
 class="form-card admin-editor hidden"
@@ -2193,14 +2018,11 @@ Selected
 
 </div>
 
-
 <input
 type="hidden"
 id="editInvestorId">
 
-
 <div class="admin-editor-grid">
-
 
 <div class="form-group">
 
@@ -2214,7 +2036,6 @@ id="editFullName">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2227,7 +2048,6 @@ id="editPhone">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2239,7 +2059,6 @@ type="text"
 id="editBank">
 
 </div>
-
 
 <div class="form-group">
 
@@ -2254,7 +2073,6 @@ step="0.01">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2267,7 +2085,6 @@ id="editBalance"
 step="0.01">
 
 </div>
-
 
 <div class="form-group">
 
@@ -2282,7 +2099,6 @@ step="0.01">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2296,7 +2112,6 @@ step="0.01">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2309,7 +2124,6 @@ id="editPeriod"
 step="0.01">
 
 </div>
-
 
 <div class="form-group">
 
@@ -2336,7 +2150,6 @@ Inactive
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2348,7 +2161,6 @@ id="editCountry">
 </select>
 
 </div>
-
 
 <div class="form-group">
 
@@ -2362,7 +2174,6 @@ id="editCurrency">
 
 </div>
 
-
 <div class="form-group">
 
 <label>
@@ -2375,9 +2186,7 @@ id="editPhoneCode">
 
 </div>
 
-
 </div>
-
 
 <button
 class="primary-btn"
@@ -2389,7 +2198,6 @@ Save Investor Changes
 
 </button>
 
-
 <div
 id="adminMessage"
 class="message">
@@ -2397,22 +2205,17 @@ class="message">
 
 </div>
 
-
-
 <div class="footer">
 
 Quantum Edge Markets Client Portal
 
 </div>
 
-
 </div>
 
 </main>
 
 </section>
-
-
 
 <script>
 
@@ -2761,7 +2564,6 @@ function populateSettings(){
 
         const country = item[0];
         const currency = item[1];
-        const code = item[2];
 
         currencies.add(currency);
 
@@ -2774,7 +2576,6 @@ function populateSettings(){
         countrySelect.appendChild(option);
 
     });
-
 
     currencySelect.innerHTML =
         '<option value="">Select currency</option>';
@@ -2792,7 +2593,6 @@ function populateSettings(){
             currencySelect.appendChild(option);
 
         });
-
 
     phoneSelect.innerHTML =
         '<option value="">Select phone country code</option>';
@@ -2839,7 +2639,6 @@ function populateAdminOptions(){
         return;
     }
 
-
     countrySelect.innerHTML =
         '<option value="">Select country</option>';
 
@@ -2849,10 +2648,8 @@ function populateAdminOptions(){
     phoneSelect.innerHTML =
         '<option value="">Select phone country code</option>';
 
-
     const currencies =
         new Set();
-
 
     countries.forEach(function(item){
 
@@ -2865,16 +2662,10 @@ function populateAdminOptions(){
         const code =
             item[2];
 
-
-        currencies.add(
-            currency
-        );
-
+        currencies.add(currency);
 
         const countryOption =
-            document.createElement(
-                "option"
-            );
+            document.createElement("option");
 
         countryOption.value =
             country;
@@ -2886,11 +2677,8 @@ function populateAdminOptions(){
             countryOption
         );
 
-
         const phoneOption =
-            document.createElement(
-                "option"
-            );
+            document.createElement("option");
 
         phoneOption.value =
             code;
@@ -2907,15 +2695,12 @@ function populateAdminOptions(){
 
     });
 
-
     Array.from(currencies)
         .sort()
         .forEach(function(currency){
 
             const option =
-                document.createElement(
-                    "option"
-                );
+                document.createElement("option");
 
             option.value =
                 currency;
@@ -2992,7 +2777,6 @@ async function(e){
     const password =
         $("signupPassword").value;
 
-
     try{
 
         const {data,error} =
@@ -3014,11 +2798,9 @@ async function(e){
 
             });
 
-
         if(error){
             throw error;
         }
-
 
         if(!data.user){
             throw new Error(
@@ -3026,22 +2808,17 @@ async function(e){
             );
         }
 
-
         showMessage(
             $("authMessage"),
 
             data.session
-
             ? "Account created successfully. You can now sign in."
-
             : "Account created. Check your email and confirm your account before signing in.",
 
             "success"
         );
 
-
         $("signupForm").reset();
-
 
     }catch(error){
 
@@ -3075,7 +2852,6 @@ async function(e){
         "success"
     );
 
-
     try{
 
         const {data,error} =
@@ -3089,18 +2865,14 @@ async function(e){
 
             });
 
-
         if(error){
             throw error;
         }
 
-
         currentUser =
             data.user;
 
-
         await openApplication();
-
 
     }catch(error){
 
@@ -3150,14 +2922,12 @@ async function loadProfile(){
         return;
     }
 
-
     const {data,error} =
         await db
         .from("profiles")
         .select("*")
         .eq("id",currentUser.id)
         .single();
-
 
     if(error){
 
@@ -3172,7 +2942,6 @@ async function loadProfile(){
         return;
 
     }
-
 
     currentProfile = data;
 
@@ -3191,19 +2960,15 @@ function renderProfile(){
         return;
     }
 
-
     const displayCurrency =
         currentProfile.currency || "USD";
-
 
     $("welcomeName").textContent =
         currentProfile.full_name ||
         "Investor";
 
-
     $("topUser").textContent =
         currentUser.email;
-
 
     const investment =
         Number(currentProfile.investment || 0);
@@ -3217,7 +2982,6 @@ function renderProfile(){
     const bonus =
         Number(currentProfile.bonus || 0);
 
-
     $("investmentValue").textContent =
         money(investment,displayCurrency);
 
@@ -3230,22 +2994,17 @@ function renderProfile(){
     $("bonusValue").textContent =
         money(bonus,displayCurrency);
 
-
     const status =
         currentProfile.status || "Active";
-
 
     const statusElement =
         $("statusValue");
 
-
     statusElement.textContent =
         status;
 
-
     statusElement.className =
         "status";
-
 
     if(
         status.toLowerCase() ===
@@ -3256,7 +3015,6 @@ function renderProfile(){
         );
     }
 
-
     if(
         status.toLowerCase() ===
         "inactive"
@@ -3266,34 +3024,26 @@ function renderProfile(){
         );
     }
 
-
     $("profileAccountId").value =
         currentProfile.account_id || "";
-
 
     $("profileName").value =
         currentProfile.full_name || "";
 
-
     $("profileEmail").value =
         currentUser.email || "";
-
 
     $("profilePhone").value =
         currentProfile.phone || "";
 
-
     $("profileBank").value =
         currentProfile.bank || "";
-
 
     $("countrySelect").value =
         currentProfile.country || "";
 
-
     $("currencySelect").value =
         currentProfile.currency || "USD";
-
 
     $("phoneCodeSelect").value =
         currentProfile.phone_country_code || "";
@@ -3310,7 +3060,6 @@ async function saveProfile(){
     if(!currentUser){
         return;
     }
-
 
     try{
 
@@ -3337,11 +3086,9 @@ async function saveProfile(){
                 currentUser.id
             );
 
-
         if(error){
             throw error;
         }
-
 
         showMessage(
             $("profileMessage"),
@@ -3349,9 +3096,7 @@ async function saveProfile(){
             "success"
         );
 
-
         await loadProfile();
-
 
     }catch(error){
 
@@ -3379,7 +3124,6 @@ async function saveSettings(){
         return;
     }
 
-
     const country =
         $("countrySelect").value;
 
@@ -3388,7 +3132,6 @@ async function saveSettings(){
 
     const phoneCode =
         $("phoneCodeSelect").value;
-
 
     if(!country){
 
@@ -3401,7 +3144,6 @@ async function saveSettings(){
         return;
     }
 
-
     if(!currency){
 
         showMessage(
@@ -3413,7 +3155,6 @@ async function saveSettings(){
         return;
     }
 
-
     if(!phoneCode){
 
         showMessage(
@@ -3424,7 +3165,6 @@ async function saveSettings(){
 
         return;
     }
-
 
     try{
 
@@ -3446,11 +3186,9 @@ async function saveSettings(){
                 currentUser.id
             );
 
-
         if(error){
             throw error;
         }
-
 
         showMessage(
             $("settingsMessage"),
@@ -3458,9 +3196,7 @@ async function saveSettings(){
             "success"
         );
 
-
         await loadProfile();
-
 
     }catch(error){
 
@@ -3487,7 +3223,6 @@ async function loadPaymentMethods(){
     const container =
         $("paymentMethods");
 
-
     try{
 
         const {data,error} =
@@ -3505,18 +3240,14 @@ async function loadPaymentMethods(){
                 }
             );
 
-
         if(error){
             throw error;
         }
 
-
         paymentMethods =
             data || [];
 
-
         populateDepositMethods();
-
 
         if(paymentMethods.length === 0){
 
@@ -3531,7 +3262,6 @@ async function loadPaymentMethods(){
             return;
         }
 
-
         container.innerHTML =
             paymentMethods
             .map(function(method){
@@ -3543,11 +3273,9 @@ async function loadPaymentMethods(){
             })
             .join("");
 
-
     }catch(error){
 
         console.error(error);
-
 
         container.innerHTML = `
             <div class="info-card">
@@ -3576,7 +3304,6 @@ function renderPaymentMethod(method){
 
     let details = "";
 
-
     if(
         method.method_type ===
         "Bank"
@@ -3596,7 +3323,6 @@ function renderPaymentMethod(method){
             `;
 
         }
-
 
         if(method.account_number){
 
@@ -3627,7 +3353,6 @@ function renderPaymentMethod(method){
 
         }
 
-
         if(method.branch){
 
             details += `
@@ -3644,7 +3369,6 @@ function renderPaymentMethod(method){
         }
 
     }
-
 
     if(
         method.method_type ===
@@ -3665,7 +3389,6 @@ function renderPaymentMethod(method){
             `;
 
         }
-
 
         if(method.phone_number){
 
@@ -3700,7 +3423,6 @@ function renderPaymentMethod(method){
 
     }
 
-
     if(
         method.method_type ===
         "Crypto"
@@ -3720,7 +3442,6 @@ function renderPaymentMethod(method){
             `;
 
         }
-
 
         if(method.crypto_address){
 
@@ -3762,7 +3483,6 @@ function renderPaymentMethod(method){
         }
 
     }
-
 
     return `
 
@@ -3857,15 +3577,12 @@ function populateDepositMethods(){
     const select =
         $("depositMethod");
 
-
     if(!select){
         return;
     }
 
-
     select.innerHTML =
         '<option value="">Select payment method</option>';
-
 
     paymentMethods.forEach(function(method){
 
@@ -3899,15 +3616,12 @@ async function(e){
 
     e.preventDefault();
 
-
     if(!currentUser){
         return;
     }
 
-
     const message =
         $("depositMessage");
-
 
     try{
 
@@ -3928,7 +3642,6 @@ async function(e){
             $("depositScreenshot")
             .files[0];
 
-
         if(!methodId){
 
             throw new Error(
@@ -3936,7 +3649,6 @@ async function(e){
             );
 
         }
-
 
         if(!amount || amount <= 0){
 
@@ -3946,7 +3658,6 @@ async function(e){
 
         }
 
-
         if(!transactionMessage){
 
             throw new Error(
@@ -3955,7 +3666,6 @@ async function(e){
 
         }
 
-
         if(!file){
 
             throw new Error(
@@ -3963,7 +3673,6 @@ async function(e){
             );
 
         }
-
 
         if(
             file.size >
@@ -3976,13 +3685,11 @@ async function(e){
 
         }
 
-
         showMessage(
             message,
             "Uploading deposit proof...",
             "success"
         );
-
 
         const extension =
             file.name
@@ -3990,14 +3697,12 @@ async function(e){
             .pop()
             .toLowerCase();
 
-
         const fileName =
             currentUser.id +
             "/" +
             crypto.randomUUID() +
             "." +
             extension;
-
 
         const {
             error:uploadError
@@ -4015,11 +3720,9 @@ async function(e){
                 }
             );
 
-
         if(uploadError){
             throw uploadError;
         }
-
 
         const {
             error:insertError
@@ -4050,11 +3753,9 @@ async function(e){
 
             });
 
-
         if(insertError){
             throw insertError;
         }
-
 
         showMessage(
             message,
@@ -4062,17 +3763,13 @@ async function(e){
             "success"
         );
 
-
         $("depositForm").reset();
 
-
         await loadDepositHistory();
-
 
     }catch(error){
 
         console.error(error);
-
 
         showMessage(
             message,
@@ -4096,15 +3793,12 @@ async function loadDepositHistory(){
         return;
     }
 
-
     const container =
         $("depositHistory");
-
 
     if(!container){
         return;
     }
-
 
     const {
         data,
@@ -4131,7 +3825,6 @@ async function loadDepositHistory(){
             }
         );
 
-
     if(error){
 
         console.error(error);
@@ -4142,7 +3835,6 @@ async function loadDepositHistory(){
         return;
     }
 
-
     if(!data || data.length === 0){
 
         container.innerHTML =
@@ -4150,7 +3842,6 @@ async function loadDepositHistory(){
 
         return;
     }
-
 
     container.innerHTML =
         data.map(function(item){
@@ -4163,23 +3854,19 @@ async function loadDepositHistory(){
                     }
                 );
 
-
             const methodName =
                 method
                 ? method.name
                 : "Payment Method";
 
-
             const status =
                 item.status ||
                 "Pending";
-
 
             const date =
                 new Date(
                     item.created_at
                 ).toLocaleString();
-
 
             return `
 
@@ -4253,7 +3940,6 @@ function(e){
 
     e.preventDefault();
 
-
     showMessage(
         $("withdrawMessage"),
 
@@ -4261,7 +3947,6 @@ function(e){
 
         "success"
     );
-
 
     $("withdrawForm").reset();
 
@@ -4280,11 +3965,9 @@ async function checkAdmin(){
         .classList
         .add("hidden");
 
-
     if(!currentUser){
         return false;
     }
-
 
     try{
 
@@ -4295,7 +3978,6 @@ async function checkAdmin(){
             await db.rpc(
                 "is_admin"
             );
-
 
         if(error){
 
@@ -4308,10 +3990,8 @@ async function checkAdmin(){
 
         }
 
-
         isAdmin =
             data === true;
-
 
         if(isAdmin){
 
@@ -4323,9 +4003,7 @@ async function checkAdmin(){
 
         }
 
-
         return isAdmin;
-
 
     }catch(error){
 
@@ -4351,19 +4029,15 @@ async function loadInvestors(){
         return;
     }
 
-
     const container =
         $("investorList");
-
 
     if(!container){
         return;
     }
 
-
     container.innerHTML =
         '<p class="muted">Loading investors...</p>';
-
 
     try{
 
@@ -4381,20 +4055,16 @@ async function loadInvestors(){
                 }
             );
 
-
         if(error){
             throw error;
         }
 
-
         allInvestors =
             data || [];
-
 
         renderInvestorList(
             allInvestors
         );
-
 
     }catch(error){
 
@@ -4402,7 +4072,6 @@ async function loadInvestors(){
             "Investor loading error:",
             error
         );
-
 
         container.innerHTML =
             `
@@ -4425,11 +4094,9 @@ function renderInvestorList(investors){
     const container =
         $("investorList");
 
-
     if(!container){
         return;
     }
-
 
     if(
         !investors ||
@@ -4447,7 +4114,6 @@ function renderInvestorList(investors){
 
     }
 
-
     container.innerHTML =
         investors
         .map(function(investor){
@@ -4457,13 +4123,11 @@ function renderInvestorList(investors){
                     investor.id
                 );
 
-
             const name =
                 escapeHtml(
                     investor.full_name ||
                     "Unnamed Investor"
                 );
-
 
             const accountId =
                 escapeHtml(
@@ -4471,20 +4135,17 @@ function renderInvestorList(investors){
                     "Not set"
                 );
 
-
             const status =
                 escapeHtml(
                     investor.status ||
                     "Active"
                 );
 
-
             const currency =
                 escapeHtml(
                     investor.currency ||
                     "USD"
                 );
-
 
             return `
 
@@ -4516,7 +4177,6 @@ function renderInvestorList(investors){
 
         })
         .join("");
-
 
     container
     .querySelectorAll(
@@ -4552,7 +4212,6 @@ function filterInvestors(){
         .trim()
         .toLowerCase();
 
-
     if(!search){
 
         renderInvestorList(
@@ -4562,7 +4221,6 @@ function filterInvestors(){
         return;
 
     }
-
 
     const filtered =
         allInvestors.filter(
@@ -4575,14 +4233,12 @@ function filterInvestors(){
                     )
                     .toLowerCase();
 
-
                 const accountId =
                     String(
                         investor.account_id ||
                         ""
                     )
                     .toLowerCase();
-
 
                 return (
                     name.includes(search) ||
@@ -4591,7 +4247,6 @@ function filterInvestors(){
 
             }
         );
-
 
     renderInvestorList(
         filtered
@@ -4610,7 +4265,6 @@ function selectInvestor(id){
         return;
     }
 
-
     const investor =
         allInvestors.find(
             function(item){
@@ -4622,78 +4276,62 @@ function selectInvestor(id){
             }
         );
 
-
     if(!investor){
         return;
     }
 
+    const editor =
+        $("investorEditor");
 
-    $("investorEditor")
-        .classList
-        .remove("hidden");
-
+    editor.classList.remove("hidden");
 
     $("editInvestorId").value =
         investor.id || "";
 
-
     $("editFullName").value =
         investor.full_name || "";
-
 
     $("editPhone").value =
         investor.phone || "";
 
-
     $("editBank").value =
         investor.bank || "";
-
 
     $("editInvestment").value =
         investor.investment ?? 0;
 
-
     $("editBalance").value =
         investor.balance ?? 0;
-
 
     $("editProfit").value =
         investor.profit ?? 0;
 
-
     $("editBonus").value =
         investor.bonus ?? 0;
 
-
     $("editPeriod").value =
         investor.period ?? 0;
-
 
     $("editStatus").value =
         investor.status ||
         "Active";
 
-
     $("editCountry").value =
         investor.country ||
         "";
-
 
     $("editCurrency").value =
         investor.currency ||
         "USD";
 
-
     $("editPhoneCode").value =
         investor.phone_country_code ||
         "";
-
 
     $("selectedInvestorBadge")
         .textContent =
         investor.full_name ||
         "Selected Investor";
-
 
     $("adminMessage").className =
         "message";
@@ -4702,7 +4340,92 @@ function selectInvestor(id){
         "";
 
 
-    $("investorEditor")
+    /* =====================================================
+       FORCE ADMIN FIELDS TO BE EDITABLE
+       ===================================================== */
+
+    const editableFields = [
+        "editFullName",
+        "editPhone",
+        "editBank",
+        "editInvestment",
+        "editBalance",
+        "editProfit",
+        "editBonus",
+        "editPeriod"
+    ];
+
+    editableFields.forEach(function(fieldId){
+
+        const field =
+            $(fieldId);
+
+        if(!field){
+            return;
+        }
+
+        field.disabled = false;
+        field.readOnly = false;
+
+        field.removeAttribute(
+            "disabled"
+        );
+
+        field.removeAttribute(
+            "readonly"
+        );
+
+        field.style.pointerEvents =
+            "auto";
+
+        field.style.userSelect =
+            "text";
+
+        field.style.webkitUserSelect =
+            "text";
+
+        field.style.cursor =
+            "text";
+
+    });
+
+
+    const selectFields = [
+        "editStatus",
+        "editCountry",
+        "editCurrency",
+        "editPhoneCode"
+    ];
+
+    selectFields.forEach(function(fieldId){
+
+        const field =
+            $(fieldId);
+
+        if(!field){
+            return;
+        }
+
+        field.disabled = false;
+
+        field.removeAttribute(
+            "disabled"
+        );
+
+        field.style.pointerEvents =
+            "auto";
+
+        field.style.cursor =
+            "pointer";
+
+    });
+
+
+    editor.style.pointerEvents =
+        "auto";
+
+
+    editor
         .scrollIntoView({
             behavior:"smooth",
             block:"start"
@@ -4722,9 +4445,16 @@ async function saveInvestor(){
     }
 
 
+    /*
+     * Get the ID of the investor currently selected.
+     * This is the important part that prevents another
+     * investor from being changed.
+     */
+
     const id =
         $("editInvestorId")
-        .value;
+        .value
+        .trim();
 
 
     if(!id){
@@ -4754,6 +4484,57 @@ async function saveInvestor(){
             "error"
         );
 
+        $("editFullName").focus();
+
+        return;
+
+    }
+
+
+    /*
+     * Read the five editable financial values.
+     */
+
+    const investment =
+        Number(
+            $("editInvestment").value
+        );
+
+    const balance =
+        Number(
+            $("editBalance").value
+        );
+
+    const profit =
+        Number(
+            $("editProfit").value
+        );
+
+    const bonus =
+        Number(
+            $("editBonus").value
+        );
+
+    const period =
+        Number(
+            $("editPeriod").value
+        );
+
+
+    if(
+        !Number.isFinite(investment) ||
+        !Number.isFinite(balance) ||
+        !Number.isFinite(profit) ||
+        !Number.isFinite(bonus) ||
+        !Number.isFinite(period)
+    ){
+
+        showMessage(
+            $("adminMessage"),
+            "Please enter valid numbers in all financial fields.",
+            "error"
+        );
+
         return;
 
     }
@@ -4779,6 +4560,13 @@ async function saveInvestor(){
         );
 
 
+        /*
+         * ONLY the selected investor is updated.
+         *
+         * .eq("id", id) restricts the database update
+         * to the selected profile row.
+         */
+
         const {
             data,
             error
@@ -4801,34 +4589,19 @@ async function saveInvestor(){
                     .trim(),
 
                 investment:
-                    Number(
-                        $("editInvestment")
-                        .value || 0
-                    ),
+                    investment,
 
                 balance:
-                    Number(
-                        $("editBalance")
-                        .value || 0
-                    ),
+                    balance,
 
                 profit:
-                    Number(
-                        $("editProfit")
-                        .value || 0
-                    ),
+                    profit,
 
                 bonus:
-                    Number(
-                        $("editBonus")
-                        .value || 0
-                    ),
+                    bonus,
 
                 period:
-                    Number(
-                        $("editPeriod")
-                        .value || 0
-                    ),
+                    period,
 
                 status:
                     $("editStatus")
@@ -4869,18 +4642,12 @@ async function saveInvestor(){
         }
 
 
-        showMessage(
-            $("adminMessage"),
-            "Investor updated successfully.",
-            "success"
-        );
+        /*
+         * Update the local copy of the selected investor.
+         */
 
-
-        await loadInvestors();
-
-
-        const updatedInvestor =
-            allInvestors.find(
+        const index =
+            allInvestors.findIndex(
                 function(item){
 
                     return String(
@@ -4891,13 +4658,49 @@ async function saveInvestor(){
             );
 
 
-        if(updatedInvestor){
+        if(index !== -1){
 
-            selectInvestor(
-                updatedInvestor.id
-            );
+            allInvestors[index] =
+                data;
 
         }
+
+
+        showMessage(
+            $("adminMessage"),
+            "Investor updated successfully.",
+            "success"
+        );
+
+
+        /*
+         * Refresh the investor list without
+         * changing any other investor.
+         */
+
+        renderInvestorList(
+            allInvestors
+        );
+
+
+        /*
+         * Re-open the same selected investor
+         * with the newly saved values.
+         */
+
+        selectInvestor(id);
+
+
+        /*
+         * Keep the success message after selectInvestor()
+         * clears the editor message.
+         */
+
+        showMessage(
+            $("adminMessage"),
+            "Investor updated successfully.",
+            "success"
+        );
 
 
     }catch(error){
@@ -4944,7 +4747,6 @@ function openPage(page){
 
     }
 
-
     document
     .querySelectorAll(".page")
     .forEach(function(item){
@@ -4955,10 +4757,8 @@ function openPage(page){
 
     });
 
-
     const selected =
         $("page-" + page);
-
 
     if(selected){
 
@@ -4967,7 +4767,6 @@ function openPage(page){
         );
 
     }
-
 
     document
     .querySelectorAll(
@@ -4978,7 +4777,6 @@ function openPage(page){
         btn.classList.remove(
             "active"
         );
-
 
         if(
             btn.dataset.page ===
@@ -4993,11 +4791,9 @@ function openPage(page){
 
     });
 
-
     $("sidebar")
     .classList
     .remove("open");
-
 
     window.scrollTo({
         top:0,
@@ -5069,7 +4865,6 @@ async function checkSession(){
             }
         } =
             await db.auth.getSession();
-
 
         if(session){
 
