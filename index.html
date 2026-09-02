@@ -1319,6 +1319,24 @@ Save Profile
 id="profileMessage"  
 class="message">  
 </div>  </div>  </section>  <!-- =========================================================  
+     BANK ACCOUNT
+     ========================================================= -->
+<section class="page" id="page-bank-account">
+<h1 class="page-title">Bank Account</h1>
+<p class="page-description">Manage the bank information registered to your client profile.</p>
+<div class="bank-link-card">
+<div class="bank-link-header"><div class="bank-link-icon">🏦</div><div><h2>Registered Bank Account</h2><p class="muted">Your registered banking information is used for account-related requests.</p></div></div>
+<div id="bankAccountStatus" class="bank-status not-linked">● Checking registered bank information...</div>
+<div class="bank-form-grid">
+<div class="form-group"><label>Account Holder</label><input type="text" id="bankAccountHolder" readonly></div>
+<div class="form-group"><label>Bank Name</label><input type="text" id="bankName" placeholder="Enter your bank name"></div>
+<div class="form-group bank-form-full"><label>Account Reference</label><input type="text" id="bankAccountReference" readonly></div>
+</div>
+<div class="bank-security">For security, this portal only updates the bank field stored in your authorized profile record. Do not enter passwords, PINs, card PINs, or one-time verification codes here.</div>
+<button class="primary-btn" type="button" onclick="saveBankAccount()" style="margin-top:20px">Save Bank Information</button>
+<div id="bankAccountMessage" class="message"></div>
+</div>
+</section>  <!-- =========================================================  
      SETTINGS  
      ========================================================= -->  <section  
 class="page"  
@@ -2439,6 +2457,8 @@ function renderProfile(){
     $("phoneCodeSelect").value =  
         currentProfile.phone_country_code || "";  
   
+    renderBankAccount();
+
 }  
   
   
@@ -2510,6 +2530,38 @@ async function saveProfile(){
 }  
   
   
+/* =========================================================  
+   BANK ACCOUNT
+   ========================================================= */
+function renderBankAccount(){
+    if(!currentProfile) return;
+    const bank=currentProfile.bank||"";
+    if($("bankAccountHolder")) $("bankAccountHolder").value=currentProfile.full_name||"Investor";
+    if($("bankName")) $("bankName").value=bank;
+    if($("bankAccountReference")) $("bankAccountReference").value=currentProfile.account_id||"Registered client account";
+    const status=$("bankAccountStatus");
+    if(status){
+        status.className=bank.trim()?"bank-status linked":"bank-status not-linked";
+        status.textContent=bank.trim()?"● Bank information registered":"● No bank information registered";
+    }
+}
+
+async function saveBankAccount(){
+    if(!currentUser) return;
+    const bank=$("bankName").value.trim();
+    const message=$("bankAccountMessage");
+    if(!bank){ showMessage(message,"Please enter your bank name.","error"); return; }
+    try{
+        const {error}=await db.from("profiles").update({bank:bank}).eq("id",currentUser.id);
+        if(error) throw error;
+        showMessage(message,"Bank information updated successfully.","success");
+        await loadProfile();
+    }catch(error){
+        console.error("Bank account update error:",error);
+        showMessage(message,error.message||"Unable to update bank information.","error");
+    }
+}
+
 /* =========================================================  
    SAVE SETTINGS  
    ========================================================= */  
